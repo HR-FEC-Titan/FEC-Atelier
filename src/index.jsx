@@ -4,7 +4,10 @@ const root = createRoot(document.getElementById("root"));
 
 // Huzzah for jsx!
 const App = () => {
-  return <h1>Changed This to Something Else</h1>
+  return <>
+    <h1>Hello World</h1>
+  </>
+
 }
 
 root.render(<App />);
