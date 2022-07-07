@@ -1,14 +1,16 @@
 import React from 'react';
 import { createRoot } from "react-dom/client";
+import Overview from './components/Overview.jsx';
+
+
 const root = createRoot(document.getElementById("root"));
 
 // Huzzah for jsx!
-const App = () => {
+const App = (props) => {
   return <>
-    <h1>Hello World</h1>
-    <h1>Hello World, again</h1>
+    <Overview id={props.id} />
   </>
 
 }
 
-root.render(<App />);
+root.render(<App id={window.initialProductId} />);

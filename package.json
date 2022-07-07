@@ -6,7 +6,7 @@
   "author": "vpatel89 <virenpatel89@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack --mode=development",
+    "start": "webpack --mode=development --watch",
     "build": "webpack --mode=production",
     "dev": "webpack serve --open"
   },
