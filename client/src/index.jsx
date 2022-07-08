@@ -1,6 +1,8 @@
 import React from 'react';
 import { createRoot } from "react-dom/client";
-import Overview from './components/Overview.jsx';
+import Overview from './components/Overview/Overview.jsx';
+import RelatedProducts from './components/RelatedProducts/RelatedProducts.jsx';
+import Reviews from './components/Reviews/Reviews.jsx';
 
 
 const root = createRoot(document.getElementById("root"));
@@ -9,6 +11,8 @@ const root = createRoot(document.getElementById("root"));
 const App = (props) => {
   return <>
     <Overview id={props.id} />
+    <RelatedProducts id={props.id} />
+    <Reviews id={props.id} />
   </>
 
 }
