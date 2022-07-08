@@ -6,11 +6,15 @@
   "author": "vpatel89 <virenpatel89@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "server": "nodemon server.js",
     "start": "webpack --mode=development --watch",
     "build": "webpack --mode=production",
     "dev": "webpack serve --open"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
