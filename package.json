@@ -9,7 +9,8 @@
     "server": "nodemon server.js",
     "start": "webpack --mode=development --watch",
     "build": "webpack --mode=production",
-    "dev": "webpack serve --open"
+    "dev": "webpack serve --open",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.27.2",
