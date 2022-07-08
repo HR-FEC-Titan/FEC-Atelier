@@ -64,4 +64,14 @@
   display: grid;
  }
 
- .overview {}
+ .overview {
+  grid-row: 1;
+ }
+
+ .relatedProducts {
+  grid-row: 2;
+ }
+
+ .reviews {
+  grid-row: 3;
+ }
