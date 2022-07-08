@@ -17,4 +17,4 @@ const App = (props) => {
 
 }
 
-root.render(<App id={window.initialProductId} />);
+root.render(<App id={'Titan'} />);
