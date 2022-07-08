@@ -1,18 +1,15 @@
 import React from 'react';
+import { useState } from 'react';
 
-class Overview extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+var Overview = () => {
 
-    };
-  }
+  const [id, setId] = useState(66647);
 
-  render() {
+
     return <div>
-      <h1>Product Overview: {this.props.id}</h1>
+      <h1 onClick={() => {setId(id + 1)} }>Product Overview: { id }</h1>
     </div>
-  }
+
 }
 
 export default Overview;
