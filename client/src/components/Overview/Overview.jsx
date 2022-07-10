@@ -1,13 +1,28 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 
-var Overview = () => {
+// id in props
+var Overview = ({ id }) => {
 
-  const [id, setId] = useState(66647);
+  const [product, setProduct] = useState({});
 
+    useEffect(() => {
+      axios.get(`/products/${id}`)
+        .then(res => {
+          const data = res.data;
+          setProduct(data);
+        })
+    }, [])
 
     return <div className='overview'>
-      <h1 onClick={() => {setId(id + 1)} }>Product Overview: { id }</h1>
+      <Star />
+      <Review />
+      <Category />
+      <Title />
+      <GeneralInfo />
+      <Share />
+      <Style />
     </div>
 
 }
