@@ -3675,6 +3675,7 @@ dns-packet@^5.2.2:
   dependencies:
     "@leichtgewicht/ip-codec" "^2.0.1"
 
+<<<<<<< HEAD
 doctrine@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
@@ -4117,6 +4118,137 @@ eslint@^8.19.0, eslint@^8.3.0:
   version "8.19.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.19.0.tgz#7342a3cbc4fbc5c106a1eefe0fd0b50b6b1a7d28"
   integrity sha512-SXOPj3x9VKvPe81TjjUJCYlV4oJjQw68Uek+AM0X4p+33dj2HY5bpTZOgnQHcG2eAm1mtCU9uNMnJi7exU/kYw==
+=======
+"doctrine@^3.0.0":
+  "integrity" "sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w=="
+  "resolved" "https://registry.npmjs.org/doctrine/-/doctrine-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "esutils" "^2.0.2"
+
+"dotenv@^16.0.1":
+  "integrity" "sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-16.0.1.tgz"
+  "version" "16.0.1"
+
+"ee-first@1.1.1":
+  "integrity" "sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow=="
+  "resolved" "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz"
+  "version" "1.1.1"
+
+"electron-to-chromium@^1.4.172":
+  "integrity" "sha512-OpEjTADzGoXABjqobGhpy0D2YsTncAax7IkER68ycc4adaq0dqEG9//9aenKPy7BGA90bqQdLac0dPp6uMkcSg=="
+  "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.182.tgz"
+  "version" "1.4.182"
+
+"emittery@^0.10.2":
+  "integrity" "sha512-aITqOwnLanpHLNXZJENbOgjUBeHocD+xsSJmNrjovKBW5HbSpW3d1pEls7GFQPUWXiwG9+0P4GtHfEqC/4M0Iw=="
+  "resolved" "https://registry.npmjs.org/emittery/-/emittery-0.10.2.tgz"
+  "version" "0.10.2"
+
+"emoji-regex@^8.0.0":
+  "integrity" "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A=="
+  "resolved" "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz"
+  "version" "8.0.0"
+
+"emojis-list@^3.0.0":
+  "integrity" "sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q=="
+  "resolved" "https://registry.npmjs.org/emojis-list/-/emojis-list-3.0.0.tgz"
+  "version" "3.0.0"
+
+"encodeurl@~1.0.2":
+  "integrity" "sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w=="
+  "resolved" "https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz"
+  "version" "1.0.2"
+
+"enhanced-resolve@^5.9.3":
+  "integrity" "sha512-T0yTFjdpldGY8PmuXXR0PyQ1ufZpEGiHVrp7zHKB7jdR4qlmZHhONVM5AQOAWXuF/w3dnHbEQVrNptJgt7F+cQ=="
+  "resolved" "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.10.0.tgz"
+  "version" "5.10.0"
+  dependencies:
+    "graceful-fs" "^4.2.4"
+    "tapable" "^2.2.0"
+
+"envinfo@^7.7.3":
+  "integrity" "sha512-/o+BXHmB7ocbHEAs6F2EnG0ogybVVUdkRunTT2glZU9XAaGmhqskrvKwqXuDfNjEO0LZKWdejEEpnq8aM0tOaw=="
+  "resolved" "https://registry.npmjs.org/envinfo/-/envinfo-7.8.1.tgz"
+  "version" "7.8.1"
+
+"error-ex@^1.3.1":
+  "integrity" "sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g=="
+  "resolved" "https://registry.npmjs.org/error-ex/-/error-ex-1.3.2.tgz"
+  "version" "1.3.2"
+  dependencies:
+    "is-arrayish" "^0.2.1"
+
+"es-module-lexer@^0.9.0":
+  "integrity" "sha512-1HQ2M2sPtxwnvOvT1ZClHyQDiggdNjURWpY2we6aMKCQiUVxTmVs2UYPLIrD84sS+kMdUwfBSylbJPwNnBrnHQ=="
+  "resolved" "https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-0.9.3.tgz"
+  "version" "0.9.3"
+
+"escalade@^3.1.1":
+  "integrity" "sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw=="
+  "resolved" "https://registry.npmjs.org/escalade/-/escalade-3.1.1.tgz"
+  "version" "3.1.1"
+
+"escape-html@~1.0.3":
+  "integrity" "sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow=="
+  "resolved" "https://registry.npmjs.org/escape-html/-/escape-html-1.0.3.tgz"
+  "version" "1.0.3"
+
+"escape-string-regexp@^1.0.5":
+  "integrity" "sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg=="
+  "resolved" "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz"
+  "version" "1.0.5"
+
+"escape-string-regexp@^2.0.0":
+  "integrity" "sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w=="
+  "resolved" "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz"
+  "version" "2.0.0"
+
+"escape-string-regexp@^4.0.0":
+  "integrity" "sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA=="
+  "resolved" "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
+  "version" "4.0.0"
+
+"eslint-scope@^7.1.1":
+  "integrity" "sha512-QKQM/UXpIiHcLqJ5AOyIW7XZmzjkzQXYE54n1++wb0u9V/abW3l9uQnxX8Z5Xd18xyKIMTUAyQ0k1e8pz6LUrw=="
+  "resolved" "https://registry.npmjs.org/eslint-scope/-/eslint-scope-7.1.1.tgz"
+  "version" "7.1.1"
+  dependencies:
+    "esrecurse" "^4.3.0"
+    "estraverse" "^5.2.0"
+
+"eslint-scope@5.1.1":
+  "integrity" "sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw=="
+  "resolved" "https://registry.npmjs.org/eslint-scope/-/eslint-scope-5.1.1.tgz"
+  "version" "5.1.1"
+  dependencies:
+    "esrecurse" "^4.3.0"
+    "estraverse" "^4.1.1"
+
+"eslint-utils@^3.0.0":
+  "integrity" "sha512-uuQC43IGctw68pJA1RgbQS8/NP7rch6Cwd4j3ZBtgo4/8Flj4eGE7ZYSZRN3iq5pVUv6GPdW5Z1RFleo84uLDA=="
+  "resolved" "https://registry.npmjs.org/eslint-utils/-/eslint-utils-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "eslint-visitor-keys" "^2.0.0"
+
+"eslint-visitor-keys@^2.0.0":
+  "integrity" "sha512-0rSmRBzXgDzIsD6mGdJgevzgezI534Cer5L/vyMX0kHzT/jiB43jRhd9YUlMGYLQy2zprNmoT8qasCGtY+QaKw=="
+  "resolved" "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-2.1.0.tgz"
+  "version" "2.1.0"
+
+"eslint-visitor-keys@^3.3.0":
+  "integrity" "sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA=="
+  "resolved" "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz"
+  "version" "3.3.0"
+
+"eslint@^8.19.0", "eslint@>=5":
+  "integrity" "sha512-SXOPj3x9VKvPe81TjjUJCYlV4oJjQw68Uek+AM0X4p+33dj2HY5bpTZOgnQHcG2eAm1mtCU9uNMnJi7exU/kYw=="
+  "resolved" "https://registry.npmjs.org/eslint/-/eslint-8.19.0.tgz"
+  "version" "8.19.0"
+>>>>>>> 300ddb5a385d648275313520665075def5a02805
   dependencies:
     "@eslint/eslintrc" "^1.3.0"
     "@humanwhocodes/config-array" "^0.9.2"
