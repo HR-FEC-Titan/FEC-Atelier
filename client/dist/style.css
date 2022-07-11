@@ -1,4 +1,4 @@
-/**
+/* *
  *
  * Based on Josh Comeau's CSS Reset: https://www.joshwcomeau.com/css/custom-css-reset/.
  *
@@ -75,3 +75,39 @@
  .reviews {
   grid-row: 3;
  }
+
+.overview {
+  display: grid;
+  grid-template-areas: 'a a a b b'
+                       'a a a c c'
+                       'a a a d d'
+                       'a a a d d'
+                       'a a a e e'
+                       'a a a e e'
+                       'f f f f f'
+}
+.imageGallery {
+  grid-area: a;
+}
+
+.starAndReview {
+  grid-area: b;
+}
+
+.titleAndCategory {
+  grid-area: c;
+}
+
+.styles {
+  grid-area: d;
+}
+
+.sizeQtnAddShare {
+  grid-area: e;
+}
+
+.slogan {
+  grid-area: f;
+}
+
+
