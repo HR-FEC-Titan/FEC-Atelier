@@ -1,7 +1,30 @@
 import React from 'react';
+import ReviewList from './ReviewList.jsx';
+import axios from 'axios'
 
-var Reviews = () => {
-  return <div className='reviews'>Reviews</div>;
+class Reviews extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      reviews: []
+    }
+  }
+
+  componentDidMount(){
+    axios.get(`/reviews/?product_id=${this.props.id}`)
+      .then(res => {
+        let reviews = res.data.results
+        console.log(reviews)
+        this.setState({reviews})
+      })
+  }
+
+  render() {
+    return (
+      <div className='reviews'><ReviewList reviews = {this.state.reviews}/></div>
+      )
+  }
 }
+
 
 export default Reviews;
