@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { ProductContext } from './Overview.jsx';
 
 const Slogan = () => {
+
   const { slogan } = useContext(ProductContext);
 
-  return <div>Slogan: { slogan }</div>
+  return <div className="slogan">Slogan: { slogan }</div>
 }
 
 

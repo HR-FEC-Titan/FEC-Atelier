@@ -7,7 +7,8 @@ import TitleCategory from './TitleCategory.jsx';
 import Slogan from './Slogan.jsx';
 import Share from './Share.jsx';
 import Style from './Style.jsx';
-
+import Image from './Image.jsx';
+import styleData from './data.json';
 
 // createContext and export
 export const ProductContext = createContext();
@@ -18,15 +19,15 @@ export const ReviewContext = createContext();
 var Overview = ({ id }) => {
   // states to be tracked
   const [product, setProduct] = useState({});
-  const [styles, setStyles] = useState([]);
-  const [reviews, setReviews] = useState({});
+  const [styles, setStyles] = useState(styleData.results);
+  const [reviews, setReviews] = useState({2: 3}); // have to give starting values to calculate average
 
   useEffect(() => {
     axios.get(`/products/${id}`)
       .then(res => {
         setProduct(res.data);
       })
-    axios.get(`/products/${id}` / styles)
+    axios.get(`/products/${id}/styles`)
       .then(res => {
         setStyles(res.data.results);
       })
@@ -47,12 +48,14 @@ var Overview = ({ id }) => {
 
         <StyleContext.Provider value={styles} >
           <Style />
+          <Image />
         </StyleContext.Provider>
 
         <Slogan />
         <Share />
       </ProductContext.Provider>
     </div>
+
   )
 }
 
