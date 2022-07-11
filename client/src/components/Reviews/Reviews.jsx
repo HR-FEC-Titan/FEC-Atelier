@@ -21,7 +21,10 @@ class Reviews extends React.Component {
 
   render() {
     return (
-      <div className='reviews'><ReviewList reviews = {this.state.reviews}/></div>
+      <div className='reviews'>
+        <h3>RATINGS & REVIEWS</h3>
+        <ReviewList reviews = {this.state.reviews}/>
+      </div>
       )
   }
 }
