@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState, useEffect, useContext, createContext } from 'react';
 import { StyleContext } from './Overview.jsx';
 import Price from './Price.jsx';
+import SizeAndQuantity from './SizeAndQuantity.jsx';
 
 export const IndexContext = createContext(0); // default to first style
 
@@ -10,7 +11,6 @@ let Style = () => {
   const styles = useContext(StyleContext);
   // console.log(styles);
   const [index, setIndex] = useState(0);
-  console.log(index);
 
   return (
     <div>
@@ -43,6 +43,10 @@ let Style = () => {
         })}
 
       </div>
+
+      <IndexContext.Provider value={index}>
+        <SizeAndQuantity />
+      </IndexContext.Provider>
     </div>
   )
 }
