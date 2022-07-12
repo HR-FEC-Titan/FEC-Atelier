@@ -64,8 +64,6 @@ var RelatedProducts = ({ id }) => {
     var originalPrice = styleData.find(element => element['default?'] === true).original_price;
     var salePrice = styleData.find(element => element['default?'] === true).sale_price;
 
-    // console.log(originalPrice);
-    console.log(salePrice);
     if (salePrice === null) {
       return (
         <div>
@@ -79,9 +77,7 @@ var RelatedProducts = ({ id }) => {
             {'$' + salePrice + ' '}
           </span>
           <span>
-            <s>
-              {'$' + originalPrice}
-            </s>
+            <s>{'$' + originalPrice}</s>
           </span>
         </div>
       )
@@ -90,21 +86,68 @@ var RelatedProducts = ({ id }) => {
   }
 
   return (
-    <div className='relatedProducts'>
-      {Object.values(relatedProdsData).map((prodData) =>
-        <div className="card" key={prodData.id} style={{width: "18rem"}} >
-          <img src={prodData.styles[0].photos[0].url} className="card-img-top" alt="..." />
-          {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
-          <div className="card-body">
-            <p className="card-text">{prodData.id}</p>
-            <p className="card-text">{prodData.category}</p>
-            <p className="card-text">{prodData.name}</p>
-            <div className="card-text">{defaultStylePrice(prodData.styles)}</div>
-            <p className="card-text">{reviewAvg(prodData.reviews)}</p>
+
+    <section className="pt-5 pb-5">
+      <div className="container">
+        <div className="row">
+          <div className="col-6">
+              <h3 className="mb-3">Related Products</h3>
+          </div>
+            <div className="col-6 text-right">
+              <a className="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                  <i className="fa fa-arrow-left"></i>
+              </a>
+              <a className="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                  <i className="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          <div className="col-12">
+            <div id="carouselExampleIndicators2" className="carousel slide" data-ride="carousel">
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+
+                  <div className='row'>
+                    {Object.values(relatedProdsData).map((prodData) =>
+                      <div className="card col-md-4 mb-4" key={prodData.id} style={{width: "18rem"}} >
+                        <img src={prodData.styles[0].photos[0].url} className="card-img-top" alt="..." />
+                        {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
+                        <div className="card-body">
+                          <p className="card-text">{prodData.id}</p>
+                          <p className="card-text">{prodData.category}</p>
+                          <p className="card-text">{prodData.name}</p>
+                          <div className="card-text">{defaultStylePrice(prodData.styles)}</div>
+                          <p className="card-text">{reviewAvg(prodData.reviews)}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    </section>
+
+
+
+
+    // <div className='relatedProducts'>
+    //   {Object.values(relatedProdsData).map((prodData) =>
+    //     <div className="card col-md-4 mb-3" key={prodData.id} style={{width: "18rem"}} >
+    //       <img src={prodData.styles[0].photos[0].url} className="card-img-top" alt="..." />
+    //       {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
+    //       <div className="card-body">
+    //         <p className="card-text">{prodData.id}</p>
+    //         <p className="card-text">{prodData.category}</p>
+    //         <p className="card-text">{prodData.name}</p>
+    //         <div className="card-text">{defaultStylePrice(prodData.styles)}</div>
+    //         <p className="card-text">{reviewAvg(prodData.reviews)}</p>
+    //       </div>
+    //     </div>
+    //   )}
+    // </div>
   )
 }
 
