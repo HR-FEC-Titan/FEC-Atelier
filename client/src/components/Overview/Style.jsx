@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useEffect, useContext, createContext } from 'react';
 import { StyleContext } from './Overview.jsx';
 import Price from './Price.jsx';
-import SizeAndQuantity from './SizeAndQuantity.jsx';
+import SizeQtyAddShare from './SizeQtyAddShare.jsx';
 
 export const IndexContext = createContext(0); // default to first style
 
@@ -45,7 +45,7 @@ let Style = () => {
       </div>
 
       <IndexContext.Provider value={index}>
-        <SizeAndQuantity />
+        <SizeQtyAddShare />
       </IndexContext.Provider>
     </div>
   )
