@@ -80,8 +80,8 @@
   display: grid;
   grid-template-areas: 'a a a b b'
                        'a a a c c'
-                       'a a a g g'
                        'a a a d d'
+                       'a a a g g'
                        'a a a e e'
                        'a a a e e'
                        'f f f f f'
@@ -100,11 +100,11 @@
 }
 
 .priceAndStyle {
-  grid-area: g;
+  grid-area: d;
 }
 
 .styles {
-  grid-area: d;
+  grid-area: g;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -118,6 +118,7 @@
 
 .sizeQtnAddShare {
   grid-area: e;
+  margin: 10px;
 }
 
 .slogan {
