@@ -22,6 +22,8 @@ var Overview = ({ id }) => {
   const [styles, setStyles] = useState(styleData.results); // [{}, {}, {}]
   const [reviews, setReviews] = useState({}); // have to give starting values to calculate average
 
+  id = 66642;
+
   useEffect(() => {
     axios.get(`/products/${id}`)
       .then(res => {
@@ -52,7 +54,6 @@ var Overview = ({ id }) => {
         </StyleContext.Provider>
 
         <Slogan />
-        <Share />
       </ProductContext.Provider>
     </div>
 

@@ -9,7 +9,6 @@ import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 let StarReview = ({ id }) => {
 
   const review = useContext(ReviewContext);
-  // console.log(review);
   const arr = Object.entries(review);
 
   if (!arr.length) {
@@ -20,7 +19,7 @@ let StarReview = ({ id }) => {
       return memo + Number(pair[0]) * Number(pair[1]);
     }, 0)
 
-    const reviewCount = Object.keys(review).reduce((memo, ele) => {
+    const reviewCount = Object.values(review).reduce((memo, ele) => {
       return memo + Number(ele);
     }, 0);
 
@@ -41,7 +40,7 @@ let StarReview = ({ id }) => {
           }
         })}
 
-        <a href=""><small>Read all {reviewCount} reviews</small></a>
+        <a href="" className="readReview" style={{"padding": "0 5px"}}><small>Read all {reviewCount} reviews</small></a>
 
       </div>
     )

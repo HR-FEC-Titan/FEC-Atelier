@@ -12,9 +12,14 @@ const Price = () => {
 
 
   return <div className="priceAndStyle">
-    <div><small> Original Price: {currentStyle.original_price}; </small></div>
-    <div><small> Sale Price is {currentStyle.sale_price} </small></div>
-    <small><b> STYLE > {currentStyle.name} </b></small>
+    {!currentStyle.sale_price ?
+      <div> ${ Math.floor(currentStyle.original_price) } </div> :
+      <div>
+        <del>${ Math.floor(currentStyle.original_price) }</del>
+        <span className="salePrice">${ Math.floor(currentStyle.sale_price) }</span>
+      </div>
+    }
+    <div><small><b> STYLE > {currentStyle.name} </b></small></div>
 
   </div>
 }

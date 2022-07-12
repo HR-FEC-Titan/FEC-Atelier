@@ -3,9 +3,12 @@ import { ProductContext } from './Overview.jsx';
 
 const Slogan = () => {
 
-  const { slogan } = useContext(ProductContext);
+  const { slogan, description } = useContext(ProductContext);
 
-  return <div className="slogan">Slogan: { slogan }</div>
+  return <div className="slogan">
+    { slogan }
+    <div>{ description }</div>
+  </div>
 }
 
 
