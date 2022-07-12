@@ -61,8 +61,17 @@ var RelatedProducts = ({ id }) => {
   }
 
   var defaultStylePrice = (styleData) => {
-    var originalPrice = styleData.find(element => element['default?'] === true).original_price;
-    var salePrice = styleData.find(element => element['default?'] === true).sale_price;
+    var originalPrice = '';
+    var salePrice = '';
+
+    if ((styleData.find(element => element['default?'] === true) !== undefined)) {
+      originalPrice = styleData.find(element => element['default?'] === true).original_price;
+      salePrice = styleData.find(element => element['default?'] === true).sale_price;
+    } else {
+      //if no default style
+      originalPrice = styleData[0].original_price;
+      salePrice = styleData[0].sale_price;
+    }
 
     if (salePrice === null) {
       return (
@@ -82,11 +91,9 @@ var RelatedProducts = ({ id }) => {
         </div>
       )
     }
-
   }
 
   return (
-
     <section className="pt-5 pb-5">
       <div className="container">
         <div className="row">
