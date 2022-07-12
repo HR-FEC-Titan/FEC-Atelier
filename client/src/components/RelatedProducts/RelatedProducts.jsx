@@ -22,10 +22,11 @@ var RelatedProducts = ({ id }) => {
                       relatedData['styles'] = resStyle.data.results;
                       relatedData['reviews'] = resReview.data;
 
-                      var newEntry = {};
-                      newEntry[relatedProdID] = relatedData;
-
-                      setRelatedProdsData(old => ({ ...old, ...newEntry}));
+                      if (relatedProdID !== id) {
+                        var newEntry = {};
+                        newEntry[relatedProdID] = relatedData;
+                        setRelatedProdsData(old => ({ ...old, ...newEntry}));
+                      }
                     })
                     .catch(err => {
                       console.log(err);
