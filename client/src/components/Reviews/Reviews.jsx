@@ -17,10 +17,9 @@ class Reviews extends React.Component {
         console.log(reviews)
         this.setState({reviews})
       })
+      .catch(err => console.log(err))
   }
 
-
-  // let reviewarray = this.state.reviews.slice(0, this.state.count)
 
   render() {
     return (
