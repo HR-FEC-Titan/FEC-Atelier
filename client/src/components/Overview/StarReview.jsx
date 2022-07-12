@@ -1,16 +1,26 @@
-import React, { useContext } from 'react';
-import { ReviewContext } from './Overview.jsx';
+import React from 'react';
+import axios from 'axios';
+import { useState, useEffect, useContext, createContext } from 'react';
+import { ProductIDContext } from './Overview.jsx';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 
 
 
-let StarReview = ({ id }) => {
+let StarReview = () => {
 
-  const review = useContext(ReviewContext);
-  // console.log(review);
+  const id = useContext(ProductIDContext);
+  const [review, setReview] = useState([]);
   const arr = Object.entries(review);
+
+  useEffect(() => {
+    axios.get(`/reviews/meta`, { params: { product_id: id } })
+      .then(res => {
+        setReview(res.data.ratings);
+      })
+  }, [])
 
   if (!arr.length) {
     return null;
@@ -20,7 +30,7 @@ let StarReview = ({ id }) => {
       return memo + Number(pair[0]) * Number(pair[1]);
     }, 0)
 
-    const reviewCount = Object.keys(review).reduce((memo, ele) => {
+    const reviewCount = Object.values(review).reduce((memo, ele) => {
       return memo + Number(ele);
     }, 0);
 
@@ -41,7 +51,7 @@ let StarReview = ({ id }) => {
           }
         })}
 
-        <a href=""><small>Read all {reviewCount} reviews</small></a>
+        <a href="" className="readReview" style={{ "padding": "0 5px" }}><small>Read all {reviewCount} reviews</small></a>
 
       </div>
     )

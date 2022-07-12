@@ -1,22 +1,48 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect, useContext, createContext } from 'react';
-import { StyleContext } from './Overview.jsx';
-import Price from './Price.jsx';
-import SizeAndQuantity from './SizeAndQuantity.jsx';
+import { ProductIDContext } from './Overview.jsx';
 
-export const IndexContext = createContext(0); // default to first style
+// import { StyleContext } from './Overview.jsx';
+import Price from './Price.jsx';
+import SizeQtyAddShare from './SizeQtyAddShare.jsx';
+import Image from './Image.jsx';
+import styleData from './data.json';
+
+export const StyleIndexContext = createContext(); // default to first style
+export const StylesContext = createContext({});
 
 let Style = () => {
-  const styles = useContext(StyleContext);
-  // console.log(styles);
-  const [index, setIndex] = useState(0);
+  const id = useContext(ProductIDContext);
+  const [styles, setStyles] = useState(styleData.results);
+
+  useEffect(() => {
+    axios.get(`/products/${id}/styles`)
+      .then(res => {
+        setStyles(res.data.results);
+      })
+  }, [])
+
+  const defaultIndex = styles.reduce((memo, style, index) => {
+    if (style.default === true) {
+      memo = index;
+    }
+    return memo;
+  }, 0)
+
+  const [styleIndex, setStyleIndex] = useState(defaultIndex);
+
 
   return (
-    <div>
-      <IndexContext.Provider value={index}>
+
+    <React.Fragment>
+      <StylesContext.Provider value={styles}>
+      <StyleIndexContext.Provider value={styleIndex}>
         <Price />
-      </IndexContext.Provider>
+        <SizeQtyAddShare />
+        <Image />
+      </StyleIndexContext.Provider>
+      </StylesContext.Provider>
 
       <div className='styles'>
         {styles.map((s, i) => {
@@ -26,16 +52,16 @@ let Style = () => {
               type="radio"
               name="StyleSelector"
               id={`Style${i}`}
-              checked={i === index ? true : false}
-              onChange={() => setIndex(i)}
+              checked={i === styleIndex ? true : false}
+              onChange={() => setStyleIndex(i)}
             />
 
             <label className="" htmlFor={`Style${i}`}>
               <img
                 className="styleIcon"
                 src={s.photos[0].thumbnail_url}
-                width="40px"
-                height="40px"
+                width="50px"
+                height="50px"
               />
             </label>
 
@@ -44,12 +70,11 @@ let Style = () => {
 
       </div>
 
-      <IndexContext.Provider value={index}>
-        <SizeAndQuantity />
-      </IndexContext.Provider>
-    </div>
+    </React.Fragment>
+
   )
 }
+
 
 export default Style;
 

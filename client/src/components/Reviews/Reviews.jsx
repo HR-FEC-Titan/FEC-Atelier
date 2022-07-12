@@ -6,7 +6,7 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      reviews: []
+      reviews: [],
     }
   }
 
@@ -17,7 +17,9 @@ class Reviews extends React.Component {
         console.log(reviews)
         this.setState({reviews})
       })
+      .catch(err => console.log(err))
   }
+
 
   render() {
     return (
