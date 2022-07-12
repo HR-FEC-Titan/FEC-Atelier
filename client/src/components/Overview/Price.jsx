@@ -8,11 +8,14 @@ import { StyleContext } from './Overview.jsx';
 const Price = () => {
   const index = useContext(IndexContext);
   const styles = useContext(StyleContext);
+  const currentStyle = styles[index];
 
-  return <div>
-    <div>Showing style: {index}; </div>
-    <div>Original Price: {styles[index].original_price}; </div>
-    <div>Sale Price is {styles[index].sale_price}</div>
+
+  return <div className="priceAndStyle">
+    <div><small> Original Price: {currentStyle.original_price}; </small></div>
+    <div><small> Sale Price is {currentStyle.sale_price} </small></div>
+    <small><b> STYLE > {currentStyle.name} </b></small>
+
   </div>
 }
 

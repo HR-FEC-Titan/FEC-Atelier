@@ -19,8 +19,8 @@ export const ReviewContext = createContext();
 var Overview = ({ id }) => {
   // states to be tracked
   const [product, setProduct] = useState({});
-  const [styles, setStyles] = useState(styleData.results);
-  const [reviews, setReviews] = useState({2: 3}); // have to give starting values to calculate average
+  const [styles, setStyles] = useState(styleData.results); // [{}, {}, {}]
+  const [reviews, setReviews] = useState({}); // have to give starting values to calculate average
 
   useEffect(() => {
     axios.get(`/products/${id}`)

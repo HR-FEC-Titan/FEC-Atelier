@@ -80,7 +80,7 @@
   display: grid;
   grid-template-areas: 'a a a b b'
                        'a a a c c'
-                       'a a a d d'
+                       'a a a g g'
                        'a a a d d'
                        'a a a e e'
                        'a a a e e'
@@ -96,10 +96,24 @@
 
 .titleAndCategory {
   grid-area: c;
+  margin: 10px 0;
+}
+
+.priceAndStyle {
+  grid-area: g;
 }
 
 .styles {
   grid-area: d;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 15px 0
+}
+
+.styleColumn {
+  flex: 1 0 21%;
 }
 
 .sizeQtnAddShare {
@@ -108,6 +122,14 @@
 
 .slogan {
   grid-area: f;
+  margin: 30px 0;
 }
+
+.styleIcon {
+  border-radius: 50%;
+}
+
+
+
 
 
