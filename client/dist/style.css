@@ -80,7 +80,7 @@
   display: grid;
   grid-template-areas: 'a a a b b'
                        'a a a c c'
-                       'a a a d d'
+                       'a a a g g'
                        'a a a d d'
                        'a a a e e'
                        'a a a e e'
@@ -96,10 +96,24 @@
 
 .titleAndCategory {
   grid-area: c;
+  margin: 10px 0;
+}
+
+.priceAndStyle {
+  grid-area: g;
 }
 
 .styles {
   grid-area: d;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 15px 0
+}
+
+.styleColumn {
+  flex: 1 0 21%;
 }
 
 .sizeQtnAddShare {
@@ -109,5 +123,24 @@
 .slogan {
   grid-area: f;
 }
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+/* .styleColumn {
+  float: left;
+  width: 25%;
+  padding: 5px;
+} */
+
+.styleIcon {
+  border-radius: 50%;
+}
+
+/* Clear floats after image containers */
+/* .styleRow::after {
+  content: "";
+  clear: both;
+  display: table;
+} */
+
 
 

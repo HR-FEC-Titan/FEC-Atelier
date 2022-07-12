@@ -7,57 +7,48 @@ import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 
 
 let StarReview = ({ id }) => {
-  // const [review, setReview] = useState({});
-  // useEffect(() => {
-  //   // axios.get(`/products/${id}`)
-  //   //   .then(res => {
-  //   //     setProduct(res.data);
-  //   //   })
-  //   // axios.get(`/products/${id}/styles`)
-  //   //   .then(res => {
-  //   //     setStyles(res.data.results);
-  //   //   })
-  //   axios.get(`/reviews/meta`, { params: { product_id: id } })
-  //     .then(res => {
-  //       setReviews(res.data.ratings);
-  //     })
-  // }, []);
-
 
   const review = useContext(ReviewContext);
-  console.log(review);
+  // console.log(review);
   const arr = Object.entries(review);
-  const sum = arr.reduce((memo, pair) => {
-    return memo + Number(pair[0]) * Number(pair[1]);
-  }, 0)
 
-  const count = Object.keys(review);
-  const counter = count.reduce((memo, ele) => {
-    return memo + Number(ele);
-  }, 0);
+  if (!arr.length) {
+    return null;
+  } else {
 
-  const average = Math.floor(sum / counter);
-  const empty = 5 - average;
-  let stars = Array(average).fill(1).concat(Array(empty).fill(0));
+    const totalStars = arr.reduce((memo, pair) => {
+      return memo + Number(pair[0]) * Number(pair[1]);
+    }, 0)
 
-  return <div className="starAndReview">
+    const reviewCount = Object.keys(review).reduce((memo, ele) => {
+      return memo + Number(ele);
+    }, 0);
 
-    <span className="">Star: {(sum / counter).toFixed(1)}</span>
+    const average = Math.floor(totalStars / reviewCount);
+    const empty = 5 - average;
+    let stars = Array(average).fill(1).concat(Array(empty).fill(0));
 
-    {stars.map(e => {
-        if (!e) {
-          return <FontAwesomeIcon icon={emptyStar} />
-        } else {
-          return <FontAwesomeIcon icon={faStar} />
-        }
-    })}
+    return (
+      <div className="starAndReview">
 
-    <a href="">Read all {counter} reviews</a>
+        <small className="">Star: {(totalStars / reviewCount).toFixed(1)}</small>
 
-  </div>
+        {stars.map((e, index) => {
+          if (!e) {
+            return <FontAwesomeIcon key={index} icon={emptyStar} />
+          } else {
+            return <FontAwesomeIcon key={index} icon={faStar} />
+          }
+        })}
+
+        <a href=""><small>Read all {reviewCount} reviews</small></a>
+
+      </div>
+    )
+  }
 }
 
 export default StarReview;
 
 
-{/* <FontAwesomeIcon icon={faStarHalfStroke} /> */}
+{/* <FontAwesomeIcon icon={faStarHalfStroke} /> */ }

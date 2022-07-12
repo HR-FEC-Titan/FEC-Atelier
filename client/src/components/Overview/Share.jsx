@@ -1,5 +1,5 @@
 import React from 'react';
-import Popup from 'reactjs-Popup';
+import Popup from 'reactjs-popup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faPinterest } from '@fortawesome/free-brands-svg-icons'
 
