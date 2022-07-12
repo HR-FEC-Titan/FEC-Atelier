@@ -6,7 +6,7 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      reviews: []
+      reviews: [],
     }
   }
 
@@ -18,6 +18,9 @@ class Reviews extends React.Component {
         this.setState({reviews})
       })
   }
+
+
+  // let reviewarray = this.state.reviews.slice(0, this.state.count)
 
   render() {
     return (
