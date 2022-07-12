@@ -1,63 +1,64 @@
-import React, { useContext } from 'react';
-import { ReviewContext } from './Overview.jsx';
+import React from 'react';
+import axios from 'axios';
+import { useState, useEffect, useContext, createContext } from 'react';
+import { ProductIDContext } from './Overview.jsx';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 
 
 
-let StarReview = ({ id }) => {
-  // const [review, setReview] = useState({});
-  // useEffect(() => {
-  //   // axios.get(`/products/${id}`)
-  //   //   .then(res => {
-  //   //     setProduct(res.data);
-  //   //   })
-  //   // axios.get(`/products/${id}/styles`)
-  //   //   .then(res => {
-  //   //     setStyles(res.data.results);
-  //   //   })
-  //   axios.get(`/reviews/meta`, { params: { product_id: id } })
-  //     .then(res => {
-  //       setReviews(res.data.ratings);
-  //     })
-  // }, []);
+let StarReview = () => {
 
-
-  const review = useContext(ReviewContext);
-  console.log(review);
+  const id = useContext(ProductIDContext);
+  const [review, setReview] = useState([]);
   const arr = Object.entries(review);
-  const sum = arr.reduce((memo, pair) => {
-    return memo + Number(pair[0]) * Number(pair[1]);
-  }, 0)
 
-  const count = Object.keys(review);
-  const counter = count.reduce((memo, ele) => {
-    return memo + Number(ele);
-  }, 0);
+  useEffect(() => {
+    axios.get(`/reviews/meta`, { params: { product_id: id } })
+      .then(res => {
+        setReview(res.data.ratings);
+      })
+  }, [])
 
-  const average = Math.floor(sum / counter);
-  const empty = 5 - average;
-  let stars = Array(average).fill(1).concat(Array(empty).fill(0));
+  if (!arr.length) {
+    return null;
+  } else {
 
-  return <div className="starAndReview">
+    const totalStars = arr.reduce((memo, pair) => {
+      return memo + Number(pair[0]) * Number(pair[1]);
+    }, 0)
 
-    <span className="">Star: {(sum / counter).toFixed(1)}</span>
+    const reviewCount = Object.values(review).reduce((memo, ele) => {
+      return memo + Number(ele);
+    }, 0);
 
-    {stars.map(e => {
-        if (!e) {
-          return <FontAwesomeIcon icon={emptyStar} />
-        } else {
-          return <FontAwesomeIcon icon={faStar} />
-        }
-    })}
+    const average = Math.floor(totalStars / reviewCount);
+    const empty = 5 - average;
+    let stars = Array(average).fill(1).concat(Array(empty).fill(0));
 
-    <a href="">Read all {counter} reviews</a>
+    return (
+      <div className="starAndReview">
 
-  </div>
+        <small className="">Star: {(totalStars / reviewCount).toFixed(1)}</small>
+
+        {stars.map((e, index) => {
+          if (!e) {
+            return <FontAwesomeIcon key={index} icon={emptyStar} />
+          } else {
+            return <FontAwesomeIcon key={index} icon={faStar} />
+          }
+        })}
+
+        <a href="" className="readReview" style={{ "padding": "0 5px" }}><small>Read all {reviewCount} reviews</small></a>
+
+      </div>
+    )
+  }
 }
 
 export default StarReview;
 
 
-{/* <FontAwesomeIcon icon={faStarHalfStroke} /> */}
+{/* <FontAwesomeIcon icon={faStarHalfStroke} /> */ }

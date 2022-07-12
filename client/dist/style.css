@@ -78,36 +78,93 @@
 
 .overview {
   display: grid;
-  grid-template-areas: 'a a a b b'
-                       'a a a c c'
-                       'a a a d d'
-                       'a a a d d'
-                       'a a a e e'
-                       'a a a e e'
-                       'f f f f f'
+  grid-template-areas: 'a a b'
+                       'a a c'
+                       'a a d'
+                       'a a g'
+                       'a a e'
+                       'a a e'
+                       'f f f'
 }
 .imageGallery {
   grid-area: a;
+  align-self: center;
 }
 
 .starAndReview {
   grid-area: b;
+  margin-top: 20px;
 }
 
 .titleAndCategory {
   grid-area: c;
+  margin: 10px 0;
+}
+
+.priceAndStyle {
+  grid-area: d;
+  margin: 10px 0;
 }
 
 .styles {
-  grid-area: d;
+  grid-area: g;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 15px 0
 }
 
-.sizeQtnAddShare {
+.styleColumn {
+  width: 25%;
+}
+
+.sizeQtyAddShare {
   grid-area: e;
+  display: flex;
+  height: 150px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.size {
+  width: 50%;
+  height: 55px;
+}
+
+.qty {
+  width: 40%;
+  height: 55px;
+}
+
+.cart {
+  width: 70%;
+  height: 55px;
+}
+
+.share {
+  width: 20%;
+  height: 55px;
 }
 
 .slogan {
   grid-area: f;
+  margin: 30px 0;
 }
+
+.styleIcon {
+  border-radius: 50%;
+}
+
+
+.salePrice {
+  color: red;
+  padding: 5px;
+}
+
+
+
 
 

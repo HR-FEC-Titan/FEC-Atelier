@@ -1,18 +1,25 @@
 import React from 'react';
 import { useState, useEffect, useContext, createContext } from 'react';
-import { IndexContext } from './Style.jsx';
-import { StyleContext } from './Overview.jsx';
-
+import { StyleIndexContext, StylesContext } from './Style.jsx';
 
 
 const Price = () => {
-  const index = useContext(IndexContext);
-  const styles = useContext(StyleContext);
+  const styleIndex = useContext(StyleIndexContext);
+  const styles = useContext(StylesContext);
+  const currentStyle = styles[styleIndex];
 
-  return <div>
-    <div>Showing style: {index}; </div>
-    <div>Original Price: {styles[index].original_price}; </div>
-    <div>Sale Price is {styles[index].sale_price}</div>
+
+  return <div className="priceAndStyle">
+
+    {!currentStyle.sale_price ?
+      <div> ${ Math.floor(currentStyle.original_price) } </div> :
+      <div>
+        <del>${ Math.floor(currentStyle.original_price) }</del>
+        <span className="salePrice">${ Math.floor(currentStyle.sale_price) }</span>
+      </div>
+    }
+    <div><small><b> STYLE > {currentStyle.name} </b></small></div>
+
   </div>
 }
 
