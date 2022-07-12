@@ -122,25 +122,14 @@
 
 .slogan {
   grid-area: f;
+  margin: 30px 0;
 }
-
-/* Three image containers (use 25% for four, and 50% for two, etc) */
-/* .styleColumn {
-  float: left;
-  width: 25%;
-  padding: 5px;
-} */
 
 .styleIcon {
   border-radius: 50%;
 }
 
-/* Clear floats after image containers */
-/* .styleRow::after {
-  content: "";
-  clear: both;
-  display: table;
-} */
+
 
 
 
