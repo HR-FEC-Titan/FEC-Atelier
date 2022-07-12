@@ -25,11 +25,12 @@ let ReviewTile = ({review}) => {
       </br>
       <p>{review.body}</p><br>
       </br>
+      <button>Show more</button>
       {review.recommend ? <p>I recommend this product</p>: <></>}
       {review.response ? <p>Responce from seller: {review.response}</p> : <></>}
       <p>Was this review helpful? Yes {review.helpfulness} | <span className = 'report'>Report</span></p>
     <hr/>
-    <button>Show more</button>
+
     </div>
 
     )

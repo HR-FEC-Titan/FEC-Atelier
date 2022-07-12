@@ -17,7 +17,6 @@ class ReviewList extends React.Component{
       })}
       <button onClick = {()=>{
        this.setState({count: this.state.count+=2})
-       console.log(this.state.count)
       }}>MORE REVIEWS</button> <button>ADD A REVIEW</button>
       </div>
     )
@@ -31,16 +30,7 @@ class ReviewList extends React.Component{
        <button>ADD A REVIEW</button>
         </div>
       )
-    } else {
-      return (
-        <div>
-        {this.props.reviews.map(review => {
-          return <ReviewTile key = {review.review_id} review={review}/>
-        })}
-      <button>MORE REVIEWS</button>
-        </div>
-      )
-    }
+    } 
   }
 }
 
