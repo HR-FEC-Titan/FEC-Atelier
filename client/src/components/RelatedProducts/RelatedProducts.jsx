@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
+// import CardGroup from 'react-bootstrap/CardGroup';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 
 var RelatedProducts = ({ id }) => {
   // const [relatedIDs, setRelatedIDs] = useState([]); //may not be necessary
@@ -101,11 +104,14 @@ var RelatedProducts = ({ id }) => {
               <Card.Img src={ prodData.styles[0].photos[0].url } alt="..." />
               {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
               <Card.Body>
-                <Card.Text>{ prodData.id }</Card.Text>
-                <Card.Text>{ prodData.category }</Card.Text>
-                <Card.Text>{ prodData.name }</Card.Text>
+                {/* <Card.Text>{ prodData.id }</Card.Text> */}
+                <Card.Title>{ prodData.category }</Card.Title>
+                <Card.Title>{ prodData.name }</Card.Title>
                 <Card.Text>{ defaultStylePrice(prodData.styles) }</Card.Text>
-                <Card.Text>{ reviewAvg(prodData.reviews) }</Card.Text>
+                {/* <Card.Text>{ reviewAvg(prodData.reviews) }</Card.Text> */}
+                <label className="rating-label">
+                  <input className="rating" max="5" readOnly step="0.25" style={{"--fill": "gold", "--value": reviewAvg(prodData.reviews)}} type="range" value={reviewAvg(prodData.reviews)} />
+                </label>
               </Card.Body>
             </Card>
           </Carousel.Item>
