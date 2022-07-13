@@ -9,9 +9,10 @@ import SizeQtyAddShare from './SizeQtyAddShare.jsx';
 import Image from './Image.jsx';
 import styleData from './data.json';
 
-export const StyleIndexContext = createContext(); // default to first style
-export const StylesContext = createContext({});
+// export const StyleIndexContext = createContext(); // default to first style
+// export const StylesContext = createContext();
 
+export const CurrentStyleContext = createContext();
 let Style = () => {
   const id = useContext(ProductIDContext);
   const [styles, setStyles] = useState(styleData.results);
@@ -31,18 +32,27 @@ let Style = () => {
   }, 0)
 
   const [styleIndex, setStyleIndex] = useState(defaultIndex);
+  const [currentStyle, setCurrentStyle] = useState(styles[styleIndex]);
 
+  useEffect(() => {
+    setCurrentStyle(styles[styleIndex])
+  }, [styles, styleIndex]);
 
   return (
 
     <React.Fragment>
-      <StylesContext.Provider value={styles}>
-      <StyleIndexContext.Provider value={styleIndex}>
+      <CurrentStyleContext.Provider value={currentStyle}>
+
+
+      {/* <StylesContext.Provider value={styles}>
+      <StyleIndexContext.Provider value={styleIndex}> */}
         <Price />
         <SizeQtyAddShare />
         <Image />
-      </StyleIndexContext.Provider>
-      </StylesContext.Provider>
+      {/* </StyleIndexContext.Provider>
+      </StylesContext.Provider> */}
+
+      </CurrentStyleContext.Provider>
 
       <div className='styles'>
         {styles.map((s, i) => {
@@ -60,8 +70,6 @@ let Style = () => {
               <img
                 className="styleIcon"
                 src={s.photos[0].thumbnail_url}
-                width="50px"
-                height="50px"
               />
             </label>
 
