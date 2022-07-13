@@ -69,7 +69,7 @@ const SizeQtyAddShare = () => {
 
 
 
-        {/* SHARE: POPUP POSITION need to be CHANGED   ************************************** */}
+        {/* SHARE  ****************************************** */}
         <Popup trigger={<button className="share"> <FontAwesomeIcon icon={faShare} /> </button>} position="right top">
           <a href="http://www.facebook.com" className=""> <FontAwesomeIcon icon={faFacebook} />
           </a>
