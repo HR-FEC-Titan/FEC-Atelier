@@ -1,34 +1,38 @@
 import React from 'react';
 import { useState, useEffect, useContext, createContext } from 'react';
+
 import { CurrentStyleContext } from './Style.jsx';
+import Carousel from "./Carousel/Carousel.js";
 
 
 const Image = () => {
 
   const currentStyle = useContext(CurrentStyleContext);
-
   const images = currentStyle.photos;
-  const [imageIndex, setImageIndex] = useState(0);
 
-  // useEffect(() => {
-  //   setImages(currentStyle.photos);
-  // }, currentStyle);
+  // const [imageIndex, setImageIndex] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(0)
+  // const [length, setLength] = useState(images.length);
 
+  return (
+    <div className="imageGallery image" >
+      <Carousel show={1} infiniteLoop={true} >
 
-  return <div className="imageGallery">
+        {images.map((i, idx) => {
+          return (
+            <img
+              src={i.url}
+              alt="placeholder"
+              key={idx}
+              style={{padding: "8px"}}
+              className="image"
+            />
+          )
+        })}
 
-    <img className="image"
-      src={images[imageIndex].url}
-       onClick={() => {
-                if (imageIndex === images.length - 1) {
-                  setImageIndex(0);
-                } else {
-                  setImageIndex(imageIndex + 1);
-                }
-              }}
-    />
-
-  </div>
+      </Carousel>
+    </div>
+  )
 }
 
 export default Image;
