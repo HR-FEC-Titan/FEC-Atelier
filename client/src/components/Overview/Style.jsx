@@ -3,14 +3,10 @@ import axios from 'axios';
 import { useState, useEffect, useContext, createContext } from 'react';
 import { ProductIDContext } from './Overview.jsx';
 
-// import { StyleContext } from './Overview.jsx';
 import Price from './Price.jsx';
 import SizeQtyAddShare from './SizeQtyAddShare.jsx';
 import Image from './Image.jsx';
 import styleData from './data.json';
-
-// export const StyleIndexContext = createContext(); // default to first style
-// export const StylesContext = createContext();
 
 export const CurrentStyleContext = createContext();
 let Style = () => {
@@ -42,16 +38,9 @@ let Style = () => {
 
     <React.Fragment>
       <CurrentStyleContext.Provider value={currentStyle}>
-
-
-      {/* <StylesContext.Provider value={styles}>
-      <StyleIndexContext.Provider value={styleIndex}> */}
         <Price />
         <SizeQtyAddShare />
         <Image />
-      {/* </StyleIndexContext.Provider>
-      </StylesContext.Provider> */}
-
       </CurrentStyleContext.Provider>
 
       <div className='styles'>
