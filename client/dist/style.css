@@ -96,17 +96,27 @@ body {
 .imageGallery {
   grid-area: a;
   align-self: center;
-  /* width: 550px; */
-  /* width: 60%; */
-  /* cursor: zoom-in; */
+  position: relative;
 }
 
 .image {
   width: 95%;
   max-height: 500px;
   object-fit: cover;
+  align-self: center;
   margin-top: 10px;
   cursor: zoom-in;
+}
+
+.thumbnailCarousel {
+
+  position: absolute;
+  width: 12%;
+  height: 90%;
+  top: 50px;
+  left: 30px;
+  background: white;
+  z-index: 2;
 }
 
 .starAndReview {
@@ -184,8 +194,8 @@ body {
 }
 
 input[type="radio"]:checked+label {
-  background: url(https://icons-for-free.com/iconfiles/png/512/checkbox+checkmark+circle+confirm+icon-1320085880043351014.png) no-repeat right top;
-  background-size: 20px 20px;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Eo_circle_yellow_white_checkmark.svg/1280px-Eo_circle_yellow_white_checkmark.svg.png) no-repeat right top;
+  background-size: 15px 15px;
 }
 
 
