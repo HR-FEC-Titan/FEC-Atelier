@@ -2,8 +2,7 @@ const path = require("path");
 const express = require("express"); // npm installed
 const axios = require('axios');
 const morgan = require('morgan');
-const { getProductInfo } = require('./helper');
-
+const { getProductInfo, postProductInfo } = require('./helper');
 
 const app = express();
 
@@ -24,7 +23,17 @@ app.get('/*', (req, res) => {
 })
 
 // POST
-
+app.post('/reviews', (req, res) => {
+  // console.log('This is params in url$$$$$$', req.params);
+  console.log('This is body in req******'. req);
+  postProductInfo(req.body)
+    .then(response => {
+      res.status(201).send(response.data);
+    })
+    .catch(err => {
+      console.log('Posting error***********');
+    })
+})
 
 // PUT
 
