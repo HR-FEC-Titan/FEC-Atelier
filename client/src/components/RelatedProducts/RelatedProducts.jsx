@@ -108,25 +108,29 @@ var RelatedProducts = ({ id }) => {
 
 
   return (
-    <div className='relatedProducts' style={{ width: "970px", height: "480px" }} >
-      <RelatedProdsCarousel show={4} currentIndex={currentIndex} length={length} setCurrentIndex={setCurrentIndex} setLength={setLength} >
-        {Object.values(relatedProdsData).map((prodData) =>
-          <div key={ prodData.id } style={{ height: '100%' }}>
-            <Card style={{ width: "225px", height: "480px" }} >
-              <Card.Img style={{ width: "225px", height: "240px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." />
-              {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
-              <Card.Body style={{ width: "225px", height: "240px", "objectFit": "cover" }} >
-                <Card.Title style={{ fontSize: "15px" }}>{ prodData.category }</Card.Title>
-                <Card.Title>{ prodData.name }</Card.Title>
-                <Card.Text style={{ position: "absolute", bottom: 50 }} >{ defaultStylePrice(prodData.styles) }</Card.Text>
-                <label className="rating-label" style={{ position: "absolute", bottom: 0 }}>
-                  <input className="rating" max="5" readOnly step="0.25" style={{"--fill": "black", "--starsize": "2rem", "--value": reviewAvg(prodData.reviews)}} type="range" value={reviewAvg(prodData.reviews)} />
-                </label>
-              </Card.Body>
-            </Card>
-          </div>
-        )}
-      </RelatedProdsCarousel>
+    <div>
+      <h3>Related Products</h3>
+      <div className='relatedProducts' style={{ width: "970px", height: "480px" }} >
+        <RelatedProdsCarousel show={4} currentIndex={currentIndex} length={length} setCurrentIndex={setCurrentIndex} setLength={setLength} >
+          {Object.values(relatedProdsData).map((prodData) =>
+            <div key={ prodData.id } style={{ height: '100%' }}>
+              <Card style={{ width: "225px", height: "480px" }} >
+                <Card.Img style={{ width: "225px", height: "240px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." />
+                {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
+                <Card.Body style={{ width: "225px", height: "240px", "objectFit": "cover" }} >
+                  <Card.Title style={{ fontSize: "15px" }}>{ prodData.category }</Card.Title>
+                  <Card.Title>{ prodData.name }</Card.Title>
+                  <Card.Text style={{ position: "absolute", bottom: 50 }} >{ defaultStylePrice(prodData.styles) }</Card.Text>
+                  <label className="rating-label" style={{ position: "absolute", bottom: 0 }}>
+                    <input className="rating" max="5" readOnly step="0.25" style={{"--fill": "black", "--starsize": "2rem", "--value": reviewAvg(prodData.reviews)}} type="range" value={reviewAvg(prodData.reviews)} />
+                  </label>
+                </Card.Body>
+              </Card>
+            </div>
+          )}
+        </RelatedProdsCarousel>
+      </div>
+      <br/>
     </div>
 
 
