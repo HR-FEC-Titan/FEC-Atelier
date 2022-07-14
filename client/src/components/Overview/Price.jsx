@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect, useContext, createContext } from 'react';
-// import { StyleIndexContext, StylesContext } from './Style.jsx';
 import { CurrentStyleContext } from './Style.jsx';
 
 
