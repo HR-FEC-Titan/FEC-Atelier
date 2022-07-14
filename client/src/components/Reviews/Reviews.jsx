@@ -25,7 +25,7 @@ class Reviews extends React.Component {
     return (
       <div className='reviews'>
         <h3>RATINGS & REVIEWS</h3>
-        <ReviewList reviews = {this.state.reviews}/>
+        <ReviewList id ={this.props.id} reviews = {this.state.reviews}/>
       </div>
       )
   }

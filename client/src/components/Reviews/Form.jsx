@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import axios from "axios";
 
 class Form extends React.Component{
   constructor(props){
     super(props)
     this.state = {
       rating: 0,
-      recommend: false,
+      rec: false,
       char: [],
       summary: '',
       body: '',
@@ -21,6 +22,53 @@ class Form extends React.Component{
     })
   }
 
+  handleFormSubmission = (rating, rec, char, summary, body, photos, nickname, email ) => {
+    if(rating === '' || rec === '' || body.length === '' || nickname === '' || email === '') return
+    // let ingredientsArray = ingredients.split(",")
+    // let stepsArray = steps.split(".")
+    let newReview = {product_id: this.props.id,
+                    rating: Number(rating),
+                    recommend: rec,
+                    characteristics: {"223576": 1},
+                    summary: summary,
+                    body: body,
+                    photos: photos,
+                    name: nickname,
+                    email: email
+                  };
+    console.log(newReview)
+    axios.post(`/reviews`, JSON.stringify(newReview))
+      .then((res) => {
+        console.log(res)
+        this.setState({
+          rating: 0,
+          rec: false,
+          char: [],
+          summary: '',
+          body: '',
+          photos: [],
+          nickname: '',
+          email: ''
+        })
+        // this.props.onSubmit()
+      })
+      .catch(err => console.log(err))
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.handleFormSubmission(this.state.rating,
+                              this.state.rec,
+                              this.state.char,
+                              this.state.summary,
+                              this.state.body,
+                              this.state.photos,
+                              this.state.nickname,
+                              this.state.email
+                              )
+  }
+
+
   render(){
     return(
       <section>
@@ -32,64 +80,111 @@ class Form extends React.Component{
       <form  >
         <label>Rating:
           <input
-            type="text"
+            type="number"
             name="rating"
-            placeholder="Should be stars selector here"
-            required=""
+            placeholder="1-5"
+            required=''
             autoComplete="off"
             value= {this.state.rating}
             onChange = {this.handleChange}
           />
-        </label>
-        <p>Please select your age:</p>
-        <input type="radio" id="age1" name="age" value="30">
-        <label for="age1">0 - 30</label><br>
-        <input type="radio" id="age2" name="age" value="60">
-        <label for="age2">31 - 60</label><br>
+        </label><br>
+        </br>
 
-        <label>Summary:
-        <input type="radio" id="age1" name="age" value="30">
-        <label for="age1">0 - 30</label><br>
-        <input type="radio" id="age2" name="age" value="60">
-        <label for="age2">31 - 60</label><br>
-        </label>
-        <label>Summary:
+        <label>Do you Recommemend this product?:
+          <input
+            type="radio"
+            name="yrecommend"
+            id="yrecommend"
+            value={this.state.rec}
+            onChange = {this.handleChange}
+          />
+          <label htmlFor="yrecommend">Yes</label>
+            <input
+            type="radio"
+            name="nrecommend"
+            value={this.state.rec}
+            onChange = {this.handleChange}
+          />
+          <label htmlFor="nrecommend">No</label><br></br>
+        </label><br></br>
+
+
+        <label>Characteristics Rating:
           <input
             type="text"
+            name="char"
+            placeholder="this is the char rating"
+            required=""
+            autoComplete="off"
+            value={this.state.char}
+            onChange = {this.handleChange}
+          />
+        </label><br></br>
+
+        <label>summary:
+          <input
+            type= "text"
             name="summary"
-            placeholder="this is the summary"
+            placeholder="Example: Best Purchase ever!"
             required=""
             autoComplete="off"
             value={this.state.summary}
             onChange = {this.handleChange}
           />
-        </label>
+        </label><br></br>
 
-        <label>summary: <i>(one per line)</i>
-          <textarea
-            cols="48"
-            rows="8"
-            name="ingredients"
-            placeholder="This is the summary"
-            required=""
-            autoComplete="off"
-            value={this.state.ingredients}
-            onChange = {this.handleChange}
-          ></textarea>
-        </label>
-
-        <label>Body: <i>(one per line)</i>
+        <label>Body:
           <textarea
             cols="48"
             rows="8"
             name="body"
-            placeholder="This is where you give your review."
+            placeholder="Why did you like the product or not?"
             required=""
             autoComplete="off"
             value={this.state.body}
             onChange = {this.handleChange}
           ></textarea>
-        </label>
+        </label><br></br>
+
+        <label>Photos:
+          <input
+            type="text"
+            name="photos"
+            placeholder="this is where you put your photos"
+            required=""
+            autoComplete="off"
+            value={this.state.photos}
+            onChange = {this.handleChange}
+          />
+        </label><br></br>
+
+        <label>Nickname:
+          <input
+            type="text"
+            name="nickname"
+            placeholder="Example: jackson11!"
+            required=""
+            autoComplete="off"
+            value={this.state.nickname}
+            onChange = {this.handleChange}
+          />
+          <i>(For privacy reasons, do not use your full name or email address)</i>
+        </label><br></br>
+
+        <label>Email:
+          <input
+            type="text"
+            name="email"
+            placeholder="Example: jackson11@email.com"
+            required=""
+            autoComplete="off"
+            value={this.state.email}
+            onChange = {this.handleChange}
+          />
+           <i>(For authentication reasons, you will not be emailed)</i>
+        </label><br></br>
+
 
         <input onClick = {this.handleSubmit} type="submit" value="Submit Review" />
 

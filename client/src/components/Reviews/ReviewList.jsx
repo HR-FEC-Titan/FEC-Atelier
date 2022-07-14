@@ -25,7 +25,7 @@ class ReviewList extends React.Component{
       {this.props.reviews.slice(0, this.state.count).map(review => {
         return <ReviewTile key = {review.review_id} review={review}/>
       })}
-      <Modal onClose={this.showModal} show={this.state.show}><Form/></Modal>
+      <Modal onClose={this.showModal} show={this.state.show}><Form id={this.props.id}/></Modal>
       <button onClick = {()=>{
        this.setState({count: this.state.count+=2})
       }}>MORE REVIEWS</button> <button onClick={e => {this.showModal()}}>ADD A REVIEW</button>
@@ -38,7 +38,7 @@ class ReviewList extends React.Component{
         {this.props.reviews.slice(0, this.state.count).map(review => {
           return <ReviewTile key = {review.review_id} review={review}/>
         })}
-        <Modal onClose={this.showModal} show={this.state.show}><Form/></Modal>
+        <Modal onClose={this.showModal} show={this.state.show}><Form id={this.props.id}/></Modal>
        <button onClick={e => {this.showModal()}}>ADD A REVIEW</button>
         </div>
       )
