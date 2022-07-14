@@ -116,7 +116,7 @@ var RelatedProducts = ({ id }) => {
               <Card.Img style={{ width: "225px", height: "240px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." />
               {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
               <Card.Body style={{ width: "225px", height: "240px", "objectFit": "cover" }} >
-                <Card.Title style={{ "font-size": "15px" }}>{ prodData.category }</Card.Title>
+                <Card.Title style={{ fontSize: "15px" }}>{ prodData.category }</Card.Title>
                 <Card.Title>{ prodData.name }</Card.Title>
                 <Card.Text style={{ position: "absolute", bottom: 50 }} >{ defaultStylePrice(prodData.styles) }</Card.Text>
                 <label className="rating-label" style={{ position: "absolute", bottom: 0 }}>

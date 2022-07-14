@@ -98,13 +98,15 @@ body {
   align-self: center;
   /* width: 550px; */
   /* width: 60%; */
+  /* cursor: zoom-in; */
 }
 
 .image {
   width: 95%;
-  max-height: 430px;
+  max-height: 500px;
   object-fit: cover;
   margin-top: 10px;
+  cursor: zoom-in;
 }
 
 .starAndReview {
@@ -181,6 +183,8 @@ body {
 .salePrice {
   color: red;
 }
+
+
 
 
 

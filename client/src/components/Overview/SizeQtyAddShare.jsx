@@ -33,8 +33,8 @@ const SizeQtyAddShare = () => {
       <div className="sizeQtyAddShare">
 
         {/* SIZE dropdown: if no option, show OOS; else show dropdown ******************************* */}
-        {options.length === 0 ?
-          <div>OUT OF STOCK</div> :
+        {options.length === 1 && options[0].size === null ?
+          <div className="size">OUT OF STOCK</div> :
           <select
             className="size"
             onChange={(e) => {
@@ -45,7 +45,9 @@ const SizeQtyAddShare = () => {
           >
             <option value={-1}> SELECT SIZE </option>
             {options.map((s, index) => {
-              return <option key={index} value={index}>{s.size}</option>
+              if (s.quantity) {
+                return <option key={index} value={index}>{s.size}</option>
+              }
             })}
           </select>
         }
@@ -65,11 +67,13 @@ const SizeQtyAddShare = () => {
 
 
         {/* ADD TO CART     ******************************** */}
-        {options.length && <button onClick={handleClick} className="cart"> ADD TO CART </button>}
+        {options.length === 1 && options[0].size === null?
+        <div className="cart"></div>:
+        <button onClick={handleClick} className="cart"> ADD TO CART </button>}
 
 
 
-        {/* SHARE: POPUP POSITION need to be CHANGED   ************************************** */}
+        {/* SHARE  ****************************************** */}
         <Popup trigger={<button className="share"> <FontAwesomeIcon icon={faShare} /> </button>} position="right top">
           <a href="http://www.facebook.com" className=""> <FontAwesomeIcon icon={faFacebook} />
           </a>

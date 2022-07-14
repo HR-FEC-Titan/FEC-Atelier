@@ -10,7 +10,7 @@ const root = createRoot(document.getElementById("root"));
 // Huzzah for jsx!
 const App = (props) => {
   return <>
-    <Overview id={66644} />
+    <Overview id={66642} />
     <RelatedProducts id={props.id} />
     <Reviews id={props.id} />
   </>
@@ -18,3 +18,5 @@ const App = (props) => {
 }
 
 root.render(<App id={66643} />);
+
+export default App;
