@@ -1,5 +1,5 @@
 import React from "react";
-import './modal.css'
+// import './modal.css'
 //inside whatever component that you are using this:
 //1. make state called show, set to false
 //2. create toggle fucntion
@@ -34,6 +34,15 @@ export default class Modal extends React.Component {
           </button>
         </div>
     </div>
+  //   <div class="modal" id="modal">
+  //   <h2>Modal Window</h2>
+  //   <div class="content">{this.props.children}</div>
+  //   <div class="actions">
+  //     <button class="toggle-button" onClick={this.onClose}>
+  //       close
+  //     </button>
+  //   </div>
+  // </div>
    )
   }
 }

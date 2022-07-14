@@ -37,11 +37,22 @@ class Form extends React.Component{
             placeholder="Should be stars selector here"
             required=""
             autoComplete="off"
-            value= {this.state.name}
+            value= {this.state.rating}
             onChange = {this.handleChange}
           />
         </label>
+        <p>Please select your age:</p>
+        <input type="radio" id="age1" name="age" value="30">
+        <label for="age1">0 - 30</label><br>
+        <input type="radio" id="age2" name="age" value="60">
+        <label for="age2">31 - 60</label><br>
 
+        <label>Summary:
+        <input type="radio" id="age1" name="age" value="30">
+        <label for="age1">0 - 30</label><br>
+        <input type="radio" id="age2" name="age" value="60">
+        <label for="age2">31 - 60</label><br>
+        </label>
         <label>Summary:
           <input
             type="text"
@@ -49,7 +60,7 @@ class Form extends React.Component{
             placeholder="this is the summary"
             required=""
             autoComplete="off"
-            value={this.state.image_id}
+            value={this.state.summary}
             onChange = {this.handleChange}
           />
         </label>
@@ -67,16 +78,15 @@ class Form extends React.Component{
           ></textarea>
         </label>
 
-        <label>Steps: <i>(one per line)</i>
+        <label>Body: <i>(one per line)</i>
           <textarea
             cols="48"
             rows="8"
-            name="steps"
-            placeholder="In the bowl of your stand mixer, stir together the flours, salt, sugar, and yeast.
-    Add the water, milk, and egg, but not the butter."
+            name="body"
+            placeholder="This is where you give your review."
             required=""
             autoComplete="off"
-            value={this.state.steps}
+            value={this.state.body}
             onChange = {this.handleChange}
           ></textarea>
         </label>

@@ -1,7 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import bootstrap from 'bootstrap';
+import Carousel from 'react-bootstrap/Carousel';
+import Card from 'react-bootstrap/Card';
+// import CardGroup from 'react-bootstrap/CardGroup';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 
 var RelatedProducts = ({ id }) => {
   // const [relatedIDs, setRelatedIDs] = useState([]); //may not be necessary
@@ -22,10 +26,11 @@ var RelatedProducts = ({ id }) => {
                       relatedData['styles'] = resStyle.data.results;
                       relatedData['reviews'] = resReview.data;
 
-                      var newEntry = {};
-                      newEntry[relatedProdID] = relatedData;
-
-                      setRelatedProdsData(old => ({ ...old, ...newEntry}));
+                      if (relatedProdID !== id) {
+                        var newEntry = {};
+                        newEntry[relatedProdID] = relatedData;
+                        setRelatedProdsData(old => ({ ...old, ...newEntry }));
+                      }
                     })
                     .catch(err => {
                       console.log(err);
@@ -75,87 +80,44 @@ var RelatedProducts = ({ id }) => {
 
     if (salePrice === null) {
       return (
-        <div>
-          <span>{'$' + originalPrice}</span>
-        </div>
+        <><span>{ '$' + originalPrice }</span></>
       )
     } else {
       return (
-        <div>
-          <span style={{color: "red"}} >
-            {'$' + salePrice + ' '}
+        <>
+          <span style={{ color: "red" }} >
+            { '$' + salePrice + ' ' }
           </span>
           <span>
-            <s>{'$' + originalPrice}</s>
+            <s>{ '$' + originalPrice }</s>
           </span>
-        </div>
+        </>
       )
     }
   }
 
   return (
-    <section className="pt-5 pb-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-6">
-              <h3 className="mb-3">Related Products</h3>
-          </div>
-            <div className="col-6 text-right">
-              <a className="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                  <i className="fa fa-arrow-left"></i>
-              </a>
-              <a className="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                  <i className="fa fa-arrow-right"></i>
-              </a>
-            </div>
-          <div className="col-12">
-            <div id="carouselExampleIndicators2" className="carousel slide" data-ride="carousel">
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-
-                  <div className='row'>
-                    {Object.values(relatedProdsData).map((prodData) =>
-                      <div className="card col-md-4 mb-4" key={prodData.id} style={{width: "18rem"}} >
-                        <img src={prodData.styles[0].photos[0].url} className="card-img-top" alt="..." />
-                        {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
-                        <div className="card-body">
-                          <p className="card-text">{prodData.id}</p>
-                          <p className="card-text">{prodData.category}</p>
-                          <p className="card-text">{prodData.name}</p>
-                          <div className="card-text">{defaultStylePrice(prodData.styles)}</div>
-                          <p className="card-text">{reviewAvg(prodData.reviews)}</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-
-    // <div className='relatedProducts'>
-    //   {Object.values(relatedProdsData).map((prodData) =>
-    //     <div className="card col-md-4 mb-3" key={prodData.id} style={{width: "18rem"}} >
-    //       <img src={prodData.styles[0].photos[0].url} className="card-img-top" alt="..." />
-    //       {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
-    //       <div className="card-body">
-    //         <p className="card-text">{prodData.id}</p>
-    //         <p className="card-text">{prodData.category}</p>
-    //         <p className="card-text">{prodData.name}</p>
-    //         <div className="card-text">{defaultStylePrice(prodData.styles)}</div>
-    //         <p className="card-text">{reviewAvg(prodData.reviews)}</p>
-    //       </div>
-    //     </div>
-    //   )}
-    // </div>
-  )
+    <Carousel>
+        {Object.values(relatedProdsData).map((prodData) =>
+          <Carousel.Item key={ prodData.id } >
+            <Card style={{ width: '18rem' }} >
+              <Card.Img src={ prodData.styles[0].photos[0].url } alt="..." />
+              {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
+              <Card.Body>
+                {/* <Card.Text>{ prodData.id }</Card.Text> */}
+                <Card.Title>{ prodData.category }</Card.Title>
+                <Card.Title>{ prodData.name }</Card.Title>
+                <Card.Text>{ defaultStylePrice(prodData.styles) }</Card.Text>
+                {/* <Card.Text>{ reviewAvg(prodData.reviews) }</Card.Text> */}
+                <label className="rating-label">
+                  <input className="rating" max="5" readOnly step="0.25" style={{"--fill": "gold", "--value": reviewAvg(prodData.reviews)}} type="range" value={reviewAvg(prodData.reviews)} />
+                </label>
+              </Card.Body>
+            </Card>
+          </Carousel.Item>
+        )}
+    </Carousel>
+  );
 }
 
 export default RelatedProducts;

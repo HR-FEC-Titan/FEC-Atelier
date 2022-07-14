@@ -5,22 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faPinterest } from '@fortawesome/free-brands-svg-icons';
 
-import { StyleIndexContext } from './Style.jsx';
-import { StylesContext } from './Style.jsx';
+import { CurrentStyleContext } from './Style.jsx';
 
 const SizeQtyAddShare = () => {
 
-  const styleIndex = useContext(StyleIndexContext);  // Indicating selected style
-  const styles = useContext(StylesContext);
-  // const [images, setImages] = useState(styles[styleIndex].photos);
-
-  // will image change based on index change??????
-  // useEffect(() => {
-  //   setImages(styles[index]);
-  // }, [index])
+  const currentStyle = useContext(CurrentStyleContext);
 
 
-  const options = Object.values(styles[styleIndex].skus);
+  const options = Object.values(currentStyle.skus);
   const [option, setOption] = useState({});
   const [size, setSize] = useState();
   const [qty, setQty] = useState();
@@ -46,10 +38,12 @@ const SizeQtyAddShare = () => {
           <select
             className="size"
             onChange={(e) => {
-              setOption(options[e.target.value]);
+              if (e.target.value >= 0) {
+                setOption(options[e.target.value]);
+              }
             }}
           >
-            <option>SELECT SIZE</option>
+            <option value={-1}> SELECT SIZE </option>
             {options.map((s, index) => {
               return <option key={index} value={index}>{s.size}</option>
             })}
@@ -76,7 +70,7 @@ const SizeQtyAddShare = () => {
 
 
         {/* SHARE: POPUP POSITION need to be CHANGED   ************************************** */}
-        <Popup trigger={<button className="share"> <FontAwesomeIcon icon={faShare} /> </button>} position="right top" modal>
+        <Popup trigger={<button className="share"> <FontAwesomeIcon icon={faShare} /> </button>} position="right top">
           <a href="http://www.facebook.com" className=""> <FontAwesomeIcon icon={faFacebook} />
           </a>
           <a href="http://www.twitter.com" className=""> <FontAwesomeIcon icon={faTwitter} />
