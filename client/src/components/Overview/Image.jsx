@@ -14,6 +14,10 @@ const Image = () => {
   // const [currentIndex, setCurrentIndex] = useState(0)
   // const [length, setLength] = useState(images.length);
 
+  const expandImage = (e) => {
+    e.target.style.transform = "scale(1.5)"
+  }
+
   return (
     <div className="imageGallery image" >
       <Carousel show={1} infiniteLoop={true} >
