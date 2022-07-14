@@ -175,10 +175,19 @@ body {
 }
 
 .styleIcon {
+  position: relative;
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  cursor: pointer;
+  z-index: -1;
 }
+
+input[type="radio"]:checked+label {
+  background: url(https://icons-for-free.com/iconfiles/png/512/checkbox+checkmark+circle+confirm+icon-1320085880043351014.png) no-repeat right top;
+  background-size: 20px 20px;
+}
+
 
 .salePrice {
   color: red;
@@ -208,35 +217,43 @@ body {
   touch-action: manipulation;
   -webkit-appearance: none;
 }
+
 [dir="rtl"] .rating {
   --dir: left;
 }
+
 .rating::-moz-range-track {
   background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
   block-size: 100%;
   mask: repeat left center/var(--starsize) var(--symbol);
 }
+
 .rating::-webkit-slider-runnable-track {
   background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
   block-size: 100%;
   mask: repeat left center/var(--starsize) var(--symbol);
   -webkit-mask: repeat left center/var(--starsize) var(--symbol);
 }
+
 .rating::-moz-range-thumb {
   height: var(--starsize);
   opacity: 0;
   width: var(--starsize);
 }
+
 .rating::-webkit-slider-thumb {
   height: var(--starsize);
   opacity: 0;
   width: var(--starsize);
   -webkit-appearance: none;
 }
-.rating, .rating-label {
+
+.rating,
+.rating-label {
   display: block;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
+
 .rating-label {
   margin-block-end: 1rem;
 }
@@ -245,20 +262,24 @@ body {
 .rating--nojs::-moz-range-track {
   background: var(--fillbg);
 }
+
 .rating--nojs::-moz-range-progress {
   background: var(--fill);
   block-size: 100%;
   mask: repeat left center/var(--starsize) var(--star);
 }
+
 .rating--nojs::-webkit-slider-runnable-track {
   background: var(--fillbg);
 }
+
 .rating--nojs::-webkit-slider-thumb {
   background-color: var(--fill);
   box-shadow: calc(0rem - var(--w)) 0 0 var(--w) var(--fill);
   opacity: 1;
   width: 1px;
 }
+
 [dir="rtl"] .rating--nojs::-webkit-slider-thumb {
   box-shadow: var(--w) 0 0 var(--w) var(--fill);
 }

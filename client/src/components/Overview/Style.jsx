@@ -49,10 +49,11 @@ let Style = () => {
 
             <input
               type="radio"
-              name="StyleSelector"
+              className="styleSelector"
               id={`Style${i}`}
               checked={i === styleIndex ? true : false}
               onChange={() => setStyleIndex(i)}
+              hidden
             />
 
             <label className="" htmlFor={`Style${i}`}>
