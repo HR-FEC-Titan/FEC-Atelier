@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 // import CardGroup from 'react-bootstrap/CardGroup';
@@ -54,6 +55,12 @@ var RelatedProducts = ({ id }) => {
       })
   }, []);
 
+
+  useEffect(() => {
+    setLength(Object.values(relatedProdsData).length)
+  }, [Object.values(relatedProdsData)])
+
+
   var reviewAvg = (reviewData) => {
     var reviews = reviewData.results;
     var reviewsCount = reviews.length;
@@ -68,6 +75,7 @@ var RelatedProducts = ({ id }) => {
 
     return convertedAverage;
   }
+
 
   var defaultStylePrice = (styleData) => {
     var originalPrice = '';
@@ -101,20 +109,29 @@ var RelatedProducts = ({ id }) => {
   }
 
 
+  //openComparisonModal
+  var showPopup = () => {
+    var popup = document.getElementById("popup");
+    popup.classList.add("open-popup");
+  }
 
-  useEffect(() => {
-    setLength(Object.values(relatedProdsData).length)
-  }, [Object.values(relatedProdsData)])
+
+  //hideComparisonModal
+  var hidePopup = () => {
+    var popup = document.getElementById("popup");
+    popup.classList.remove("open-popup");
+  }
 
 
   return (
-    <div>
+    <div className="relatedProducts" >
       <h3>Related Products</h3>
-      <div className='relatedProducts' style={{ width: "970px", height: "480px" }} >
+      <div style={{ width: "970px", height: "480px" }} >
         <RelatedProdsCarousel show={4} currentIndex={currentIndex} length={length} setCurrentIndex={setCurrentIndex} setLength={setLength} >
           {Object.values(relatedProdsData).map((prodData) =>
             <div key={ prodData.id } style={{ height: '100%' }}>
               <Card style={{ width: "225px", height: "480px" }} >
+                <i className="bi bi-star-fill" style={{ fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={ () => {showPopup()}} />
                 <Card.Img style={{ width: "225px", height: "240px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." />
                 {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
                 <Card.Body style={{ width: "225px", height: "240px", "objectFit": "cover" }} >
@@ -130,30 +147,12 @@ var RelatedProducts = ({ id }) => {
           )}
         </RelatedProdsCarousel>
       </div>
+
+      <div className="popup" id="popup" >
+        <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >Comparing</h3>
+      </div>
       <br/>
     </div>
-
-
-    // <Carousel interval={null}>
-    //     {Object.values(relatedProdsData).map((prodData) =>
-    //       <Carousel.Item key={ prodData.id } >
-    //         <Card style={{ width: '18rem' }} >
-    //           <Card.Img style={{ width: '100%', height: "15vw", "object-fit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." />
-    //           {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
-    //           <Card.Body>
-    //             {/* <Card.Text>{ prodData.id }</Card.Text> */}
-    //             <Card.Title>{ prodData.category }</Card.Title>
-    //             <Card.Title>{ prodData.name }</Card.Title>
-    //             <Card.Text>{ defaultStylePrice(prodData.styles) }</Card.Text>
-    //             {/* <Card.Text>{ reviewAvg(prodData.reviews) }</Card.Text> */}
-    //             <label className="rating-label">
-    //               <input className="rating" max="5" readOnly step="0.25" style={{"--fill": "black", "--starsize": "2rem", "--value": reviewAvg(prodData.reviews)}} type="range" value={reviewAvg(prodData.reviews)} />
-    //             </label>
-    //           </Card.Body>
-    //         </Card>
-    //       </Carousel.Item>
-    //     )}
-    // </Carousel>
   );
 }
 
