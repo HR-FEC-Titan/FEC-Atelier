@@ -24,8 +24,6 @@ class Form extends React.Component{
 
   handleFormSubmission = (rating, rec, char, summary, body, photos, nickname, email ) => {
     if(rating === '' || rec === '' || body.length === '' || nickname === '' || email === '') return
-    // let ingredientsArray = ingredients.split(",")
-    // let stepsArray = steps.split(".")
     let newReview = {product_id: this.props.id,
                     rating: Number(rating),
                     recommend: rec,
@@ -36,7 +34,7 @@ class Form extends React.Component{
                     name: nickname,
                     email: email
                   };
-    console.log(newReview)
+    console.log("This is the new review", newReview)
     axios.post(`/reviews`, JSON.stringify(newReview))
       .then((res) => {
         console.log(res)

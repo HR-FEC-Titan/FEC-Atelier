@@ -25,7 +25,7 @@ app.get('/*', (req, res) => {
 // POST
 app.post('/reviews', (req, res) => {
   // console.log('This is params in url$$$$$$', req.params);
-  console.log('This is body in req******'. req);
+  console.log('This is body in req******'. req.body);
   postProductInfo(req.body)
     .then(response => {
       res.status(201).send(response.data);
