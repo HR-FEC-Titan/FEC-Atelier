@@ -28,14 +28,12 @@ let ReviewTile = ({review}) => {
       <p>{showMore ? review.body : review.body.slice(0, 250)}</p><br>
       </br>
       <button onClick={() => setShowMore(!showMore)}>{showMore ? "Show less" : "Show more"}</button>
-      {/* <p>{showMore && <img src = {review.photos[0].url /> }</p> */}
+   
       {review.recommend ? <p>I recommend this product</p>: <></>}
       {review.response ? <p>Responce from seller: {review.response}</p> : <></>}
       <p>Was this review helpful? Yes {review.helpfulness} | <span className = 'report'>Report</span></p>
     <hr/>
-
     </div>
-
     )
   }
 }

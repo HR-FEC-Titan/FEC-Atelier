@@ -28,7 +28,9 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
-    "reactjs-popup": "^2.0.5"
+    "react-table": "^7.8.0",
+    "reactjs-popup": "^2.0.5",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",

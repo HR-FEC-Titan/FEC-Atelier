@@ -1,18 +1,16 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
-// import CardGroup from 'react-bootstrap/CardGroup';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
+// import Popup from 'reactjs-popup';
 
 import RelatedProdsCarousel from './RelatedProdsCarousel.jsx';
+import ComparisonTable from './ComparisonTable.jsx';
 
 var RelatedProducts = ({ id }) => {
   // const [relatedIDs, setRelatedIDs] = useState([]); //may not be necessary
   const [relatedProdsData, setRelatedProdsData] = useState({});
+  const [mainProdData, setMainProdData] = useState({})
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(Object.values(relatedProdsData).length);
 
@@ -53,6 +51,15 @@ var RelatedProducts = ({ id }) => {
       .catch(err => {
         console.log(err);
       })
+
+    axios.get('/products/' + id)
+      .then(resMainData => {
+        setMainProdData(old => ({ ...old, ...resMainData.data }));
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
   }, []);
 
 
@@ -110,9 +117,11 @@ var RelatedProducts = ({ id }) => {
 
 
   //openComparisonModal
-  var showPopup = () => {
+  var showPopup = (clickedID) => {
     var popup = document.getElementById("popup");
     popup.classList.add("open-popup");
+    // console.log('clickedID', relatedProdsData[clickedID]);
+    gatherData(relatedProdsData[clickedID].features)
   }
 
 
@@ -122,6 +131,23 @@ var RelatedProducts = ({ id }) => {
     popup.classList.remove("open-popup");
   }
 
+  var gatherData = (relatedProdFeatures) =>{
+    var mainProdFeatures = mainProdData.features;
+    console.log('relatedProdFeatures', relatedProdFeatures);
+    console.log('mainProdFeatures', mainProdFeatures);
+  //  [
+  //   {
+  //     "a": "aaa",
+  //     "b": "bbb",
+  //     "c": "ccc"
+  //   },
+  //   {
+  //     "a": "aaaaa",
+  //     "b": "bbbbb",
+  //     "c": "ccccc"
+  //   }
+  // ]
+  }
 
   return (
     <div className="relatedProducts" >
@@ -131,7 +157,7 @@ var RelatedProducts = ({ id }) => {
           {Object.values(relatedProdsData).map((prodData) =>
             <div key={ prodData.id } style={{ height: '100%' }}>
               <Card style={{ width: "225px", height: "480px" }} >
-                <i className="bi bi-star-fill" style={{ fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={ () => {showPopup()}} />
+                <i className="bi bi-star-fill" id={ prodData.id } style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {showPopup(event.target.id)}} />
                 <Card.Img style={{ width: "225px", height: "240px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." />
                 {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
                 <Card.Body style={{ width: "225px", height: "240px", "objectFit": "cover" }} >
@@ -149,8 +175,17 @@ var RelatedProducts = ({ id }) => {
       </div>
 
       <div className="popup" id="popup" >
+        <i className="bi bi-x-square" style={{ fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "10px" }} onClick={ () => { hidePopup() }} ></i>
         <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >Comparing</h3>
+
+        <ComparisonTable />
+
       </div>
+
+      {/* <Popup className="popup" id="popup" trigger={<button> Trigger</button>} position="right center" >
+        <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >Comparing</h3>
+      </Popup> */}
+
       <br/>
     </div>
   );
