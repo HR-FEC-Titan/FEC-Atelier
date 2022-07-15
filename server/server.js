@@ -24,11 +24,10 @@ app.get('/*', (req, res) => {
 
 // POST
 app.post('/reviews', (req, res) => {
-  // console.log('This is params in url$$$$$$', req.params);
-  console.log('This is body in req******'. req);
-  postProductInfo(req.body)
-    .then(response => {
-      res.status(201).send(response.data);
+  const data = req.body;
+  postProductInfo(data)
+    .then(() => {
+      res.sendStatus(201);
     })
     .catch(err => {
       console.log('Posting error***********');

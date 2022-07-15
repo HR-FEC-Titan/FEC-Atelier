@@ -16,7 +16,7 @@ const getProductInfo = (url, params) => {
 }
 
 const postProductInfo = (data) => {
-
+  console.log(data);
   var config = {
     method: 'post',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews`,
