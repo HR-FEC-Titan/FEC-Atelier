@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect, useContext, createContext } from 'react';
 import Popup from 'reactjs-popup';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faPinterest } from '@fortawesome/free-brands-svg-icons';
@@ -69,12 +70,12 @@ const SizeQtyAddShare = () => {
         {/* ADD TO CART     ******************************** */}
         {options.length === 1 && options[0].size === null?
         <div className="cart"></div>:
-        <button onClick={handleClick} className="cart"> ADD TO CART </button>}
+        <StyledButton onClick={handleClick} className="cart"> ADD TO CART </StyledButton>}
 
 
 
         {/* SHARE  ****************************************** */}
-        <Popup trigger={<button className="share"> <FontAwesomeIcon icon={faShare} /> </button>} position="right top">
+        <Popup trigger={<StyledButton className="share"> <FontAwesomeIcon icon={faShare} /> </StyledButton>} position="right top">
           <a href="http://www.facebook.com" className=""> <FontAwesomeIcon icon={faFacebook} />
           </a>
           <a href="http://www.twitter.com" className=""> <FontAwesomeIcon icon={faTwitter} />
@@ -92,3 +93,9 @@ const SizeQtyAddShare = () => {
 
 
 export default SizeQtyAddShare;
+
+
+const StyledButton = styled.button`
+  border: solid black 1px;
+  background: white;
+`
