@@ -1,38 +1,17 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect, useContext, createContext } from 'react';
-import { ProductIDContext } from './Overview.jsx';
+import { StyleContext } from './Overview.jsx';
 
 import Price from './Price.jsx';
 import SizeQtyAddShare from './SizeQtyAddShare.jsx';
 import Image from './Image.jsx';
-import styleData from './data.json';
 
 export const CurrentStyleContext = createContext();
+
 let Style = () => {
-  const id = useContext(ProductIDContext);
-  const [styles, setStyles] = useState(styleData.results);
+  const { styles, setStyles, styleIndex, setStyleIndex, currentStyle } = useContext(StyleContext);
 
-  useEffect(() => {
-    axios.get(`/products/${id}/styles`)
-      .then(res => {
-        setStyles(res.data.results);
-      })
-  }, [])
-
-  const defaultIndex = styles.reduce((memo, style, index) => {
-    if (style.default === true) {
-      memo = index;
-    }
-    return memo;
-  }, 0)
-
-  const [styleIndex, setStyleIndex] = useState(defaultIndex);
-  const [currentStyle, setCurrentStyle] = useState(styles[styleIndex]);
-
-  useEffect(() => {
-    setCurrentStyle(styles[styleIndex])
-  }, [styles, styleIndex]);
 
   return (
 

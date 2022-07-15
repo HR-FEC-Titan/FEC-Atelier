@@ -3,11 +3,6 @@ import axios from 'axios';
 import { useState, useEffect, useContext, createContext } from 'react';
 import { ProductIDContext } from './Overview.jsx';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
-import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
-
-
 
 let StarReview = () => {
 

@@ -81,16 +81,22 @@ body {
   Overview widget
   ========================================
 */
-.overview {
+.defaultView {
   display: grid;
+  /* height: 800px; */
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 'a a b '
-    'a a c '
-    'a a d'
-    'a a g'
-    'a a e'
-    'a a e'
-    'f f f'
+                        'a a c '
+                        'a a d'
+                        'a a g'
+                        'a a e'
+                        'a a e'
+                        'f f f'
+}
+
+.expandedView {
+  height: 700px;
+  margin: 18px 8px;
 }
 
 .imageGallery {

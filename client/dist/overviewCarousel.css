@@ -46,20 +46,24 @@
   width: calc(100% / 4);
 }
 
-.image-left-arrow, .image-right-arrow {
+.image-left-arrow, .expanded-image-left-arrow, .image-right-arrow {
   position: absolute;
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
+  width: 34px;
+  height: 34px;
   border-radius: 24px;
   background-color: white;
   border: 1px solid #ddd;
 }
 
 .image-left-arrow {
-  left: 20%;
+  left: 15%;
+}
+
+.expanded-image-left-arrow {
+  left: 2%;
 }
 
 .image-right-arrow {
