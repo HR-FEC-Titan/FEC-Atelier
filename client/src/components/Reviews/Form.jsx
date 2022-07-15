@@ -6,11 +6,11 @@ class Form extends React.Component{
     super(props)
     this.state = {
       rating: 0,
-      rec: false,
+      recommend: false,
       char: [],
       summary: '',
       body: '',
-      photos: [],
+      photos: '', // changed from array to string ==> will update during typing
       nickname: '',
       email: ''
     }
@@ -18,31 +18,32 @@ class Form extends React.Component{
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value //PROBLEM: if photo exists as an array, it can't be changed in this way. Doing line 13 will enable this.
     })
   }
 
-  handleFormSubmission = (rating, rec, char, summary, body, photos, nickname, email ) => {
-    if(rating === '' || rec === '' || body.length === '' || nickname === '' || email === '') return
+  handleFormSubmission = (rating, recommend, char, summary, body, photos, nickname, email ) => {
+    if(rating === '' || recommend === '' || body.length === '' || nickname === '' || email === '') return
     // let ingredientsArray = ingredients.split(",")
     // let stepsArray = steps.split(".")
     let newReview = {product_id: this.props.id,
                     rating: Number(rating),
-                    recommend: rec,
-                    characteristics: {"223576": 1},
                     summary: summary,
                     body: body,
-                    photos: photos,
+                    recommend: "true" ? true : false,
                     name: nickname,
-                    email: email
+                    email: email,
+                    photos: [photos], // converted photo to array as required by API
+                    characteristics: {"223576": 1}
                   };
+
     console.log(newReview)
-    axios.post(`/reviews`, JSON.stringify(newReview))
+    axios.post('/reviews', newReview)
       .then((res) => {
-        console.log(res)
+        console.log(res);
         this.setState({
           rating: 0,
-          rec: false,
+          recommend: false,  // You can delete this. As this will we want selected recommend value
           char: [],
           summary: '',
           body: '',
@@ -58,7 +59,7 @@ class Form extends React.Component{
   handleSubmit = (event) => {
     event.preventDefault();
     this.handleFormSubmission(this.state.rating,
-                              this.state.rec,
+                              this.state.recommend,
                               this.state.char,
                               this.state.summary,
                               this.state.body,
@@ -94,17 +95,16 @@ class Form extends React.Component{
         <label>Do you Recommemend this product?:
           <input
             type="radio"
-            name="yrecommend"
+            name="recommend" // changed to same name
             id="yrecommend"
-            value={this.state.rec}
-            onChange = {this.handleChange}
-          />
+            onChange = {() => {this.setState({recommend: true})}} //directly updating state here
+            />
           <label htmlFor="yrecommend">Yes</label>
             <input
             type="radio"
-            name="nrecommend"
-            value={this.state.rec}
-            onChange = {this.handleChange}
+            name="recommend" // changed to same name
+            id="nrecommend"
+            onChange = {() => {this.setState({recommend: false})}} //directly updating state here
           />
           <label htmlFor="nrecommend">No</label><br></br>
         </label><br></br>
@@ -154,7 +154,7 @@ class Form extends React.Component{
             placeholder="this is where you put your photos"
             required=""
             autoComplete="off"
-            value={this.state.photos}
+            // value={this.state.photos}
             onChange = {this.handleChange}
           />
         </label><br></br>

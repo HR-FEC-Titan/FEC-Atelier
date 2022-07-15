@@ -117,7 +117,7 @@ const Carousel = (props) => {
 export default Carousel;
 
 const Img = styled.img`
-  width: 100%;
+  /* width: 100%; */
   max-height: 500px;
   object-fit: cover;
   align-self: center;
