@@ -98,4 +98,5 @@ export default SizeQtyAddShare;
 const StyledButton = styled.button`
   border: solid black 1px;
   background: white;
+  font-size: 15px
 `

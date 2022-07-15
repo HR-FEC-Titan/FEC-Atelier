@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 const Carousel = (props) => {
-  const { url, thumbnailUrl, show, infiniteLoop } = props;
+  const { url, thumbnailUrl, show } = props;
   console.log(url);
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -27,6 +27,7 @@ const Carousel = (props) => {
 
   return (
     <React.Fragment>
+      {/* ==========================main Carousel images ==================*/}
       <div className="carousel-container" >
         <div className="carousel-wrapper">
           {currentIndex > 0 &&
@@ -47,8 +48,8 @@ const Carousel = (props) => {
                     src={u}
                     alt="placeholder"
                     key={idx}
-                    style={{ padding: "8px" }}
-                    className="image"
+
+                    // className="image"
                   />
                 )
               })}
@@ -66,7 +67,6 @@ const Carousel = (props) => {
 
 
       {/* ==========================thumbnail images ==================*/}
-      <div className="thumbnailCarousel">
         <div className="t-carousel-container">
           <div className="t-carousel-wrapper">
             {/* ================  hide buttons for now =================*/}
@@ -108,7 +108,6 @@ const Carousel = (props) => {
               &#8964;
             </button>} */}
           </div>
-        </div>
       </div>
     </React.Fragment>
   )
@@ -121,17 +120,16 @@ const Img = styled.img`
   max-height: 500px;
   object-fit: cover;
   align-self: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  /* padding: 8px; */
   cursor: zoom-in;
 `
 
 
 const StyledImage = styled.img`
-
- width: 100%;
  max-height: 16%;
- padding: 8px;
+ padding: 3px;
  object-fit: cover;
  cursor: pointer;
- border: ${({ id, currentIndex }) => id === currentIndex ? 'solid red 5px' : ''};
+ border: ${({ id, currentIndex }) => id === currentIndex ? 'solid gold 5px' : ''};
 `

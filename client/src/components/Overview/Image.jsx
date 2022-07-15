@@ -14,16 +14,14 @@ const Image = () => {
     memo.push(image.url)
     return memo;
   }, [])
-  console.log(url);
   const thumbnailUrl = images.reduce((memo, image) => {
     memo.push(image.thumbnail_url)
     return memo;
   }, [])
-console.log(thumbnailUrl);
 
   return (
     <div className="imageGallery" >
-      <Carousel show={1} infiniteLoop={true} url={url} thumbnailUrl={thumbnailUrl} />
+      <Carousel show={1} url={url} thumbnailUrl={thumbnailUrl} />
     </div>
   )
 }
