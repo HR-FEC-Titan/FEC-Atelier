@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 import RelatedProdsCarousel from './RelatedProdsCarousel.jsx';
 import ComparisonTable from './ComparisonTable.jsx';
 
-var RelatedProducts = ({ id }) => {
+var RelatedProducts = ({ id, setId }) => {
   // const [relatedIDs, setRelatedIDs] = useState([]); //may not be necessary
   const [relatedProdsData, setRelatedProdsData] = useState({});
   const [mainProdData, setMainProdData] = useState({})
@@ -157,9 +157,12 @@ var RelatedProducts = ({ id }) => {
           {Object.values(relatedProdsData).map((prodData) =>
             <div key={ prodData.id } style={{ height: '100%' }}>
               <Card style={{ width: "225px", height: "480px" }} >
+
                 <i className="bi bi-star-fill" id={ prodData.id } style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {openComparisonModal(event.target.id)}} />
-                <Card.Img style={{ width: "225px", height: "240px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." />
+
+                <Card.Img id={ prodData.id } style={{ width: "225px", height: "240px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." onClick={() => {setId(event.target.id)}} />
                 {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
+
                 <Card.Body style={{ width: "225px", height: "240px", "objectFit": "cover" }} >
                   <Card.Title style={{ fontSize: "15px" }}>{ prodData.category }</Card.Title>
                   <Card.Title>{ prodData.name }</Card.Title>
