@@ -95,7 +95,7 @@ body {
 }
 
 .expandedView {
-  height: 700px;
+  height: 600px;
   margin: 18px 8px;
 }
 
@@ -185,6 +185,7 @@ body {
   object-fit: cover;
   cursor: pointer;
   z-index: -1;
+  border: solid grey 1px;
 }
 
 input[type="radio"]:checked+label {

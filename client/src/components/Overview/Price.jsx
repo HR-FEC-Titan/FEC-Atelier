@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect, useContext, createContext } from 'react';
-import { CurrentStyleContext } from './Style.jsx';
+import { StyleContext } from './Overview.jsx';
 
 
 const Price = () => {
-  const currentStyle = useContext(CurrentStyleContext);
+  const { currentStyle } = useContext(StyleContext);
 
   return <div className="priceAndStyle">
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect, useContext, createContext } from 'react';
-import { ProductIDContext } from './Overview.jsx';
+import { StyleContext } from './Overview.jsx';
 
 
 let StarReview = () => {
 
-  const id = useContext(ProductIDContext);
+  const { id } = useContext(StyleContext);
   const [review, setReview] = useState([]);
   const arr = Object.entries(review);
 

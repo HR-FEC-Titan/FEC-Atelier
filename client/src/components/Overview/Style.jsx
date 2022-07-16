@@ -5,50 +5,19 @@ import { StyleContext } from './Overview.jsx';
 
 import Price from './Price.jsx';
 import SizeQtyAddShare from './SizeQtyAddShare.jsx';
-import Image from './Image.jsx';
+import StyleIcon from './StyleIcon.jsx';
+import DefaultImage from './DefaultImage.jsx';
 
 export const CurrentStyleContext = createContext();
 
 let Style = () => {
-  const { styles, setStyles, styleIndex, setStyleIndex, currentStyle } = useContext(StyleContext);
-
-
   return (
-
     <React.Fragment>
-      <CurrentStyleContext.Provider value={currentStyle}>
         <Price />
         <SizeQtyAddShare />
-        <Image />
-      </CurrentStyleContext.Provider>
-
-      <div className='styles'>
-        {styles.map((s, i) => {
-          return <div className="styleColumn" key={i} >
-
-            <input
-              type="radio"
-              className="styleSelector"
-              id={`Style${i}`}
-              checked={i === styleIndex ? true : false}
-              onChange={() => setStyleIndex(i)}
-              hidden
-            />
-
-            <label className="" htmlFor={`Style${i}`}>
-              <img
-                className="styleIcon"
-                src={s.photos[0].thumbnail_url}
-              />
-            </label>
-
-          </div>
-        })}
-
-      </div>
-
+        <StyleIcon />
+        <DefaultImage />
     </React.Fragment>
-
   )
 }
 

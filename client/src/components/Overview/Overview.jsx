@@ -5,12 +5,10 @@ import axios from 'axios';
 import TitCatSlogan from './TitCatSlogan.jsx';
 import StarReview from './StarReview.jsx';
 import Style from './Style.jsx';
-import Expanded from './Carousel/Expanded.jsx';
+import Expanded from './Expanded.jsx';
 import styleData from './data.json';
 
 
-export const ProductIDContext = createContext();
-export const CurrentIndexContext = createContext();
 export const ViewContext = createContext();
 export const StyleContext = createContext();
 
@@ -47,18 +45,18 @@ var Overview = ({ id }) => {
   if (view === 'default') {
     return (<div className='defaultView'>
       <StyleContext.Provider
-        value={{ styles, setStyles,
-                styleIndex, setStyleIndex,
-                currentStyle, setCurrentStyle,
-                currentIndex, setCurrentIndex
-      }} >
-      <ViewContext.Provider value={{ view, setView }} >
-        <ProductIDContext.Provider value={id}>
-          <TitCatSlogan />
-          <StarReview />
-          <Style />
-        </ProductIDContext.Provider>
-      </ViewContext.Provider>
+        value={{
+          id,
+          styles, setStyles,
+          styleIndex, setStyleIndex,
+          currentStyle, setCurrentStyle,
+          currentIndex, setCurrentIndex
+        }} >
+        <ViewContext.Provider value={{ view, setView }} >
+            <TitCatSlogan />
+            <StarReview />
+            <Style />
+        </ViewContext.Provider>
       </StyleContext.Provider>
     </div>)
   }
@@ -67,19 +65,20 @@ var Overview = ({ id }) => {
     return (
       <ViewContext.Provider value={{ view, setView }} >
         <StyleContext.Provider
-        value={{ styles, setStyles,
-                styleIndex, setStyleIndex,
-                currentStyle, setCurrentStyle,
-                currentIndex, setCurrentIndex
-      }} >
+          value={{
+            styles, setStyles,
+            styleIndex, setStyleIndex,
+            currentStyle, setCurrentStyle,
+            currentIndex, setCurrentIndex
+          }} >
 
-        <Expanded />
-      </StyleContext.Provider>
+          <Expanded />
+        </StyleContext.Provider>
       </ViewContext.Provider>
-      )
-    }
+    )
   }
+}
 
-  export default Overview;
+export default Overview;
 
-  {/* <div onClick={() => setView('default')} className="expandedView"> hello world!</div> */}
+{/* <div onClick={() => setView('default')} className="expandedView"> hello world!</div> */ }
