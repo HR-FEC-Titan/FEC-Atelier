@@ -16,6 +16,10 @@ var RelatedProducts = ({ id }) => {
   const [length, setLength] = useState(Object.values(relatedProdsData).length);
 
   useEffect(() => {
+    setRelatedProdsData({});
+    hideComparisonModal();
+    setMainProdData({});
+
     axios.get('/products/' + id + '/related')
       .then(res => {
         // setRelatedIDs(res.data); //may not be necessary
@@ -61,7 +65,7 @@ var RelatedProducts = ({ id }) => {
         console.log(err);
       })
 
-  }, []);
+  }, [id]);
 
 
   useEffect(() => {
