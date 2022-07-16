@@ -1,13 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect, useContext, createContext } from 'react';
-import { ProductIDContext } from './Overview.jsx';
+import { StyleContext } from './Overview.jsx';
 
-// import { ProductContext } from './Overview.jsx';
 
 const TitCatSlogan = () => {
 
-  const id = useContext(ProductIDContext);
+  const { id } = useContext(StyleContext);
   const [product, setProduct] = useState({});
 
   useEffect(() => {
@@ -15,7 +14,7 @@ const TitCatSlogan = () => {
       .then(res => {
         setProduct(res.data);
       })
-  }, [])
+  }, [id])
 
   return (
     <React.Fragment>

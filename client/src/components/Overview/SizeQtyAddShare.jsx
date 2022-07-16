@@ -6,11 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faPinterest } from '@fortawesome/free-brands-svg-icons';
 
-import { CurrentStyleContext } from './Style.jsx';
+import { StyleContext } from './Overview.jsx';
 
 const SizeQtyAddShare = () => {
 
-  const currentStyle = useContext(CurrentStyleContext);
+  const { currentStyle } = useContext(StyleContext);
 
 
   const options = Object.values(currentStyle.skus);
@@ -98,4 +98,5 @@ export default SizeQtyAddShare;
 const StyledButton = styled.button`
   border: solid black 1px;
   background: white;
+  font-size: 15px
 `
