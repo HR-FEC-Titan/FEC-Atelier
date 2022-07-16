@@ -1,38 +1,29 @@
 import React, { useMemo } from 'react';
 import { useTable } from 'react-table';
 
-const tableColumns = [
-  {
-    Header: 'Current Product Value',
-    accessor: 'a'
-  },
-  {
-    Header: 'Characteristic',
-    accessor: 'b'
-  },
-  {
-    Header: 'Compared Product Value',
-    accessor: 'c'
-  }
-];
+import '../../../dist/comparisonTable.css'
 
-const tableData = [
-  {
-    "a": "aaa",
-    "b": "bbb",
-    "c": "ccc"
-  },
-  {
-    "a": "aaaaa",
-    "b": "bbbbb",
-    "c": "ccccc"
-  }
-];
+const ComparisonTable = (props) => {
+  var mainProdName = props.mainProdData.name;
+  var relatedProdName = '';
 
-const ComparisonTable = () => {
+  const tableColumns = [
+    {
+      Header: 'Current Product Value',
+      accessor: 'value'
+    },
+    {
+      Header: 'Characteristic',
+      accessor: 'feature'
+    },
+    {
+      Header: 'Compared Product Value',
+      accessor: 'relatedProdvalue'
+    }
+  ];
 
   const columns = useMemo(() => tableColumns, []);
-  const data = useMemo(() => tableData, []);
+  const data = useMemo(() => props.tableData);
 
   const tableInstance = useTable({
     columns: columns,

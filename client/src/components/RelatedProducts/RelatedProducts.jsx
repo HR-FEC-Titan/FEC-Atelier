@@ -12,6 +12,7 @@ var RelatedProducts = ({ id }) => {
   const [relatedProdsData, setRelatedProdsData] = useState({});
   const [mainProdData, setMainProdData] = useState({})
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [tableData, setTableData] = useState([]);
   const [length, setLength] = useState(Object.values(relatedProdsData).length);
 
   useEffect(() => {
@@ -116,38 +117,33 @@ var RelatedProducts = ({ id }) => {
   }
 
 
-  //openComparisonModal
-  var showPopup = (clickedID) => {
+  var openComparisonModal = (clickedID) => {
     var popup = document.getElementById("popup");
     popup.classList.add("open-popup");
-    // console.log('clickedID', relatedProdsData[clickedID]);
     gatherData(relatedProdsData[clickedID].features)
   }
 
 
-  //hideComparisonModal
-  var hidePopup = () => {
+  var hideComparisonModal = () => {
     var popup = document.getElementById("popup");
     popup.classList.remove("open-popup");
   }
 
-  var gatherData = (relatedProdFeatures) =>{
+
+  var gatherData = (relatedProdFeatures) => {
     var mainProdFeatures = mainProdData.features;
-    console.log('relatedProdFeatures', relatedProdFeatures);
-    console.log('mainProdFeatures', mainProdFeatures);
-  //  [
-  //   {
-  //     "a": "aaa",
-  //     "b": "bbb",
-  //     "c": "ccc"
-  //   },
-  //   {
-  //     "a": "aaaaa",
-  //     "b": "bbbbb",
-  //     "c": "ccccc"
-  //   }
-  // ]
+    var combinedFeaturesData = mainProdFeatures.slice();
+
+    relatedProdFeatures.forEach(prodFeature => {
+      if (combinedFeaturesData.find(element => element['feature'] === prodFeature.feature)) {
+        combinedFeaturesData[combinedFeaturesData.findIndex(element => element['feature'] === prodFeature.feature)]['relatedProdvalue'] = prodFeature.value;
+      } else {
+        combinedFeaturesData.push({ 'feature': prodFeature.feature, 'relatedProdvalue': prodFeature.value })
+      }
+    })
+    setTableData(old => combinedFeaturesData);
   }
+
 
   return (
     <div className="relatedProducts" >
@@ -157,7 +153,7 @@ var RelatedProducts = ({ id }) => {
           {Object.values(relatedProdsData).map((prodData) =>
             <div key={ prodData.id } style={{ height: '100%' }}>
               <Card style={{ width: "225px", height: "480px" }} >
-                <i className="bi bi-star-fill" id={ prodData.id } style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {showPopup(event.target.id)}} />
+                <i className="bi bi-star-fill" id={ prodData.id } style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {openComparisonModal(event.target.id)}} />
                 <Card.Img style={{ width: "225px", height: "240px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." />
                 {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
                 <Card.Body style={{ width: "225px", height: "240px", "objectFit": "cover" }} >
@@ -175,10 +171,10 @@ var RelatedProducts = ({ id }) => {
       </div>
 
       <div className="popup" id="popup" >
-        <i className="bi bi-x-square" style={{ fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "10px" }} onClick={ () => { hidePopup() }} ></i>
+        <i className="bi bi-x-square" style={{ fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "10px" }} onClick={ () => { hideComparisonModal() }} ></i>
         <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >Comparing</h3>
 
-        <ComparisonTable />
+        <ComparisonTable tableData={tableData} mainProdData={mainProdData} />
 
       </div>
 
