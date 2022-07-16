@@ -20,8 +20,8 @@ const App = (props) => {
   return <>
     <Search setId={setId} />
     <Overview id={id} />
-    {/* <RelatedProducts id={props.id} /> */}
-    {/* <Reviews id={props.id} /> */}
+    <RelatedProducts id={props.id} />
+    <Reviews id={props.id} />
   </>
 
 }
