@@ -185,7 +185,6 @@ body {
   object-fit: cover;
   cursor: pointer;
   z-index: -1;
-  border: solid grey 1px;
 }
 
 input[type="radio"]:checked+label {

@@ -15,15 +15,15 @@ export const StyleContext = createContext();
 var Overview = ({ id }) => {
 
   const [view, setView] = useState('default');
-  const [currentIndex, setCurrentIndex] = useState(0);  // Image index
-  const [styles, setStyles] = useState(styleData.results);
+  const [currentIndex, setCurrentIndex] = useState(0);  // Image Index
+  const [styles, setStyles] = useState(styleData.results); // Style Index
 
   useEffect(() => {
     axios.get(`/products/${id}/styles`)
       .then(res => {
         setStyles(res.data.results);
       })
-  }, [])
+  }, [id])
 
   const defaultStyleIndex = styles.reduce((memo, style, index) => {
     if (style.default === true) {
@@ -80,5 +80,3 @@ var Overview = ({ id }) => {
 }
 
 export default Overview;
-
-{/* <div onClick={() => setView('default')} className="expandedView"> hello world!</div> */ }
