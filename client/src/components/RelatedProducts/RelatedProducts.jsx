@@ -8,7 +8,6 @@ import RelatedProdsCarousel from './RelatedProdsCarousel.jsx';
 import ComparisonTable from './ComparisonTable.jsx';
 
 var RelatedProducts = ({ id, setId }) => {
-  // const [relatedIDs, setRelatedIDs] = useState([]); //may not be necessary
   const [relatedProdsData, setRelatedProdsData] = useState({});
   const [mainProdData, setMainProdData] = useState({})
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,10 +18,10 @@ var RelatedProducts = ({ id, setId }) => {
     setRelatedProdsData({});
     hideComparisonModal();
     setMainProdData({});
+    setCurrentIndex(0);
 
     axios.get('/products/' + id + '/related')
       .then(res => {
-        // setRelatedIDs(res.data); //may not be necessary
         res.data.forEach((relatedProdID) => {
           axios.get('/products/' + relatedProdID)
             .then(resData => {
@@ -34,7 +33,7 @@ var RelatedProducts = ({ id, setId }) => {
                       relatedData['styles'] = resStyle.data.results;
                       relatedData['reviews'] = resReview.data;
 
-                      if (relatedProdID !== id) {
+                      if (String(relatedProdID) !== String(id)) {
                         var newEntry = {};
                         newEntry[relatedProdID] = relatedData;
                         setRelatedProdsData(old => ({ ...old, ...newEntry }));
@@ -152,18 +151,19 @@ var RelatedProducts = ({ id, setId }) => {
   return (
     <div className="relatedProducts" >
       <h3>Related Products</h3>
-      <div style={{ width: "970px", height: "480px" }} >
+      <div style={{ width: "970px", height: "420px" }} >
+
         <RelatedProdsCarousel show={4} currentIndex={currentIndex} length={length} setCurrentIndex={setCurrentIndex} setLength={setLength} >
           {Object.values(relatedProdsData).map((prodData) =>
-            <div key={ prodData.id } style={{ height: '100%' }}>
-              <Card style={{ width: "225px", height: "480px" }} >
+            <div key={ 'relatedProd-' + prodData.id } style={{ height: '100%' }}>
+              <Card style={{ width: "225px", height: "420px" }} >
 
                 <i className="bi bi-star-fill" id={ prodData.id } style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {openComparisonModal(event.target.id)}} />
 
-                <Card.Img id={ prodData.id } style={{ width: "225px", height: "240px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." onClick={() => {setId(event.target.id)}} />
+                <Card.Img id={ prodData.id } style={{ width: "225px", height: "210px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." onClick={() => {setId(event.target.id)}} />
                 {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
 
-                <Card.Body style={{ width: "225px", height: "240px", "objectFit": "cover" }} >
+                <Card.Body style={{ width: "225px", height: "210px", "objectFit": "cover" }} >
                   <Card.Title style={{ fontSize: "15px" }}>{ prodData.category }</Card.Title>
                   <Card.Title>{ prodData.name }</Card.Title>
                   <Card.Text style={{ position: "absolute", bottom: 50 }} >{ defaultStylePrice(prodData.styles) }</Card.Text>

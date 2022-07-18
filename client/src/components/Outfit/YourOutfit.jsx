@@ -7,16 +7,16 @@ import YourOutfitCarousel from './YourOutfitCarousel.jsx';
 // import ComparisonTable from './ComparisonTable.jsx';
 
 var YourOutfit = ({ id }) => {
-  const [relatedProdsData, setRelatedProdsData] = useState({});
+  const [YourOutfitData, setYourOutfitData] = useState({});
   const [mainProdData, setMainProdData] = useState({})
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentOutfitIndex, setCurrentOutfitIndex] = useState(0);
   const [tableData, setTableData] = useState([]);
-  const [length, setLength] = useState(Object.values(relatedProdsData).length);
+  const [outfitListLength, setOutfitListLength] = useState(Object.values(YourOutfitData).length);
 
 
   useEffect(() => {
-    setLength(Object.values(relatedProdsData).length)
-  }, [Object.values(relatedProdsData)])
+    setOutfitListLength(Object.values(YourOutfitData).length)
+  }, [Object.values(YourOutfitData)])
 
 
   var reviewAvg = (reviewData) => {
@@ -85,25 +85,22 @@ var YourOutfit = ({ id }) => {
   return (
     <div className="yourOutfit" >
       <h3>Your Outfit</h3>
-      <div style={{ width: "970px", height: "480px" }} >
-        <YourOutfitCarousel show={4} currentIndex={currentIndex} length={length} setCurrentIndex={setCurrentIndex} setLength={setLength} >
-          {Object.values(relatedProdsData).map((prodData) =>
-            <div key={ prodData.id } style={{ height: '100%' }}>
-              <Card style={{ width: "225px", height: "480px" }} >
-                <i className="bi bi-star-fill" id={ prodData.id } style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {openComparisonModal(event.target.id)}} />
-                <Card.Img style={{ width: "225px", height: "240px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." />
-                {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
-                <Card.Body style={{ width: "225px", height: "240px", "objectFit": "cover" }} >
-                  <Card.Title style={{ fontSize: "15px" }}>{ prodData.category }</Card.Title>
-                  <Card.Title>{ prodData.name }</Card.Title>
-                  <Card.Text style={{ position: "absolute", bottom: 50 }} >{ defaultStylePrice(prodData.styles) }</Card.Text>
-                  <label className="rating-label" style={{ position: "absolute", bottom: 0 }}>
-                    <input className="rating" max="5" readOnly step="0.25" style={{"--fill": "black", "--starsize": "2rem", "--value": reviewAvg(prodData.reviews)}} type="range" value={reviewAvg(prodData.reviews)} />
-                  </label>
-                </Card.Body>
+      <div style={{ width: "970px", height: "420px" }} >
+
+        <YourOutfitCarousel show={4} currentOutfitIndex={currentOutfitIndex} outfitListLength={outfitListLength} setCurrentOutfitIndex={setCurrentOutfitIndex} setOutfitListLength={setOutfitListLength} >
+
+            <div key={ 'outfit-0' } style={{ height: '100%' }}>
+              <Card style={{ width: "225px", height: "420px" }} >
+                {/* <i className="bi bi-star-fill" style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {console.log('this was clicked - supposed to delete')}} /> */}
+
+                {/* <Card.Img style={{ width: "225px", height: "210px", "objectFit": "cover" }} src={ "" } alt="..." /> */}
+                <div style={{ justifyContent: "center", alignItems: "center" }} >
+                  <Card.Title style={{ textAlign: "center" }} >Add to Outfit</Card.Title>
+                  <i className="bi bi-plus-circle" style={{ fontSize: "50px" }} />
+                </div>
               </Card>
             </div>
-          )}
+
         </YourOutfitCarousel>
       </div>
 
