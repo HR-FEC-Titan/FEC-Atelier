@@ -14,10 +14,6 @@ const root = createRoot(document.getElementById("root"));
 const App = (props) => {
   const [id, setId] = useState(props.id);
 
-  // handleSearch = (id) => {
-  //   setId(id)
-  // }
-
   return <>
     <Search setId={setId} />
     <Overview id={id} />

@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
+import ExpandedAndMore from './ExpandedAndMore.jsx';
 import { StyleContext } from './Overview.jsx';
-import { ViewContext } from './Overview.jsx';
-// import styleData from '../data.json';
 
 const Expanded = () => {
-  const { view, setView } = useContext(ViewContext);
-  const { currentStyle, currentIndex, setCurrentIndex } = useContext(StyleContext);
+  // const { view, setView } = useContext(ViewContext);
+  const { currentStyle, currentIndex, setCurrentIndex, changeView } = useContext(StyleContext);
   const images = currentStyle.photos;
 
   const url = images.reduce((memo, image) => {
@@ -40,7 +39,7 @@ const Expanded = () => {
   }
 
   return (
-    <div className="expandedView" >
+    <>
       <div className="carousel-wrapper">
         {currentIndex > 0 &&
           <button onClick={prev} className="expanded-image-left-arrow">
@@ -54,16 +53,11 @@ const Expanded = () => {
               transform: `translateX(-${currentIndex * (100 / 1)}%)`
             }}>
 
-            {url.map((u, idx) => {
-              return (
-                <Img
-                  src={u}
-                  alt="placeholder"
-                  key={idx}
-                  onClick={() => setView('default')}
-                />
-              )
-            })}
+
+            {/* CAROUSEL IMAGES HERE */}
+            {url.map((u, idx) => <ExpandedAndMore key={idx} url={u}/>)}
+
+
           </div>
         </div>
 
@@ -76,23 +70,15 @@ const Expanded = () => {
       <ol className="carousel-indicators">
         { Array(length).fill(1).map((indicator, index) => {
           return <li
-                  data-target="#carouselExampleIndicators"
                   className={ index === currentIndex ? "active" : ""}
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   />
         })}
-
       </ol>
-    </div>
+      <button type="button" class="btn-close" onClick={() => changeView('default')}></button>
+    </>
   )
 }
 
 export default Expanded;
-
-const Img = styled.img`
-  max-height: 700px;
-  object-fit: cover;
-  align-self: center;
-  cursor: zoom-in;
-`

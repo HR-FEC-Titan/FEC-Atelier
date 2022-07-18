@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useContext, createContext } from 'react';
+import { useState, useEffect, useContext, createContext, Suspense, } from 'react';
 import axios from 'axios';
 
 import TitCatSlogan from './TitCatSlogan.jsx';
@@ -8,14 +8,11 @@ import Style from './Style.jsx';
 import Expanded from './Expanded.jsx';
 import styleData from './data.json';
 
-
-export const ViewContext = createContext();
 export const StyleContext = createContext();
 
 var Overview = ({ id }) => {
 
   const [view, setView] = useState('default');
-  const [currentIndex, setCurrentIndex] = useState(0);  // Image Index
   const [styles, setStyles] = useState(styleData.results); // Style Index
 
   useEffect(() => {
@@ -23,23 +20,43 @@ var Overview = ({ id }) => {
       .then(res => {
         setStyles(res.data.results);
       })
-  }, [id])
+  }, [id]);
 
-  const defaultStyleIndex = styles.reduce((memo, style, index) => {
+  const defaultIndex = styles.reduce((memo, style, index) => {
     if (style.default === true) {
       memo = index;
     }
     return memo;
-  }, 0)
+  }, 0);
 
-  const [styleIndex, setStyleIndex] = useState(defaultStyleIndex);
+  const [styleIndex, setStyleIndex] = useState(defaultIndex);
+  // If style changes =>  defaultIndex change
+  useEffect(() => {
+    setStyleIndex(defaultIndex)
+  }, [styles]);
+
+
   const [currentStyle, setCurrentStyle] = useState(styles[styleIndex]);
-
+  // CurrentStyle will change when styles or styleIndex change
   useEffect(() => {
     setCurrentStyle(styles[styleIndex])
-  }, [styles, styleIndex]);
+  }, [styles, styleIndex])
 
 
+  const [currentIndex, setCurrentIndex] = useState(0);  // Image Index
+  // Switch to a new style, should verify if the new style has the nth images to display
+  useEffect(() => {
+    if (currentStyle.photos.length < currentIndex + 1) {
+      setCurrentIndex(0);
+    }
+  });
+
+
+
+  const changeView = (name) => {
+    console.log("Changing view to: " + name);
+    setView(name);
+  };
 
 
   if (view === 'default') {
@@ -50,31 +67,48 @@ var Overview = ({ id }) => {
           styles, setStyles,
           styleIndex, setStyleIndex,
           currentStyle, setCurrentStyle,
-          currentIndex, setCurrentIndex
+          currentIndex, setCurrentIndex,
+          changeView
         }} >
-        <ViewContext.Provider value={{ view, setView }} >
-            <TitCatSlogan />
+        <Suspense fallback={<p>Loading Title and Category... </p>}>
+          <TitCatSlogan />
+          <Suspense fallback={<p>Loading Star and Review... </p>}>
             <StarReview />
-            <Style />
-        </ViewContext.Provider>
+            <Suspense fallback={<p>Loading Styles... </p>}>
+              <Style />
+            </Suspense>
+          </Suspense>
+        </Suspense>
       </StyleContext.Provider>
     </div>)
   }
 
   else if (view === 'expanded') {
     return (
-      <ViewContext.Provider value={{ view, setView }} >
+      <div className='expandedView'>
         <StyleContext.Provider
           value={{
             styles, setStyles,
             styleIndex, setStyleIndex,
             currentStyle, setCurrentStyle,
-            currentIndex, setCurrentIndex
+            currentIndex, setCurrentIndex,
+            changeView
           }} >
 
           <Expanded />
         </StyleContext.Provider>
-      </ViewContext.Provider>
+      </div>
+    )
+  }
+
+  else if (view === 'zoomedIn') {
+    return (
+      <div className="zoomedIn">
+        <img
+          src={currentStyle.photos[currentIndex].url}
+          onClick={() => changeView('expanded')}
+        />
+      </div>
     )
   }
 }

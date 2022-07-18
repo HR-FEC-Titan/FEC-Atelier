@@ -34,7 +34,7 @@ video,
 canvas,
 svg {
   display: block;
-  max-width: 100%;
+  /* max-width: 100%; */
 }
 
 input,
@@ -62,6 +62,12 @@ main {
 
 body {
   display: grid;
+}
+
+.searchBar {
+  grid-row: 4;
+  margin: 0 8px;
+  /* height: 50px; */
 }
 
 .overview {
@@ -95,16 +101,30 @@ body {
 }
 
 .expandedView {
-  height: 600px;
+  height: 80vh;
+  margin: 18px 8px;
+  position: relative;
+}
+
+.btn-close {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  opacity: 0.8;
+}
+
+.zoomedIn {
+  cursor: zoom-out;
+  width: 100%;
   margin: 18px 8px;
 }
 
 .imageGallery {
+  height: 80vh;
   grid-area: a;
   align-self: center;
   position: relative;
   margin: 18px 8px;
-  background:#EBEDEF;
 }
 
 .starAndReview {
@@ -143,7 +163,7 @@ body {
 .sizeQtyAddShare {
   grid-area: e;
   display: flex;
-  height: 120px;
+  /* height: 120px; */
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -151,25 +171,7 @@ body {
   margin-left: 10px;
 }
 
-.size {
-  width: 50%;
-  height: 45px;
-}
 
-.qty {
-  width: 40%;
-  height: 45px;
-}
-
-.cart {
-  width: 75%;
-  height: 45px;
-}
-
-.share {
-  width: 20%;
-  height: 45px;
-}
 
 .slogan {
   grid-area: f;
@@ -185,6 +187,7 @@ body {
   object-fit: cover;
   cursor: pointer;
   z-index: -1;
+  /* border: solid  1px; */
 }
 
 input[type="radio"]:checked+label {
@@ -196,6 +199,9 @@ input[type="radio"]:checked+label {
 .salePrice {
   color: red;
 }
+
+
+
 
 
 
@@ -312,6 +318,7 @@ input[type="radio"]:checked+label {
   top: 900px;
   transform: translate(-50%, -50%) scale(1);
 }
+
 
 
 /*
