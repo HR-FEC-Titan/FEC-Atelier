@@ -307,6 +307,23 @@ input[type="radio"]:checked+label {
   Related Products widget
   ========================================
 */
+.popup {
+  position: absolute;
+  background-color: white;
+  height: 400px;
+  width: 600px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  visibility: hidden;
+  transition: transform 0.5s, top 0.5s;
+}
+
+.open-popup {
+  visibility: visible;
+  top: 900px;
+  transform: translate(-50%, -50%) scale(1);
+}
 
 
 
