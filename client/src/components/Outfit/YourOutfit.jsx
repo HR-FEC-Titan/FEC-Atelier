@@ -89,7 +89,7 @@ var YourOutfit = ({ id }) => {
 
         <YourOutfitCarousel show={4} currentOutfitIndex={currentOutfitIndex} outfitListLength={outfitListLength} setCurrentOutfitIndex={setCurrentOutfitIndex} setOutfitListLength={setOutfitListLength} >
 
-            <div key={ 'outfit-0' } style={{ height: '100%' }}>
+            <div key={ 'outfit-0' } style={{ height: '100%' }} >
               <Card style={{ width: "225px", height: "420px" }} >
                 {/* <i className="bi bi-star-fill" style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {console.log('this was clicked - supposed to delete')}} /> */}
 
