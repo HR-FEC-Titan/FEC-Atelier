@@ -43,30 +43,24 @@
   width: calc(100% / 4);
 }
 
-.image-left-arrow,
-.expanded-image-left-arrow,
-.image-right-arrow {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 34px;
-  height: 34px;
-  border-radius: 24px;
-  background-color: white;
-  border: 1px solid #ddd;
+.carousel-control-prev {
+  left: -3%;
+  cursor: pointer;
 }
 
-.image-left-arrow {
-  left: 15%;
+.carousel-control-next {
+  right: -3%;
+  cursor: pointer;
 }
 
-.expanded-image-left-arrow {
-  left: 2%;
+.defaultImage-left-arrow {
+  left: 10%;
 }
 
-.image-right-arrow {
-  right: 2%;
+
+.carousel-control-prev-icon .carousel-control-next-icon{
+  width: 30px;
+  height: 30px;
 }
 
 .carousel-indicators {
@@ -75,7 +69,7 @@
 
 }
 
-.carousel-indicators li{
+.carousel-indicators li {
   border-radius: 50%;
   width: 15px;
   height: 15px;
@@ -147,17 +141,6 @@
   flex-grow: 1;
 }
 
-.t-carousel-content.show-2>* {
-  width: 50%;
-}
-
-.t-carousel-content.show-3>* {
-  width: calc(100% / 3);
-}
-
-.t-carousel-content.show-7>* {
-  height: calc(100% / 6);
-}
 
 .t-image-up-arrow,
 .t-image-down-arrow {
@@ -165,8 +148,8 @@
   z-index: 1;
   left: 50%;
   transform: translateX(-50%);
-  width: 48px;
-  height: 48px;
+  width: 34px;
+  height: 34px;
   border-radius: 24px;
   background-color: white;
   border: 1px solid #ddd;

@@ -42,11 +42,11 @@ const Expanded = () => {
     <>
       <div className="carousel-wrapper">
         {currentIndex > 0 &&
-          <button onClick={prev} className="expanded-image-left-arrow">
-            &lt;
-          </button>}
-        <div className={"carousel-content-wrapper"}>
+          <a class="carousel-control-prev" onClick={prev}>
+            <span class="carousel-control-prev-icon" ></span>
+          </a>}
 
+        <div className={"carousel-content-wrapper"}>
           <div
             className={"carousel-content"}
             style={{
@@ -55,25 +55,26 @@ const Expanded = () => {
 
 
             {/* CAROUSEL IMAGES HERE */}
-            {url.map((u, idx) => <ExpandedAndMore key={idx} url={u}/>)}
+            {url.map((u, idx) => <ExpandedAndMore key={idx} url={u} />)}
 
 
           </div>
         </div>
 
         {currentIndex < (length - 1) &&
-          <button onClick={next} className="image-right-arrow" >
-            &gt;
-          </button>}
+          <a class="carousel-control-next" onClick={next} >
+            <span class="carousel-control-next-icon"></span>
+            <span class="sr-only" >Next</span>
+          </a>}
 
       </div>
       <ol className="carousel-indicators">
-        { Array(length).fill(1).map((indicator, index) => {
+        {Array(length).fill(1).map((indicator, index) => {
           return <li
-                  className={ index === currentIndex ? "active" : ""}
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  />
+            className={index === currentIndex ? "active" : ""}
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+          />
         })}
       </ol>
       <button type="button" class="btn-close" onClick={() => changeView('default')}></button>
