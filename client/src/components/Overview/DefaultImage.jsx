@@ -1,15 +1,12 @@
 import React, { useEffect, useState, useContext, createContext } from 'react';
 import styled from 'styled-components';
-import { ViewContext } from './Overview.jsx';
 import { StyleContext } from './Overview.jsx';
 
 
 const DefaultImage = () => {
 
-  const {view, setView} = useContext(ViewContext);
-  const { currentIndex, setCurrentIndex, currentStyle } = useContext(StyleContext);
+  const { currentIndex, setCurrentIndex, currentStyle, changeView } = useContext(StyleContext);
 
-  // find URL and thumbnailURL for rendering
   const images = currentStyle.photos;
   const url = images.reduce((memo, image) => {
     memo.push(image.url)
@@ -62,7 +59,7 @@ const DefaultImage = () => {
                     src={u}
                     alt="placeholder"
                     key={idx}
-                    onClick={() => setView('expanded')}
+                    onClick={() => changeView('expanded')}
                   />
                 )
               })}
@@ -128,7 +125,8 @@ const DefaultImage = () => {
 export default DefaultImage;
 
 const Img = styled.img`
-  max-height: 500px;
+  /* width: 100%; */
+  height: 100%;
   object-fit: cover;
   align-self: center;
   cursor: zoom-in;

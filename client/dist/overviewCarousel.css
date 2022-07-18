@@ -69,11 +69,16 @@
   right: 2%;
 }
 
-.carousel-indicators li {
-  border-radius: 100%;
+.carousel-indicators {
+  position: relative;
+  bottom: 10%;
+
+}
+
+.carousel-indicators li{
+  border-radius: 50%;
   width: 15px;
   height: 15px;
-  border: 1px;
   opacity: 0.3;
 }
 
