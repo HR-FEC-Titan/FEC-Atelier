@@ -24,10 +24,10 @@ class Reviews extends React.Component {
 
   render() {
     return (
-      <>
-        <h3 style={{margin: "18px 8px"}}>RATINGS & REVIEWS</h3>
+      <div onClick={e => this.props.postClickingEvent(e, 'Ratings & Reviews')}>
+        <h4 style={{margin: "18px 8px"}}>RATINGS & REVIEWS</h4>
 
-        <div className='reviews'>
+        <div className='reviews' id="reviews">
 
           {/* right half */}
           <div className="reviewPanel">
@@ -46,7 +46,7 @@ class Reviews extends React.Component {
 
 
         </div>
-      </>
+      </div>
     )
   }
 }

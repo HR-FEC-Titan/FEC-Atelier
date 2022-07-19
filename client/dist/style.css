@@ -72,7 +72,7 @@ body {
 
 .overview {
   grid-row: 1;
-  position: relative;
+  /* position: relative; */
 }
 
 .relatedProducts {
@@ -90,7 +90,7 @@ body {
 */
 .defaultView {
   display: grid;
-  /* height: 80%; */
+  /* height: 500px; */
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 'a a b '
                         'a a c '
@@ -98,11 +98,11 @@ body {
                         'a a g'
                         'a a e'
                         'a a e'
-                        'f f f'
+                        'f f h'
 }
 
 .expandedView {
-  height: 80%;
+  height: 600px;
   margin: 18px 8px;
   position: relative;
 }
@@ -123,18 +123,20 @@ body {
 }
 
 .imageGallery {
-  height: 80vh;
+  height: 500px;
   grid-area: a;
   align-self: center;
   position: relative;
-  margin: 18px 8px;
+  margin: 5px 8px;
 }
 
 .starAndReview {
   grid-area: b;
-  margin-top: 20px;
+  margin-top: 5px;
   margin-bottom: 10px;
   margin-left: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .titleAndCategory {
@@ -174,14 +176,23 @@ body {
   margin-left: 10px;
 }
 
-.addToCartMsg {
-  position: absolute;
-  right: 15%;
-  bottom: 20%;
-}
 .slogan {
   grid-area: f;
-  margin: 30px 0;
+  margin: 30px 0px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: smaller;
+  border-right: 2px solid grey;
+  text-align: center;
+}
+
+.features {
+  grid-area: h;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin: 30px 8px;
+  padding-left: 20px;
   font-size: smaller;
 }
 

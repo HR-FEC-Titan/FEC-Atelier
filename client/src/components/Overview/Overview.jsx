@@ -11,7 +11,7 @@ import styleData from './data.json';
 
 export const StyleContext = createContext();
 
-var Overview = ({ id }) => {
+var Overview = ({ id, postClickingEvent }) => {
 
   const [view, setView] = useState('default');
   const [styles, setStyles] = useState(styleData.results); // Style Index
@@ -63,13 +63,14 @@ var Overview = ({ id }) => {
 
 
   if (view === 'default') {
-    return (<div className='defaultView'>
+    return (
+    <div className='defaultView' onClick={e => postClickingEvent(e, 'Product Overview')}>
       <StyleContext.Provider
         value={{
           id,
           styles, setStyles,
           styleIndex, setStyleIndex,
-          currentStyle, setCurrentStyle,
+          // currentStyle, setCurrentStyle,
           currentIndex, setCurrentIndex,
           changeView
         }} >
@@ -88,12 +89,12 @@ var Overview = ({ id }) => {
 
   else if (view === 'expanded') {
     return (
-      <div className='expandedView'>
+      <div className='expandedView' onClick={e => postClickingEvent(e, 'Product Overview')} >
         <StyleContext.Provider
           value={{
             styles, setStyles,
             styleIndex, setStyleIndex,
-            currentStyle, setCurrentStyle,
+            // currentStyle, setCurrentStyle,
             currentIndex, setCurrentIndex,
             changeView
           }} >
@@ -106,7 +107,7 @@ var Overview = ({ id }) => {
 
   else if (view === 'zoomedIn') {
     return (
-      <div className="zoomedIn">
+      <div className="zoomedIn" onClick={e => postClickingEvent(e, 'Product Overview')} >
         {/* <img
           src={currentStyle.photos[currentIndex].url}
           onClick={() => changeView('expanded')}

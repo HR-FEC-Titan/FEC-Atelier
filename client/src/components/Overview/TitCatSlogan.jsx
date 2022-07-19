@@ -25,8 +25,16 @@ const TitCatSlogan = () => {
       </div>
 
       <div className="slogan">
-        <div>{product.slogan}</div>
+        <b>{product.slogan}</b>
         <div>{product.description}</div>
+      </div>
+
+      <div className="features">
+        {product.features && product.features.map((feature, idx) => {
+          if (feature.value) {
+            return <div key={feature.feature}> &#x2713; {feature.value}</div>
+          }
+        })}
       </div>
 
 
