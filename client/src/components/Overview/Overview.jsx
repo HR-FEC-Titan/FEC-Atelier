@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useState, useEffect, useContext, createContext, Suspense, } from 'react';
 import axios from 'axios';
 
@@ -51,12 +52,14 @@ var Overview = ({ id }) => {
     }
   });
 
-
-
   const changeView = (name) => {
     console.log("Changing view to: " + name);
     setView(name);
   };
+
+
+  // ZOOMED IN VIEW
+  // const sourceRef = useRef
 
 
   if (view === 'default') {
@@ -104,13 +107,24 @@ var Overview = ({ id }) => {
   else if (view === 'zoomedIn') {
     return (
       <div className="zoomedIn">
-        <img
+        {/* <img
           src={currentStyle.photos[currentIndex].url}
           onClick={() => changeView('expanded')}
+        /> */}
+        <ZoomedIn src={currentStyle.photos[currentIndex].url}
+          onClick={() => changeView('expanded')}
         />
+
       </div>
     )
   }
 }
 
 export default Overview;
+
+const ZoomedIn = styled.img`
+  object-fit: cover;
+  transform: scale(2.5);
+  z-index: 1000;
+  cursor: zoom-out;
+`

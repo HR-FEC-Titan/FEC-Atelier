@@ -16,7 +16,7 @@ const App = (props) => {
 
   return <>
     <Search setId={setId} />
-    {/* <Overview id={id} /> */}
+    <Overview id={id} />
     {/* <RelatedProducts id={id} setId={setId} /> */}
     {/* <YourOutfit id={id} /> */}
     <Reviews id={id} />

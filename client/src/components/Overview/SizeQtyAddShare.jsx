@@ -65,6 +65,7 @@ const SizeQtyAddShare = () => {
 
           {/* SIZE dropdown: if no option, show OOS; else show dropdown ******************************* */}
           <Select
+            id="size"
             style={{ width: "55%" }}
             onChange={(e) => {
               if (e.target.value >= 0) {
@@ -99,6 +100,7 @@ const SizeQtyAddShare = () => {
           {/* ADD TO CART  onClick={handleClick}   ******************************** */}
           <Popup trigger={<Button  style={{ width: "75%" }}> ADD TO CART </Button>
           } position={"bottom left"}>
+
             {showMsg1 && msg1}
             {showMsg2 && msg2}
           </Popup>

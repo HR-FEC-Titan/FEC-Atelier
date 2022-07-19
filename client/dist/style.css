@@ -425,15 +425,11 @@ input[type="radio"]:checked+label {
 }
 
 .formComponent {
-  padding: 10px 0px;
+  padding: 5px 0px;
+  font-size: medium;
+  font-weight: 500;
 }
 
-.formComponent textarea {
-  width: 60%;
-  vertical-align: top;
-  border-radius: 5px;
-}
-
-.rec {
-  display: flex;
+.inputBox {
+ width: 100%;
 }
