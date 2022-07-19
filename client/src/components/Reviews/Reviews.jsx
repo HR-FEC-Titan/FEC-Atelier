@@ -25,14 +25,6 @@ class Reviews extends React.Component {
 
   render() {
     return (
-      // <div className='reviews'>
-      //   <h3>RATINGS & REVIEWS</h3>
-      //   <Sort id = {this.props.id}/>
-        // <Rating id = {this.props.id}/>
-
-      // </div>
-
-      // )
       <>
         <h3 style={{margin: "18px 8px"}}>RATINGS & REVIEWS</h3>
 
@@ -45,9 +37,6 @@ class Reviews extends React.Component {
 
           {/* left half */}
           <div className="ratingBreakDown">
-            {/* <div>stars: </div>
-            <div> % of reviews recommend this product </div>
-            <div>Bars: </div> */}
             <Rating id = {this.props.id}/>
 
             <div> Size: too small or too large </div>

@@ -54,7 +54,17 @@ class Rating extends React.Component {
   render() {
     return (
       <div>
-    <div>{this.state.avg}</div>
+    <div>{this.state.avg}
+            <input
+            className="rating"
+            max="5" readOnly step="0.25"
+            style={{
+              "--fill": "gold",
+              "--value": this.state.avg,
+              "--starsize": "1rem",
+              "display": "inline-block",
+            }}
+            type="range" /></div>
     <div>Total Reviews: {this.total()}</div>
     <div>{this.state.recs}% of reviews recommend this product</div>
     <div>5 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.five/this.total() * 100} /> {this.state.five}</div>
