@@ -72,6 +72,7 @@ body {
 
 .overview {
   grid-row: 1;
+  position: relative;
 }
 
 .relatedProducts {
@@ -89,7 +90,7 @@ body {
 */
 .defaultView {
   display: grid;
-  /* height: 800px; */
+  /* height: 80%; */
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 'a a b '
                         'a a c '
@@ -101,16 +102,18 @@ body {
 }
 
 .expandedView {
-  height: 80vh;
+  height: 80%;
   margin: 18px 8px;
   position: relative;
 }
 
 .btn-close {
   position: absolute;
-  top: 3%;
-  right: 3%;
-  opacity: 0.8;
+  top: 2%;
+  right: 2%;
+  border: 4px solid white;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/7/72/VisualEditor_-_Icon_-_Close_-_white.svg);
+  z-index: 100;
 }
 
 .zoomedIn {
@@ -163,7 +166,7 @@ body {
 .sizeQtyAddShare {
   grid-area: e;
   display: flex;
-  /* height: 120px; */
+  height: 120px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -171,8 +174,11 @@ body {
   margin-left: 10px;
 }
 
-
-
+.addToCartMsg {
+  position: absolute;
+  right: 15%;
+  bottom: 20%;
+}
 .slogan {
   grid-area: f;
   margin: 30px 0;
@@ -326,3 +332,108 @@ input[type="radio"]:checked+label {
   Reviews widget
   ========================================
 */
+
+.reviews {
+  margin: 18px 8px;
+  display: grid;
+  /* height: 80%; */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 'a b b '
+}
+
+.ratingBreakDown {
+  grid-area: a;
+}
+
+.reviewPanel {
+  grid-area: b;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+.sortedBy {
+  padding: 10px 10px;
+}
+.sortedByDropdown {
+  border: none;
+  text-decoration: underline;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+}
+
+.individualReview {
+  border: 1px solid black;
+  padding: 10px 10px;
+}
+
+.starReviewerDate{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.summary {
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.reviewBody {
+  font-size: 15px;
+  margin: 15px 0;
+}
+
+.showMore {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  color: #007bff;
+  cursor: pointer;
+  margin: 15px 0;
+}
+
+
+.recResHelpful {
+  font-size: 13px;
+  padding: 2px 0;
+}
+
+.others {
+  padding: 3px 0;
+}
+
+.moreReviewAndAdd {
+  width: 65%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.moreReview, .addReview {
+  background: white;
+  border: 1px solid black;
+  padding: 15px 15px;
+}
+
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.formComponent {
+  padding: 10px 0px;
+}
+
+.formComponent textarea {
+  width: 60%;
+  vertical-align: top;
+  border-radius: 5px;
+}
+
+.rec {
+  display: flex;
+}

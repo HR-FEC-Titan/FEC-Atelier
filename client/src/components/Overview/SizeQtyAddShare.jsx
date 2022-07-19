@@ -15,17 +15,32 @@ const SizeQtyAddShare = () => {
   const [option, setOption] = useState({});
   const [size, setSize] = useState();
   const [qty, setQty] = useState();
+  const [showMsg1, setShowMsg1] = useState(true);
+  const [showMsg2, setShowMsg2] = useState(false);
+
+  const msg1 = [
+    <div class="alert alert-warning alert-dismissible fade show">
+      <strong>Please select a size first!</strong>
+    </div>
+  ];
+
+  const msg2 = [
+    <div class="alert alert-success alert-dismissible fade show" style={{width: "100%"}}>
+      <strong>Added to Cart!</strong>
+    </div>
+  ]
 
   useEffect(() => {
     setSize(option.size);
-    setQty(option.quantity);
   }, [option])
 
-  const handleClick = () => {
-    // if no size available, hidden button
-    // if did not choose size, open the size dropdown, and msg: Please select size
-    // Add product to user cart
-  }
+  useEffect(() => {
+    if (size) {
+      setQty(1)
+      setShowMsg1(false);
+      setShowMsg2(true);
+    }
+  }, [size])
 
   if (options.length === 1 && options[0].size === null) {
     return (
@@ -70,7 +85,10 @@ const SizeQtyAddShare = () => {
             (<Select style={{ width: "35%" }} disabled={true}><option> - QTY</option>
             </Select>)
             :
-            (<Select style={{ width: "35%" }}>
+            (<Select
+              style={{ width: "35%" }}
+              onChange={(e) => setQty(e.target.value)}
+            >
               {Array(Math.min(qty, 15)).fill(1).map((e, index) => {
                 return <option key={index}>{index + 1}</option>
               })}
@@ -78,10 +96,12 @@ const SizeQtyAddShare = () => {
           }
 
 
-          {/* ADD TO CART     ******************************** */}
-          <Button onClick={handleClick} style={{ width: "75%" }}> ADD TO CART </Button>
-
-
+          {/* ADD TO CART  onClick={handleClick}   ******************************** */}
+          <Popup trigger={<Button  style={{ width: "75%" }}> ADD TO CART </Button>
+          } position={"bottom left"}>
+            {showMsg1 && msg1}
+            {showMsg2 && msg2}
+          </Popup>
 
           {/* SHARE  ****************************************** */}
           <Popup trigger={<Button style={{ width: "15%", opacity: "0.7" }}> <FontAwesomeIcon icon={faShare} /> </Button>} position="right top">
@@ -92,6 +112,7 @@ const SizeQtyAddShare = () => {
             <a href="http://www.pinterest.com"> <FontAwesomeIcon icon={faPinterest} />
             </a>
           </Popup>
+
         </div>
       </React.Fragment>
     )

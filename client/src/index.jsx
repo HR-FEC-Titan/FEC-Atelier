@@ -16,14 +16,14 @@ const App = (props) => {
 
   return <>
     <Search setId={setId} />
-    <Overview id={id} />
-    <RelatedProducts id={id} setId={setId} />
-    <YourOutfit id={id} />
-    <Reviews id={props.id} />
+    {/* <Overview id={id} /> */}
+    {/* <RelatedProducts id={id} setId={setId} /> */}
+    {/* <YourOutfit id={id} /> */}
+    <Reviews id={id} />
   </>
 
 }
 
-root.render(<App id={66645} />);
+root.render(<App id={66643} />);
 
 export default App;

@@ -23,7 +23,7 @@ export default class Modal extends React.Component {
     }
   return (
     <div>
-    <div>{this.props.children}</div>;
+    <div>{this.props.children}</div>
     <div>
           <button
             onClick={e => {
