@@ -15,12 +15,22 @@ class Rating extends React.Component {
       two: [],
       one:[],
       recs: [],
-      avg: []
+      avg: [],
+      filter: [],
     }
   }
 
   total = () =>{
     return this.state.five + this.state.four + this.state.three + this.state.two + this.state.one;
+  }
+
+  handleClick = (e) => {
+    if(e.target.id === "five"){
+      this.setState({
+        filter: e.target.id
+      })
+    }
+
   }
 
 
@@ -67,7 +77,7 @@ class Rating extends React.Component {
             type="range" /></div>
     <div>Total Reviews: {this.total()}</div>
     <div>{this.state.recs}% of reviews recommend this product</div>
-    <div>5 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.five/this.total() * 100} /> {this.state.five}</div>
+    <div id="five" onClick={this.handleClick} >5 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.five/this.total() * 100} /> {this.state.five}</div>
     <div>4 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.four/this.total() * 100} /> {this.state.four}</div>
     <div>3 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.three/this.total() * 100} /> {this.state.three}</div>
     <div>2 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.two/this.total() * 100} /> {this.state.two}</div>

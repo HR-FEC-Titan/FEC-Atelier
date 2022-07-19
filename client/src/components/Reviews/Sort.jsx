@@ -12,7 +12,8 @@ class Sort extends React.Component {
       three: [],
       two: [],
       one: [],
-      value: "relevant"
+      value: "relevant",
+      meta: [],
     }
   }
 
