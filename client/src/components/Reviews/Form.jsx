@@ -76,12 +76,14 @@ class Form extends React.Component {
       <section >
 
         <header >
-          <h2>✏️ New Review</h2>
+          <h4 style={{ "margin-top": "18px", "text-align": "center" }}>✏️ New Review</h4>
         </header>
 
         <form className="reviewForm">
-          <div className="formComponent"> Rating: &nbsp;
+          <div className="formComponent">
+            <div>Rating:</div>
             <input
+              className="inputBox"
               type="number"
               name="rating"
               placeholder="1-5"
@@ -92,9 +94,9 @@ class Form extends React.Component {
             />
           </div>
 
-          <div className="formComponent rec">
-            Do you Recommemend this product? &nbsp;
-
+          <div className="formComponent">
+            <div>Do you Recommemend this product?</div>
+            <span>
               <input
                 type="radio"
                 name="recommend" // changed to same name
@@ -109,12 +111,14 @@ class Form extends React.Component {
                 onChange={() => { this.setState({ recommend: false }) }} //directly updating state here
               />
               <label htmlFor="nrecommend">No</label>
-
+            </span>
           </div>
 
 
-          <div className="formComponent"> Characteristics Rating: &nbsp;
+          <div className="formComponent">
+            <div>Characteristics Rating:</div>
             <input
+              className="inputBox"
               type="text"
               name="char"
               placeholder="This is the char rating"
@@ -125,8 +129,10 @@ class Form extends React.Component {
             />
           </div>
 
-          <div className="formComponent"> Summary: &nbsp;
+          <div className="formComponent">
+            <div>Summary:</div>
             <input
+              className="inputBox"
               type="text"
               name="summary"
               placeholder="Example: Best Purchase ever!"
@@ -138,8 +144,9 @@ class Form extends React.Component {
           </div>
 
           <div className="formComponent">
-            Body: &nbsp;
+            <div> Body: </div>
             <textarea
+              className="inputBox"
               cols="48"
               rows="3"
               name="body"
@@ -151,8 +158,10 @@ class Form extends React.Component {
             ></textarea>
           </div>
 
-          <div className="formComponent"> Photos: &nbsp;
+          <div className="formComponent">
+            <div> Photos: </div>
             <input
+              className="inputBox"
               type="text"
               name="photos"
               placeholder="This is where you put your photos"
@@ -162,8 +171,10 @@ class Form extends React.Component {
             />
           </div>
 
-          <div className="formComponent"> Nickname: &nbsp;
+          <div className="formComponent">
+            <div> Nickname: </div>
             <input
+              className="inputBox"
               type="text"
               name="nickname"
               placeholder="Example: jackson11!"
@@ -175,8 +186,10 @@ class Form extends React.Component {
             <div><i><small>(For privacy reasons, do not use your full name or email address.)</small></i></div>
           </div>
 
-          <div className="formComponent">Email: &nbsp;
+          <div className="formComponent">
+            <div> Email: </div>
             <input
+              className="inputBox"
               type="text"
               name="email"
               placeholder="Example: jackson11@email.com"

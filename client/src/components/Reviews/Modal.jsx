@@ -18,31 +18,40 @@ export default class Modal extends React.Component {
   };
 
   render() {
-    if(!this.props.show){
-        return null;
+    if (!this.props.show) {
+      return null;
     }
-  return (
-    <div>
-    <div>{this.props.children}</div>
-    <div>
-          <button
+    return (
+      <div>
+        <div>{this.props.children}</div>
+        <div>
+          {/* <button
             onClick={e => {
               this.onClose(e);
             }}
           >
             Close
+          </button> */}
+
+          <button
+            onClick={e => { this.onClose(e) }}
+            type="submit"
+            class="btn btn-dark"
+            style={{width: "100%"}}
+          >
+            Close
           </button>
         </div>
-    </div>
-  //   <div class="modal" id="modal">
-  //   <h2>Modal Window</h2>
-  //   <div class="content">{this.props.children}</div>
-  //   <div class="actions">
-  //     <button class="toggle-button" onClick={this.onClose}>
-  //       close
-  //     </button>
-  //   </div>
-  // </div>
-   )
+      </div>
+      //   <div class="modal" id="modal">
+      //   <h2>Modal Window</h2>
+      //   <div class="content">{this.props.children}</div>
+      //   <div class="actions">
+      //     <button class="toggle-button" onClick={this.onClose}>
+      //       close
+      //     </button>
+      //   </div>
+      // </div>
+    )
   }
 }
