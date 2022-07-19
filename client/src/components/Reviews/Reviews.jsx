@@ -44,7 +44,7 @@ class Reviews extends React.Component {
 
           {/* left half */}
           <div className="ratingBreakDown">
-            <Rating update ={this.update}reviews = {this.state.reviews}id = {this.props.id}/>
+            <Rating update ={this.update}id = {this.props.id}/>
 
             <div> Size: too small or too large </div>
             <div> Comfort: poor or perfect </div>
