@@ -2,6 +2,7 @@ import React from 'react';
 import ReviewList from './ReviewList.jsx';
 import axios from 'axios'
 import Sort from './Sort.jsx'
+import Rating from './Rating.jsx'
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -27,7 +28,10 @@ class Reviews extends React.Component {
       <div className='reviews'>
         <h3>RATINGS & REVIEWS</h3>
         <Sort id = {this.props.id}/>
+        <Rating id = {this.props.id}/>
+
       </div>
+
       )
   }
 }
