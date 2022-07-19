@@ -17,6 +17,7 @@ class Rating extends React.Component {
       recs: [],
       avg: [],
       filter: [],
+
     }
   }
 
@@ -25,12 +26,17 @@ class Rating extends React.Component {
   }
 
   handleClick = (e) => {
-    if(e.target.id === "five"){
       this.setState({
         filter: e.target.id
       })
-    }
+  }
 
+  componentDidUpdate(pP, pS){
+    console.log("this is props", pP)
+    console.log("this is state", pS)
+    if(pS.filter !== this.state.filter){
+      this.props.update(this.state.filter)
+    }
   }
 
 
@@ -77,14 +83,14 @@ class Rating extends React.Component {
             type="range" /></div>
     <div>Total Reviews: {this.total()}</div>
     <div>{this.state.recs}% of reviews recommend this product</div>
-    <div id="five" onClick={this.handleClick} >5 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.five/this.total() * 100} /> {this.state.five}</div>
-    <div>4 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.four/this.total() * 100} /> {this.state.four}</div>
-    <div>3 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.three/this.total() * 100} /> {this.state.three}</div>
-    <div>2 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.two/this.total() * 100} /> {this.state.two}</div>
-    <div>1 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.one/this.total() * 100} /> {this.state.one}</div>
+    <div id="5" onClick={this.handleClick} >5 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.five/this.total() * 100} /> {this.state.five}</div>
+    <div id="4" onClick={this.handleClick} >4 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.four/this.total() * 100} /> {this.state.four}</div>
+    <div id="3" onClick={this.handleClick} >3 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.three/this.total() * 100} /> {this.state.three}</div>
+    <div id="2" onClick={this.handleClick} >2 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.two/this.total() * 100} /> {this.state.two}</div>
+    <div id="1" onClick={this.handleClick} >1 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.one/this.total() * 100} /> {this.state.one}</div>
     </div>
     )
-  }
+  } 
 }
 
 export default Rating;
