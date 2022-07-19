@@ -81,7 +81,7 @@ class Rating extends React.Component {
             type="range" /></div>
     <div>Total Reviews: {this.total()}</div>
     <div>Rating Breakdown:</div>
-    {this.state.filter.length ? <div>Current Filters: {this.state.filter} stars</div> : <></>}
+    {this.state.filter.length ? <div>Current Filters: {this.state.filter} stars <a href=""> Remove all Filters</a> </div> : <></>}
     <div id="5" onClick={this.handleClick} >5 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.five/this.total() * 100} /> {this.state.five}</div>
     <div id="4" onClick={this.handleClick} >4 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.four/this.total() * 100} /> {this.state.four}</div>
     <div id="3" onClick={this.handleClick} >3 stars <ProgressBar bgcolor={"#00695c"} completed={this.state.three/this.total() * 100} /> {this.state.three}</div>
