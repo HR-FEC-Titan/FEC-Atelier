@@ -6,13 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faPinterest } from '@fortawesome/free-brands-svg-icons';
 
-import { CurrentStyleContext } from './Style.jsx';
+import { StyleContext } from './Overview.jsx';
 
 const SizeQtyAddShare = () => {
 
-  const currentStyle = useContext(CurrentStyleContext);
-
-
+  const { currentStyle } = useContext(StyleContext);
   const options = Object.values(currentStyle.skus);
   const [option, setOption] = useState({});
   const [size, setSize] = useState();
@@ -29,15 +27,30 @@ const SizeQtyAddShare = () => {
     // Add product to user cart
   }
 
-  return (
-    <React.Fragment>
+  if (options.length === 1 && options[0].size === null) {
+    return (
       <div className="sizeQtyAddShare">
+        <Div className="size">OUT OF STOCK</Div>
+        <Popup trigger={<Button style={{ width: "25%", opacity: "0.7" }}> <FontAwesomeIcon icon={faShare} /> </Button>} position="right top">
+          <a href="http://www.facebook.com"> <FontAwesomeIcon icon={faFacebook} />
+          </a>
+          <a href="http://www.twitter.com"> <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a href="http://www.pinterest.com"> <FontAwesomeIcon icon={faPinterest} />
+          </a>
+        </Popup>
+      </div>
+    )
+  } else {
 
-        {/* SIZE dropdown: if no option, show OOS; else show dropdown ******************************* */}
-        {options.length === 1 && options[0].size === null ?
-          <div className="size">OUT OF STOCK</div> :
-          <select
-            className="size"
+
+    return (
+      <React.Fragment>
+        <div className="sizeQtyAddShare">
+
+          {/* SIZE dropdown: if no option, show OOS; else show dropdown ******************************* */}
+          <Select
+            style={{ width: "55%" }}
             onChange={(e) => {
               if (e.target.value >= 0) {
                 setOption(options[e.target.value]);
@@ -50,52 +63,63 @@ const SizeQtyAddShare = () => {
                 return <option key={index} value={index}>{s.size}</option>
               }
             })}
-          </select>
-        }
+          </Select>
+
+          {/* QTY dropdown    ******************************** */}
+          {!qty ?
+            (<Select style={{ width: "35%" }} disabled={true}><option> - QTY</option>
+            </Select>)
+            :
+            (<Select style={{ width: "35%" }}>
+              {Array(Math.min(qty, 15)).fill(1).map((e, index) => {
+                return <option key={index}>{index + 1}</option>
+              })}
+            </Select>)
+          }
 
 
-        {/* QTY dropdown    ******************************** */}
-        {!qty ?
-          (<select className="qty" disabled={true}><option>-</option>
-          </select>)
-          :
-          (<select className="qty">
-            {Array(Math.min(qty, 15)).fill(1).map((e, index) => {
-              return <option key={index}>{index + 1}</option>
-            })}
-          </select>)
-        }
-
-
-        {/* ADD TO CART     ******************************** */}
-        {options.length === 1 && options[0].size === null?
-        <div className="cart"></div>:
-        <StyledButton onClick={handleClick} className="cart"> ADD TO CART </StyledButton>}
+          {/* ADD TO CART     ******************************** */}
+          <Button onClick={handleClick} style={{ width: "75%" }}> ADD TO CART </Button>
 
 
 
-        {/* SHARE  ****************************************** */}
-        <Popup trigger={<StyledButton className="share"> <FontAwesomeIcon icon={faShare} /> </StyledButton>} position="right top">
-          <a href="http://www.facebook.com" className=""> <FontAwesomeIcon icon={faFacebook} />
-          </a>
-          <a href="http://www.twitter.com" className=""> <FontAwesomeIcon icon={faTwitter} />
-          </a>
-          <a href="http://www.pinterest.com" className=""> <FontAwesomeIcon icon={faPinterest} />
-          </a>
-        </Popup>
-      </div>
-
-
-
-    </React.Fragment>
-  )
+          {/* SHARE  ****************************************** */}
+          <Popup trigger={<Button style={{ width: "15%", opacity: "0.7" }}> <FontAwesomeIcon icon={faShare} /> </Button>} position="right top">
+            <a href="http://www.facebook.com"> <FontAwesomeIcon icon={faFacebook} />
+            </a>
+            <a href="http://www.twitter.com"> <FontAwesomeIcon icon={faTwitter} />
+            </a>
+            <a href="http://www.pinterest.com"> <FontAwesomeIcon icon={faPinterest} />
+            </a>
+          </Popup>
+        </div>
+      </React.Fragment>
+    )
+  }
 }
 
 
 export default SizeQtyAddShare;
 
 
-const StyledButton = styled.button`
+const Button = styled.button`
   border: solid black 1px;
   background: white;
+  font-size: 13px;
+  border-radius: 0.25rem;
+  height: 45px;
 `
+const Div = styled.div`
+  font-size: 15px;
+  width: 65%;
+`
+
+const Select = styled.select`
+  height: 45px;
+  border-radius: 0.25rem;
+  font-size: 13px;
+`
+
+
+
+

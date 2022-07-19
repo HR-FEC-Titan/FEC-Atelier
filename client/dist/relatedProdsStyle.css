@@ -4,6 +4,10 @@
   Related Products widget
   ========================================
 */
+.relatedProducts {
+  display: grid;
+}
+
 .carousel-container {
   width: 100%;
   height: 100%;
