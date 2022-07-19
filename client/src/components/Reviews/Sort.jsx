@@ -18,7 +18,6 @@ class Sort extends React.Component {
 
   componentDidMount() {
     axios.get(`reviews?page=1&count=5000&sort=${this.state.value}&product_id=${this.props.id}`)
-<<<<<<< HEAD
     .then(res => {
       let filter = res.data.results
       console.log(filter)
@@ -32,14 +31,6 @@ class Sort extends React.Component {
       this.setState({filter})
     })
     .catch(err => console.log(err))
-=======
-      .then(res => {
-        let filter = res.data.results
-        console.log(filter)
-        this.setState({ filter })
-      })
-      .catch(err => console.log(err))
->>>>>>> 99419c7573908a4d6941852018eca628b9fa53b4
   }
 
   handleChange = (event) => {
@@ -48,7 +39,6 @@ class Sort extends React.Component {
     })
   }
 
-<<<<<<< HEAD
   componentDidUpdate(pP, pS){
     if(pS.value !== this.state.value){
     axios.get(`reviews?page=1&count=5000&sort=${this.state.value}&product_id=${this.props.id}`)
@@ -61,23 +51,6 @@ class Sort extends React.Component {
    }
   }
   render(){
-=======
-  componentDidUpdate(pS, pP) {
-    if (pP.value !== this.state.value) {
-      axios.get(`reviews?page=1&count=5000&sort=${this.state.value}&product_id=${this.props.id}`)
-        .then(res => {
-          let filter = res.data.results
-          console.log(filter)
-          this.setState({ filter })
-        })
-        .catch(err => console.log(err))
-    }
-  }
-
-
-
-  render() {
->>>>>>> 99419c7573908a4d6941852018eca628b9fa53b4
     return (
       <>
         <div className="sortedBy">

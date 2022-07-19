@@ -70,36 +70,6 @@ class Form extends React.Component {
     )
   }
 
-<<<<<<< HEAD
-  render(){
-    return(
-      <section>
-
-      <header>
-        <h2>✏️ New Review</h2>
-      </header>
-
-      <form  >
-        <label>Rating:
-          <input
-            type="number"
-            name="rating"
-            placeholder="1-5"
-            required=''
-            autoComplete="off"
-            value= {this.state.rating}
-            onChange = {this.handleChange}
-          />
-        </label><br>
-        </br>
-
-        <label>Do you Recommemend this product?:
-          <input
-            type="radio"
-            name="recommend" // changed to same name
-            id="yrecommend"
-            onChange = {() => {this.setState({recommend: true})}} //directly updating state here
-=======
 
   render() {
     return (
@@ -201,7 +171,6 @@ class Form extends React.Component {
               autoComplete="off"
               value={this.state.nickname}
               onChange={this.handleChange}
->>>>>>> 99419c7573908a4d6941852018eca628b9fa53b4
             />
             <div><i><small>(For privacy reasons, do not use your full name or email address.)</small></i></div>
           </div>
