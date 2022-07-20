@@ -21,7 +21,7 @@ const App = (props) => {
       widget: widgetName,
       time: Date.now().toString()
     }
-
+    console.log(interaction);
     axios.post('/interactions', interaction)
       .then(() => console.log('interaction posted'))
       .catch(e => console.log('posting failure'))
