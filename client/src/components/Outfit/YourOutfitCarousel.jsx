@@ -8,14 +8,14 @@ const YourOutfitCarousel = (props) => {
   const [touchPosition, setTouchPosition] = useState(null);
 
   const next = () => {
-    if (props.currentIndex < (props.length - show)) {
-      props.setCurrentIndex(prevState => prevState + 1)
+    if (props.currentOutfitIndex < (props.outfitListLength - show)) {
+      props.setCurrentOutfitIndex(prevState => prevState + 1)
     }
   }
 
   const prev = () => {
-    if (props.currentIndex > 0) {
-      props.setCurrentIndex(prevState => prevState - 1)
+    if (props.currentOutfitIndex > 0) {
+      props.setCurrentOutfitIndex(prevState => prevState - 1)
     }
   }
 
@@ -49,18 +49,18 @@ const YourOutfitCarousel = (props) => {
     <div className="carousel-container">
       <div className="carousel-wrapper">
         {
-          props.currentIndex > (0) &&
+          props.currentOutfitIndex > (0) &&
           <button className="left-arrow" onClick={ prev } >
             &lt;
           </button>
         }
         <div className="carousel-content-wrapper" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} >
-          <div className={`carousel-content show-${show}`} style={{ transform: `translateX(-${props.currentIndex * (100 / show)}%)` }} >
+          <div className={`carousel-content show-${show}`} style={{ transform: `translateX(-${props.currentOutfitIndex * (100 / show)}%)` }} >
             { props.children }
           </div>
         </div>
         {
-          props.currentIndex < (props.length - show) &&
+          props.currentOutfitIndex < (props.outfitListLength - show) &&
           <button className="right-arrow" onClick={ next } >
               &gt;
           </button>

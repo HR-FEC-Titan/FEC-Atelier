@@ -6,7 +6,6 @@ import axios from 'axios';
 import Search from './components/Search.jsx';
 import Overview from './components/Overview/Overview.jsx';
 import RelatedProducts from './components/RelatedProducts/RelatedProducts.jsx';
-import YourOutfit from './components/Outfit/YourOutfit.jsx';
 import Reviews from './components/Reviews/Reviews.jsx';
 
 const root = createRoot(document.getElementById("root"));

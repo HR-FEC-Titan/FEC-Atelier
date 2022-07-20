@@ -6,10 +6,11 @@ import Card from 'react-bootstrap/Card';
 
 import RelatedProdsCarousel from './RelatedProdsCarousel.jsx';
 import ComparisonTable from './ComparisonTable.jsx';
+import YourOutfit from '../Outfit/YourOutfit.jsx';
 
 var RelatedProducts = ({ id, setId }) => {
   const [relatedProdsData, setRelatedProdsData] = useState({});
-  const [mainProdData, setMainProdData] = useState({})
+  const [mainProdData, setMainProdData] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [tableData, setTableData] = useState([]);
   const [length, setLength] = useState(Object.values(relatedProdsData).length);
@@ -58,7 +59,23 @@ var RelatedProducts = ({ id, setId }) => {
 
     axios.get('/products/' + id)
       .then(resMainData => {
-        setMainProdData(old => ({ ...old, ...resMainData.data }));
+        axios.get('/products/' + id + '/styles')
+          .then(resMainStyles => {
+            axios.get('/reviews/?product_id=' + id)
+              .then(resMainReview => {
+                var mainData = resMainData.data;
+                mainData['styles'] = resMainStyles.data.results;
+                mainData['reviews'] = resMainReview.data;
+
+                setMainProdData(old => ({ ...old, ...mainData }));
+              })
+              .catch(err => {
+                console.log(err);
+              })
+          })
+          .catch(err => {
+            console.log(err);
+          })
       })
       .catch(err => {
         console.log(err);
@@ -154,13 +171,14 @@ var RelatedProducts = ({ id, setId }) => {
       <div style={{ width: "970px", height: "420px" }} >
 
         <RelatedProdsCarousel show={4} currentIndex={currentIndex} length={length} setCurrentIndex={setCurrentIndex} setLength={setLength} >
+
           {Object.values(relatedProdsData).map((prodData) =>
             <div key={ 'relatedProd-' + prodData.id } style={{ height: '100%' }}>
               <Card style={{ width: "225px", height: "420px" }} >
 
                 <i className="bi bi-star-fill" id={ prodData.id } style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {openComparisonModal(event.target.id)}} />
 
-                <Card.Img id={ prodData.id } style={{ width: "225px", height: "210px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url } alt="..." onClick={() => {setId(event.target.id)}} />
+                <Card.Img id={ prodData.id } style={{ width: "225px", height: "210px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url ? prodData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" } alt="..." onClick={() => {setId(event.target.id)}} />
                 {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
 
                 <Card.Body style={{ width: "225px", height: "210px", "objectFit": "cover" }} >
@@ -189,6 +207,8 @@ var RelatedProducts = ({ id, setId }) => {
         <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >Comparing</h3>
       </Popup> */}
 
+      <br/>
+      <YourOutfit mainProdData={mainProdData} />
       <br/>
     </div>
   );
