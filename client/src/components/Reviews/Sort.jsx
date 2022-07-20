@@ -38,6 +38,21 @@ class Sort extends React.Component {
     .catch(err => console.log(err))
    }
   }
+
+  componentDidUpdate(pP, pS){
+    console.log("this is Pp", pP)
+    console.log("this is pS", pS)
+    if(pP.id !== this.props.id){
+    axios.get(`reviews?page=1&count=5000&sort=${this.state.value}&product_id=${this.props.id}`)
+    .then(res => {
+      let filter = res.data.results;
+      console.log(filter)
+      this.setState({filter})
+    })
+    .catch(err => console.log(err))
+   }
+  }
+  
   render(){
     if(this.props.number === '') {
     return (
