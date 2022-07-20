@@ -9,18 +9,23 @@ const DefaultImage = () => {
 
   const images = currentStyle.photos;
   const url = images.reduce((memo, image) => {
-    memo.push(image.url)
+    if (image.url) {
+      memo.push(image.url)
+    }
     return memo;
   }, [])
   const thumbnailUrl = images.reduce((memo, image) => {
-    memo.push(image.thumbnail_url)
+    if (image.thumbnail_url) {
+      memo.push(image.thumbnail_url)
+    }
     return memo;
   }, [])
 
 
   // use Length to track left and right arrow
-  const [length, setLength] = useState(url.length)
+  const [length, setLength] = useState(url.length);
 
+  // main carousel left and right arrow function
   useEffect(() => {
     setLength(url.length)
   }, [url])
@@ -37,63 +42,108 @@ const DefaultImage = () => {
     }
   }
 
+  // vertical carousel up and down arrow function ENABLE by changing the 'veriticalDisplay' value
+  const verticalDisplay = 7;
+  const [topIndex, setTopIndex] = useState(0);
+  const [bottomIndex, setBottomIndex] = useState(verticalDisplay - 1);
+
+  const up = () => {
+    if (topIndex > 0) {
+      setTopIndex(prevState => prevState - 1);
+      setBottomIndex(prevState => prevState - 1);
+    }
+  }
+
+  const down = () => {
+    if (bottomIndex < thumbnailUrl.length - 1) {
+      setTopIndex(prevState => prevState + 1);
+      setBottomIndex(prevState => prevState + 1);
+    }
+  }
+
+  useEffect(() => {
+    if (currentIndex < topIndex) {
+      setTopIndex(currentIndex);
+      setBottomIndex(currentIndex + verticalDisplay - 1)
+    } else if (currentIndex > bottomIndex) {
+      setTopIndex(currentIndex - verticalDisplay + 1);
+      setBottomIndex(currentIndex);
+    }
+  }, [currentIndex])
+
+  useEffect(() => {
+    if (currentIndex > bottomIndex) {
+      setCurrentIndex(bottomIndex);
+    }
+    if (currentIndex < topIndex) {
+      setCurrentIndex(topIndex);
+    }
+  }, [topIndex, bottomIndex])
+
   return (
     <div className="imageGallery" >
       {/* ==========================main Carousel images ==================*/}
-        <div className="carousel-wrapper">
-          {currentIndex > 0 &&
-            <button onClick={prev} className="image-left-arrow">
-              &lt;
-            </button>}
-          <div className={ "carousel-content-wrapper"}>
+      <div className="carousel-wrapper">
 
-            <div
-              className={"carousel-content"}
-              style={{
-                transform: `translateX(-${currentIndex * (100 / 1)}%)`
-              }}>
+        {/* ================  main prev buttons =================*/}
+        {currentIndex > 0 &&
+          <a class="carousel-control-prev defaultImage-left-arrow" onClick={prev}>
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+        }
 
-              {url.map((u, idx) => {
-                return (
-                  <Img
-                    src={u}
-                    alt="placeholder"
-                    key={idx}
-                    onClick={() => changeView('expanded')}
-                  />
-                )
-              })}
-            </div>
+        {/* ==========================main images ==================*/}
+        <div className={"carousel-content-wrapper"}>
+          <div
+            className={"carousel-content"}
+            style={{
+              transform: `translateX(-${currentIndex * (100 / 1)}%)`
+            }}>
+
+            {url.map((u, idx) => {
+              return (
+                <Img
+                  src={u}
+                  alt="placeholder"
+                  key={idx}
+                  onClick={() => changeView('expanded')}
+                />
+              )
+            })}
           </div>
-
-          {currentIndex < (length - 1) &&
-            <button onClick={next} className="image-right-arrow">
-              &gt;
-            </button>}
-
         </div>
 
+        {/* ================  main next buttons =================*/}
+        {currentIndex < (length - 1) &&
+          <a class="carousel-control-next" onClick={next} >
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        }
+
+      </div>
 
 
-      {/* ==========================thumbnail images ==================*/}
-        <div className="t-carousel-container">
-          <div className="t-carousel-wrapper">
-            {/* ================  hide buttons for now =================*/}
-            {/* {currentIndex > 0 &&
-            <button onClick={prev} className="t-image-up-arrow">
+
+      {/* ==========================thumbnail carousel ==================*/}
+      <div className="t-carousel-container">
+        <div className="t-carousel-wrapper">
+          {/* ================  thumbnail prev buttons =================*/}
+          {topIndex > 0 &&
+            <button onClick={up} className="t-image-up-arrow">
               &#8963;
-            </button>} */}
+            </button>}
 
+          {/* ================  thumbnail images =================*/}
+          <div className="t-carousel-content-wrapper">
+            <div
+              className={`t-carousel-content`}
+              style={{
+                transform: `t-translateY(-${currentIndex * (100 / 1)}%)`
+              }}
+            >
 
-            <div className="t-carousel-content-wrapper">
-              <div
-                className={`t-carousel-content show-${1}`}
-                style={{
-                  transform: `t-translateY(-${currentIndex * (100 / 1)}%)`
-                }}
-              >
-
-                {thumbnailUrl.map((thumbnail, idx) => {
+              {thumbnailUrl.map((thumbnail, idx) => {
+                if (idx <= bottomIndex && idx >= topIndex) {
                   return (
                     <StyledImage
                       src={thumbnail}
@@ -106,17 +156,18 @@ const DefaultImage = () => {
                       currentIndex={currentIndex}
                     />
                   )
-                })}
+                }
+              })}
 
-              </div>
             </div>
-
-            {/* ================  hide buttons for now =================*/}
-            {/* {currentIndex < (length - show) &&
-            <button onClick={next} className="t-image-down-arrow">
-              &#8964;
-            </button>} */}
           </div>
+
+          {/* ================  thumbnail next buttons =================*/}
+          {bottomIndex < (length - 1) &&
+            <button onClick={down} className="t-image-down-arrow">
+              &#8964;
+            </button>}
+        </div>
       </div>
     </div>
   )
@@ -125,8 +176,7 @@ const DefaultImage = () => {
 export default DefaultImage;
 
 const Img = styled.img`
-  /* width: 100%; */
-  height: 100%;
+  height: 97%;
   object-fit: cover;
   align-self: center;
   cursor: zoom-in;
@@ -134,6 +184,7 @@ const Img = styled.img`
 
 
 const StyledImage = styled.img`
+ z-index: 50;
  max-height: 16%;
  padding: 3px;
  object-fit: cover;

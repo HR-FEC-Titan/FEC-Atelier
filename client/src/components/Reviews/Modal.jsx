@@ -1,5 +1,5 @@
 import React from "react";
-// import './modal.css'
+
 //inside whatever component that you are using this:
 //1. make state called show, set to false
 //2. create toggle fucntion
@@ -23,7 +23,7 @@ export default class Modal extends React.Component {
     }
   return (
     <div>
-    <div>{this.props.children}</div>;
+    <div>{this.props.children}</div>
     <div>
           <button
             onClick={e => {

@@ -17,11 +17,11 @@ const App = (props) => {
     <Search setId={setId} />
     <Overview id={id} />
     <RelatedProducts id={id} setId={setId} />
-    <Reviews id={props.id} />
+    <Reviews setId={setId} id={id} />
   </>
 
 }
 
-root.render(<App id={66645} />);
+root.render(<App id={66643} />);
 
 export default App;
