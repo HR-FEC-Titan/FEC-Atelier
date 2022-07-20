@@ -18,7 +18,7 @@ app.get('/*', (req, res) => {
       res.send(response.data);
     })
     .catch(err => {
-      console.log('fetching error***********');
+      console.log('fetching error***********', err);
     })
 })
 
