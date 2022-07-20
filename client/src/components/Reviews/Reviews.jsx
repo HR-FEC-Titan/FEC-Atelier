@@ -2,6 +2,7 @@ import React from 'react';
 import ReviewList from './ReviewList.jsx';
 import axios from 'axios'
 import Sort from './Sort.jsx'
+import Rating from './Rating.jsx'
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -25,10 +26,10 @@ class Reviews extends React.Component {
   render() {
     return (
       <div onClick={e => this.props.postClickingEvent(e, 'Ratings & Reviews')}>
-        <h4 style={{margin: "18px 8px"}}>RATINGS & REVIEWS</h4>
+
+        <h4 style={{ margin: "18px 8px", "font-size": "15px" }}>RATINGS & REVIEWS</h4>
 
         <div className='reviews' id="reviews">
-
           {/* right half */}
           <div className="reviewPanel">
             <Sort id={this.props.id} />
@@ -36,12 +37,7 @@ class Reviews extends React.Component {
 
           {/* left half */}
           <div className="ratingBreakDown">
-            <div>stars: </div>
-            <div> % of reviews recommend this product </div>
-            <div>Bars: </div>
-
-            <div> Size: too small or too large </div>
-            <div> Comfort: poor or perfect </div>
+            <Rating id={this.props.id} />
           </div>
 
 
