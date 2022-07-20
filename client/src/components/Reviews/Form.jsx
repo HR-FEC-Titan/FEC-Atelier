@@ -24,8 +24,6 @@ class Form extends React.Component {
 
   handleFormSubmission = (rating, recommend, char, summary, body, photos, nickname, email) => {
     if (rating === '' || recommend === '' || body.length === '' || nickname === '' || email === '') return
-    // let ingredientsArray = ingredients.split(",")
-    // let stepsArray = steps.split(".")
     let newReview = {
       product_id: this.props.id,
       rating: Number(rating),

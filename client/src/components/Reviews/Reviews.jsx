@@ -8,7 +8,7 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      reviews: [],
+      reviews: '',
     }
   }
 
@@ -22,17 +22,16 @@ class Reviews extends React.Component {
   //     .catch(err => console.log(err))
   // }
 
+  update=(e)=>{
+    console.log(e)
+    this.setState({
+      reviews: e
+    })
+  }
+
 
   render() {
     return (
-      // <div className='reviews'>
-      //   <h3>RATINGS & REVIEWS</h3>
-      //   <Sort id = {this.props.id}/>
-        // <Rating id = {this.props.id}/>
-
-      // </div>
-
-      // )
       <>
         <h3 style={{margin: "18px 8px"}}>RATINGS & REVIEWS</h3>
 
@@ -40,15 +39,12 @@ class Reviews extends React.Component {
 
           {/* right half */}
           <div className="reviewPanel">
-            <Sort id={this.props.id} />
+            <Sort number = {this.state.reviews}id={this.props.id} />
           </div>
 
           {/* left half */}
           <div className="ratingBreakDown">
-            {/* <div>stars: </div>
-            <div> % of reviews recommend this product </div>
-            <div>Bars: </div> */}
-            <Rating id = {this.props.id}/>
+            <Rating update ={this.update}id = {this.props.id}/>
 
             <div> Size: too small or too large </div>
             <div> Comfort: poor or perfect </div>

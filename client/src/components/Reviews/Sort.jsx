@@ -7,12 +7,7 @@ class Sort extends React.Component {
     super(props)
     this.state = {
       filter: [],
-      five: [],
-      four: [],
-      three: [],
-      two: [],
-      one: [],
-      value: "relevant"
+      value: "relevant",
     }
   }
 
@@ -21,13 +16,6 @@ class Sort extends React.Component {
     .then(res => {
       let filter = res.data.results
       console.log(filter)
-      filter.forEach(review => {
-        if(review.rating === 1) this.state.one.push(review)
-        if(review.rating === 2) this.state.two.push(review)
-        if(review.rating === 3) this.state.three.push(review)
-        if(review.rating === 4) this.state.four.push(review)
-        if(review.rating === 5) this.state.five.push(review)
-      })
       this.setState({filter})
     })
     .catch(err => console.log(err))
@@ -51,6 +39,7 @@ class Sort extends React.Component {
    }
   }
   render(){
+    if(this.props.number === '') {
     return (
       <>
         <div className="sortedBy">
@@ -67,6 +56,24 @@ class Sort extends React.Component {
         </div>
       </>
     )
+    } else {
+      return (
+        <>
+          <div className="sortedBy">
+            <label htmlFor="filter">{this.state.filter.length} reviews, sorted by  </label>
+            <select name="filter" id="filter" onChange={this.handleChange} value={this.state.value} className="sortedByDropdown">
+              <option value="relevant">Relevance</option>
+              <option value="helpful">Helpfulness</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+
+          <div className="reviewList">
+            <ReviewList id={this.props.id} reviews={this.state.filter.filter(review =>{return review.rating === Number(this.props.number)})} />
+          </div>
+        </>
+      )
+    }
   }
 }
 

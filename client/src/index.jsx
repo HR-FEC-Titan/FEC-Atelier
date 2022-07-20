@@ -19,7 +19,7 @@ const App = (props) => {
     <Overview id={id} />
     <RelatedProducts id={id} setId={setId} />
     <YourOutfit id={id} />
-    <Reviews id={id} />
+    <Reviews setId={setId} id={id} />
   </>
 
 }
