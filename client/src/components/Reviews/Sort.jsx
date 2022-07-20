@@ -50,7 +50,7 @@ class Sort extends React.Component {
 
 
   render(){
-    if(this.props.number === '') {
+    if(!this.props.number.length) {
     return (
       <>
         <div className="sortedBy">
@@ -80,7 +80,8 @@ class Sort extends React.Component {
           </div>
 
           <div className="reviewList">
-            <ReviewList id={this.props.id} reviews={this.state.filter.filter(review =>{return review.rating === Number(this.props.number)})} />
+            <ReviewList id={this.props.id} reviews={this.state.filter.filter(review =>{
+              return this.props.number.includes(review.rating.toString())})} />
           </div>
         </>
       )
