@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express"); // npm installed
 const axios = require('axios');
 const morgan = require('morgan');
-const { getProductInfo, postProductInfo } = require('./helper');
+const { getProductInfo, postProductInfo, postInteraction } = require('./helper');
 
 const app = express();
 
@@ -31,6 +31,17 @@ app.post('/reviews', (req, res) => {
     })
     .catch(err => {
       console.log('Posting error***********');
+    })
+})
+
+app.post('/interactions', (req, res) => {
+  const data = req.body;
+  postInteraction(data)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.log('Can not post interaction');
     })
 })
 

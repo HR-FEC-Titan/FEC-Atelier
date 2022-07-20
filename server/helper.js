@@ -29,8 +29,22 @@ const postProductInfo = (data) => {
   return axios(config);
 }
 
+const postInteraction = (data) => {
+  var config = {
+    method: 'post',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/interactions`,
+    data: data,
+    headers: {
+      'Authorization': process.env.API_KEY
+    }
+  };
+
+  return axios(config);
+}
+
 
 module.exports = {
   getProductInfo,
-  postProductInfo
+  postProductInfo,
+  postInteraction
 }

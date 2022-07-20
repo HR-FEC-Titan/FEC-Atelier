@@ -6,9 +6,19 @@ import { StyleContext } from './Overview.jsx';
 const ExpandedAndMore = ({ url }) => {
 
   const { changeView } = useContext(StyleContext);
-  const [offset, setOffset] = useState({ left: 0, top: 0 });
+  // const [offset, setOffset] = useState({ left: 0, top: 0 });
+  // const [zoomedIn, setZoomedIn] = useState(false);
 
-  return <Img src={url} onClick={() => changeView('zoomedIn')} />
+  return <>
+  <Img src={url} onClick={() => changeView('zoomedIn')} />
+  {/* <Img src={url} onClick={() => setZoomedIn(true)} /> */}
+
+  {/* { zoomedIn &&
+    <ZoomedIn src={url}
+      onClick={() => setZoomedIn(false)}
+    />
+  } */}
+  </>
 };
 
 export default ExpandedAndMore;
@@ -20,6 +30,8 @@ const Img = styled.img`
   align-self: center;
   cursor: cell;
 `;
+
+
 
 
 

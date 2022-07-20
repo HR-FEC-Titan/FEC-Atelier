@@ -5,9 +5,9 @@ import { StyleContext } from './Overview.jsx';
 
 const DefaultImage = () => {
 
-  const { currentIndex, setCurrentIndex, currentStyle, changeView } = useContext(StyleContext);
+  const { styles, styleIndex, currentIndex, setCurrentIndex, changeView } = useContext(StyleContext);
 
-  const images = currentStyle.photos;
+  const images = styles[styleIndex].photos;
   const url = images.reduce((memo, image) => {
     if (image.url) {
       memo.push(image.url)

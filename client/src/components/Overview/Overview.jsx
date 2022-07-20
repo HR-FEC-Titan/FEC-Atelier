@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useState, useEffect, useContext, createContext, Suspense, } from 'react';
 import axios from 'axios';
 
@@ -10,7 +11,7 @@ import styleData from './data.json';
 
 export const StyleContext = createContext();
 
-var Overview = ({ id }) => {
+var Overview = ({ id, postClickingEvent }) => {
 
   const [view, setView] = useState('default');
   const [styles, setStyles] = useState(styleData.results); // Style Index
@@ -51,22 +52,25 @@ var Overview = ({ id }) => {
     }
   });
 
-
-
   const changeView = (name) => {
     console.log("Changing view to: " + name);
     setView(name);
   };
 
 
+  // ZOOMED IN VIEW
+  // const sourceRef = useRef
+
+
   if (view === 'default') {
-    return (<div className='defaultView'>
+    return (
+    <div className='defaultView' onClick={e => postClickingEvent(e, 'Product Overview')}>
       <StyleContext.Provider
         value={{
           id,
           styles, setStyles,
           styleIndex, setStyleIndex,
-          currentStyle, setCurrentStyle,
+          // currentStyle, setCurrentStyle,
           currentIndex, setCurrentIndex,
           changeView
         }} >
@@ -85,12 +89,12 @@ var Overview = ({ id }) => {
 
   else if (view === 'expanded') {
     return (
-      <div className='expandedView'>
+      <div className='expandedView' onClick={e => postClickingEvent(e, 'Product Overview')} >
         <StyleContext.Provider
           value={{
             styles, setStyles,
             styleIndex, setStyleIndex,
-            currentStyle, setCurrentStyle,
+            // currentStyle, setCurrentStyle,
             currentIndex, setCurrentIndex,
             changeView
           }} >
@@ -103,14 +107,25 @@ var Overview = ({ id }) => {
 
   else if (view === 'zoomedIn') {
     return (
-      <div className="zoomedIn">
-        <img
+      <div className="zoomedIn" onClick={e => postClickingEvent(e, 'Product Overview')} >
+        {/* <img
           src={currentStyle.photos[currentIndex].url}
           onClick={() => changeView('expanded')}
+        /> */}
+        <ZoomedIn src={currentStyle.photos[currentIndex].url}
+          onClick={() => changeView('expanded')}
         />
+
       </div>
     )
   }
 }
 
 export default Overview;
+
+const ZoomedIn = styled.img`
+  object-fit: cover;
+  transform: scale(2.5);
+  z-index: 1000;
+  cursor: zoom-out;
+`

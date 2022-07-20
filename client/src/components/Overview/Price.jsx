@@ -4,7 +4,8 @@ import { StyleContext } from './Overview.jsx';
 
 
 const Price = () => {
-  const { currentStyle } = useContext(StyleContext);
+  const {styles, styleIndex } = useContext(StyleContext);
+  const currentStyle = styles[styleIndex];
 
   return <div className="priceAndStyle">
 

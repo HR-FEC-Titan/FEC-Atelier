@@ -4,9 +4,8 @@ import ExpandedAndMore from './ExpandedAndMore.jsx';
 import { StyleContext } from './Overview.jsx';
 
 const Expanded = () => {
-  // const { view, setView } = useContext(ViewContext);
-  const { currentStyle, currentIndex, setCurrentIndex, changeView } = useContext(StyleContext);
-  const images = currentStyle.photos;
+  const { styles, styleIndex, currentIndex, setCurrentIndex, changeView } = useContext(StyleContext);
+  const images = styles[styleIndex].photos;
 
   const url = images.reduce((memo, image) => {
     memo.push(image.url)

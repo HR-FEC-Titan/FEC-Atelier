@@ -20,7 +20,6 @@ let StarReview = () => {
 
 
 
-
   if (!arr.length) {
     return null;
   } else {
@@ -38,33 +37,24 @@ let StarReview = () => {
     // (Math.round(totalStars/reviewCount * 4)/ 4).toFixed(2)
 
     return (
-      <div className="starAndReview">
+      <>
+        <div className="starAndReview">
 
-        <small className="">Star: {(totalStars / reviewCount).toFixed(1)} &nbsp;</small>
+          {/* <small className="">{(totalStars / reviewCount).toFixed(1)} &nbsp;</small> */}
 
-        <input
-          className="rating"
-          max="5" readOnly step="0.25"
-          style={{
-            "--fill": "gold",
-            "--value": (totalStars / reviewCount).toFixed(1),
-            "--starsize": "1rem",
-            "display": "inline-block",
-          }}
-          type="range" />
-
-        {/* using fontawesome star icons */}
-        {/* {stars.map((e, index) => {
-          if (!e) {
-            return <FontAwesomeIcon key={index} icon={emptyStar} />
-          } else {
-            return <FontAwesomeIcon key={index} icon={faStar} />
-          }
-        })} */}
-
-        <a href="" className="readReview" style={{ "padding": "0 5px" }} ><small>Read all {reviewCount} reviews</small></a>
-
-      </div>
+          <input
+            className="rating"
+            max="5" readOnly step="0.25"
+            style={{
+              "--fill": "gold",
+              "--value": (totalStars / reviewCount).toFixed(1),
+              "--starsize": "1.2rem",
+              "display": "inline-block",
+            }}
+            type="range" />
+          <a href="#reviews" className="readReview" style={{ "padding": "0 5px" }} ><small>Read all {reviewCount} reviews</small></a>
+        </div>
+      </>
     )
   }
 }
