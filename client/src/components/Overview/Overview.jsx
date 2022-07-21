@@ -36,13 +36,7 @@ var Overview = ({ id, postClickingEvent }) => {
     setStyleIndex(defaultIndex)
   }, [styles]);
 
-
-  const [currentStyle, setCurrentStyle] = useState(styles[styleIndex]);
-  // CurrentStyle will change when styles or styleIndex change
-  useEffect(() => {
-    setCurrentStyle(styles[styleIndex])
-  }, [styles, styleIndex])
-
+  const currentStyle = styles[styleIndex];
 
   const [currentIndex, setCurrentIndex] = useState(0);  // Image Index
   // Switch to a new style, should verify if the new style has the nth images to display
@@ -57,11 +51,6 @@ var Overview = ({ id, postClickingEvent }) => {
     setView(name);
   };
 
-
-  // ZOOMED IN VIEW
-  // const sourceRef = useRef
-
-
   if (view === 'default') {
     return (
     <div className='defaultView' onClick={e => postClickingEvent(e, 'Product Overview')}>
@@ -70,7 +59,6 @@ var Overview = ({ id, postClickingEvent }) => {
           id,
           styles, setStyles,
           styleIndex, setStyleIndex,
-          // currentStyle, setCurrentStyle,
           currentIndex, setCurrentIndex,
           changeView
         }} >
@@ -94,7 +82,6 @@ var Overview = ({ id, postClickingEvent }) => {
           value={{
             styles, setStyles,
             styleIndex, setStyleIndex,
-            // currentStyle, setCurrentStyle,
             currentIndex, setCurrentIndex,
             changeView
           }} >
@@ -108,10 +95,6 @@ var Overview = ({ id, postClickingEvent }) => {
   else if (view === 'zoomedIn') {
     return (
       <div className="zoomedIn" onClick={e => postClickingEvent(e, 'Product Overview')} >
-        {/* <img
-          src={currentStyle.photos[currentIndex].url}
-          onClick={() => changeView('expanded')}
-        /> */}
         <ZoomedIn src={currentStyle.photos[currentIndex].url}
           onClick={() => changeView('expanded')}
         />

@@ -20,8 +20,8 @@ const TitCatSlogan = () => {
     <React.Fragment>
 
       <div className="titleAndCategory">
-        <b className="title"> {product.category}</b>
-        <h3 className="category"> {product.name}</h3>
+        <b className="category"> { product.category }</b>
+        <h3 className="title"> {product.name}</h3>
       </div>
 
       <div className="slogan">
