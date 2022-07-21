@@ -12,6 +12,7 @@ const SizeQtyAddShare = () => {
 
   const { styles, styleIndex } = useContext(StyleContext);
   const currentStyle = styles[styleIndex];
+  console.log(currentStyle);
   const options = Object.values(currentStyle.skus);
 
   const [option, setOption] = useState({});
@@ -21,24 +22,26 @@ const SizeQtyAddShare = () => {
   // options changes with styleIndex
   useEffect(() => {
     setOption({});
-    setSize(null);
-    setQty(null);
+    setSize();
+    setQty();
     setShowMsg1(true);
     setShowMsg2(false);
   }, [styleIndex])
 
 
-  // select an option meaning selecting a size
+  // select an option meaning selecting a size, will activate quantity dropdown
   useEffect(() => {
     setSize(option.size);
+    setQty(option.quantity);
   }, [option])
 
   // having a size will activate the qty dropdown
-  useEffect(() => {
-    if (size) {
-      setQty(1);
-    }
-  }, [size])
+  // useEffect(() => {
+  //   if (size) {
+  //     console.log(size);
+  //     setQty(1);
+  //   }
+  // }, [size])
 
   // if having size and qty => show msg 2
   useEffect(() => {
@@ -69,7 +72,7 @@ const SizeQtyAddShare = () => {
       <div className="sizeQtyAddShare">
         <Div className="size">OUT OF STOCK</Div>
         <Popup trigger={<Button style={{ width: "25%", opacity: "0.7" }}> <FontAwesomeIcon icon={faShare} /> </Button>} position="right top">
-          <a href="http://www.facebook.com" style={{color: "red"}}> <FontAwesomeIcon icon={faFacebook} />
+          <a href="http://www.facebook.com"> <FontAwesomeIcon icon={faFacebook} />
           </a>
           <a href="http://www.twitter.com"> <FontAwesomeIcon icon={faTwitter} />
           </a>
@@ -120,7 +123,7 @@ const SizeQtyAddShare = () => {
 
 
           {/* ADD TO CART  onClick={handleClick}   ******************************** */}
-          <Popup trigger={<Button  style={{ width: "75%" }}> ADD TO CART </Button>
+          <Popup trigger={<Button style={{ width: "75%" }}> ADD TO CART </Button>
           } position={"bottom left"}>
 
             {showMsg1 && msg1}
