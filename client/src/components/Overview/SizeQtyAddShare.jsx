@@ -12,16 +12,15 @@ const SizeQtyAddShare = () => {
 
   const { styles, styleIndex } = useContext(StyleContext);
   const currentStyle = styles[styleIndex];
-  console.log(currentStyle);
   const options = Object.values(currentStyle.skus);
 
-  const [option, setOption] = useState({});
+  const [option, setOption] = useState(-1);
   const [size, setSize] = useState();
   const [qty, setQty] = useState();
 
   // options changes with styleIndex
   useEffect(() => {
-    setOption({});
+    setOption(-1);
     setSize();
     setQty();
     setShowMsg1(true);
@@ -31,8 +30,10 @@ const SizeQtyAddShare = () => {
 
   // select an option meaning selecting a size, will activate quantity dropdown
   useEffect(() => {
-    setSize(option.size);
-    setQty(option.quantity);
+    if (option >= 0) {
+      setSize(options[option].size);
+      setQty(options[option].quantity);
+    }
   }, [option])
 
   // having a size will activate the qty dropdown
@@ -94,9 +95,10 @@ const SizeQtyAddShare = () => {
             style={{ width: "55%" }}
             onChange={(e) => {
               if (e.target.value >= 0) {
-                setOption(options[e.target.value]);
+                setOption(e.target.value);
               }
             }}
+            value={option}
           >
             <option value={-1}> SELECT SIZE </option>
             {options.map((s, index) => {
@@ -111,10 +113,7 @@ const SizeQtyAddShare = () => {
             (<Select style={{ width: "35%" }} disabled={true}><option> - QTY</option>
             </Select>)
             :
-            (<Select
-              style={{ width: "35%" }}
-              onChange={(e) => setQty(e.target.value)}
-            >
+            (<Select style={{ width: "35%" }}>
               {Array(Math.min(qty, 15)).fill(1).map((e, index) => {
                 return <option key={index}>{index + 1}</option>
               })}
@@ -123,7 +122,7 @@ const SizeQtyAddShare = () => {
 
 
           {/* ADD TO CART  onClick={handleClick}   ******************************** */}
-          <Popup trigger={<Button style={{ width: "75%" }}> ADD TO CART </Button>
+          <Popup trigger={<Button style={{ width: "75%" }} className="btn btn-outline-dark"> ADD TO CART </Button>
           } position={"bottom left"}>
 
             {showMsg1 && msg1}
@@ -131,7 +130,8 @@ const SizeQtyAddShare = () => {
           </Popup>
 
           {/* SHARE  ****************************************** */}
-          <Popup trigger={<Button style={{ width: "15%", opacity: "0.7" }}> <FontAwesomeIcon icon={faShare} /> </Button>} position="right top">
+          <Popup trigger={<Button style={{ width: "15%"}} className="btn btn-outline-dark"
+          > <FontAwesomeIcon icon={faShare} /> </Button>} position="right top">
             <a href="http://www.facebook.com"> <FontAwesomeIcon icon={faFacebook} />
             </a>
             <a href="http://www.twitter.com"> <FontAwesomeIcon icon={faTwitter} />
@@ -166,6 +166,7 @@ const Select = styled.select`
   height: 45px;
   border-radius: 0.25rem;
   font-size: 13px;
+  cursor: pointer;
 `
 
 

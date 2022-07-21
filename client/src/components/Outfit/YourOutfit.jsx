@@ -99,7 +99,7 @@ var YourOutfit = ({ mainProdData }) => {
   return (
     <div className="yourOutfit" >
       <h3>Your Outfit</h3>
-      <div style={{ width: "970px", height: "420px" }} >
+      <div style={{ width: "100%", height: "420px" }} >
 
         <YourOutfitCarousel show={4} currentOutfitIndex={currentOutfitIndex} outfitListLength={outfitListLength} setCurrentOutfitIndex={setCurrentOutfitIndex} setOutfitListLength={setOutfitListLength} >
 
@@ -107,13 +107,14 @@ var YourOutfit = ({ mainProdData }) => {
             return (
               <div key={'outfit-' + outfitData.id} style={{ height: '100%' }} >
 
-                <Card style={{ width: "225px", height: "420px" }} >
+                <Card style={{ margin: "0 5px", height: "100%" }} >
+
                   <i className="bi bi-x-square" id={outfitData.id} style={{ color: "black", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => { removeOutfit(event.target.id) }} />
 
-                  <Card.Img id={outfitData.id} style={{ width: "225px", height: "210px", "objectFit": "cover" }} src={outfitData.styles[0].photos[0].url ? outfitData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"} alt="..." />
+                  <Card.Img id={outfitData.id} style={{ width: "100%", height: "50%", "objectFit": "cover" }} src={outfitData.styles[0].photos[0].url ? outfitData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"} alt="..." />
 
 
-                  <Card.Body style={{ width: "225px", height: "210px", "objectFit": "cover" }} >
+                  <Card.Body style={{ width: "100%", height: "50%", "objectFit": "cover" }} >
                     <Card.Title style={{ fontSize: "15px" }}>{outfitData.category}</Card.Title>
                     <Card.Title>{outfitData.name}</Card.Title>
                     <Card.Text style={{ position: "absolute", bottom: 50 }} >{defaultStylePrice(outfitData.styles)}</Card.Text>
@@ -128,10 +129,10 @@ var YourOutfit = ({ mainProdData }) => {
           })}
 
           <div key={'outfitAdd'} style={{ height: '100%' }} >
-            <Card onClick={() => { addOutfit(mainProdData) }} style={{ width: "225px", height: "420px" }} >
+            <Card onClick={() => { addOutfit(mainProdData) }} style={{ position: "relative", margin: "0 5px", width: "100%", height: "100%" }} >
               <div style={{ justifyContent: "center", alignItems: "center" }} >
                 <Card.Title style={{ textAlign: "center", marginTop: "115px" }} >Add to Outfit</Card.Title>
-                <i className="bi bi-plus-circle" style={{ fontSize: "50px", position: "absolute", right: 87.5, top: 172.5 }} />
+                <i className="bi bi-plus-circle" style={{ fontSize: "50px", position: "absolute", right: "50%", top: "50%" }} />
               </div>
             </Card>
           </div>
