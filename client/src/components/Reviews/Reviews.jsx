@@ -34,7 +34,7 @@ class Reviews extends React.Component {
     return (
       <div onClick={e => this.props.postClickingEvent(e, 'Ratings & Reviews')}>
 
-        <h4 style={{ margin: "18px 8px", "font-size": "15px" }}>RATINGS & REVIEWS</h4>
+        <h5 style={{ margin: "18px 8px" }}>RATINGS & REVIEWS</h5>
 
         <div className='reviews' id="reviews">
           {/* right half */}
