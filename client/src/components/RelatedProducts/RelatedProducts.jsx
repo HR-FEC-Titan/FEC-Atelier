@@ -170,10 +170,10 @@ var RelatedProducts = ({ id, setId }) => {
     var combinedFeaturesData = mainProdFeatures.slice();
 
     relatedProdFeatures.forEach(prodFeature => {
-      if (combinedFeaturesData.find(element => element['feature'] === prodFeature.feature)) {
-        combinedFeaturesData[combinedFeaturesData.findIndex(element => element['feature'] === prodFeature.feature)]['relatedProdvalue'] = prodFeature.value;
+      if (combinedFeaturesData.find(element => element['value'] === prodFeature.value)) {
+        combinedFeaturesData[combinedFeaturesData.findIndex(element => element['value'] === prodFeature.value)]['relatedProdvalue'] = prodFeature.value;
       } else {
-        combinedFeaturesData.push({ 'feature': prodFeature.feature, 'relatedProdvalue': prodFeature.value })
+        combinedFeaturesData.push({ 'value': prodFeature.value, 'relatedProdvalue': prodFeature.value })
       }
     })
     setTableData(old => combinedFeaturesData);
@@ -182,26 +182,26 @@ var RelatedProducts = ({ id, setId }) => {
 
   return (
     <div className="relatedProducts" >
-      <h3>Related Products</h3>
+      <h5 style={{ marginBottom: "20px" }}>RELATED PRODUCTS</h5>
       <div  >
 
         <RelatedProdsCarousel show={4} currentIndex={currentIndex} length={length} setCurrentIndex={setCurrentIndex} setLength={setLength} >
 
           {Object.values(relatedProdsData).map((prodData) =>
             <div key={ 'relatedProd-' + prodData.id } style={{ height: '100%' }}>
-              <Card style={{ margin: "0 5px", height: "100%" }} >
+              <Card style={{ margin: "0 5px", height: "100%", backgroundColor : "#F8F9FA" }} >
 
-                <i className="bi bi-star-fill" id={ prodData.id } style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {openComparisonModal(event.target.id)}} />
+                <i className="bi bi-star" id={ prodData.id } style={{ color: "#F8F9FA", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px", cursor : "pointer" }} onClick={() => {openComparisonModal(event.target.id)}} />
 
-                <Card.Img id={ prodData.id } style={{ width: "100%", height: "50%", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url ? prodData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" } alt="..." onClick={() => {setId(event.target.id)}} />
+                <Card.Img id={ prodData.id } style={{ width: "100%", height: "60%", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url ? prodData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" } alt="..." onClick={() => {setId(event.target.id)}} />
                 {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
 
-                <Card.Body style={{ width: "100%", height: "50%", "objectFit": "cover" }} >
+                <Card.Body style={{ width: "100%", height: "40%", "objectFit": "cover" }} >
                   <Card.Title style={{ fontSize: "15px" }}>{ prodData.category }</Card.Title>
-                  <Card.Title>{ prodData.name }</Card.Title>
-                  <Card.Text style={{ position: "absolute", bottom: 50 }} >{ defaultStylePrice(prodData.styles) }</Card.Text>
+                  <Card.Title style={{ fontSize: "16px", fontWeight: "700" }}>{ prodData.name }</Card.Title>
+                  <Card.Text style={{ position: "absolute", bottom: "7%" }} >{ defaultStylePrice(prodData.styles) }</Card.Text>
                   <label className="rating-label" style={{ position: "absolute", bottom: 0 }}>
-                    <input className="rating" max="5" readOnly step="0.25" style={{"--fill": "black", "--starsize": "2rem", "--value": reviewAvg(prodData.reviews)}} type="range" value={reviewAvg(prodData.reviews)} />
+                    <input className="rating" max="5" readOnly step="0.25" style={{"--fill": "black", "--starsize": "1.2rem", "--value": reviewAvg(prodData.reviews), backgroundColor : "#F8F9FA"}} type="range" value={reviewAvg(prodData.reviews)} />
                   </label>
                 </Card.Body>
               </Card>
@@ -222,6 +222,7 @@ var RelatedProducts = ({ id, setId }) => {
         <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >Comparing</h3>
       </Popup> */}
 
+      <br/>
       <br/>
       <YourOutfit mainProdData={mainProdData} />
       <br/>
