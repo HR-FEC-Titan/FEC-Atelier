@@ -49,9 +49,20 @@ class Sort extends React.Component {
     })
     .catch(err => console.log(err))
    }
+   if(pP.id !== this.props.id){
+    axios.get(`reviews?page=1&count=5000&sort=${this.state.value}&product_id=${this.props.id}`)
+    .then(res => {
+      let filter = res.data.results;
+      console.log(filter)
+      this.setState({filter})
+    })
+    .catch(err => console.log(err))
+   }
   }
+
+
   render(){
-    if(this.props.number === '') {
+    if(!this.props.number.length) {
     return (
       <>
         <div className="sortedBy">
@@ -81,7 +92,8 @@ class Sort extends React.Component {
           </div>
 
           <div className="reviewList">
-            <ReviewList id={this.props.id} reviews={this.state.filter.filter(review =>{return review.rating === Number(this.props.number)})} />
+            <ReviewList id={this.props.id} reviews={this.state.filter.filter(review =>{
+              return this.props.number.includes(review.rating)})} />
           </div>
         </>
       )
