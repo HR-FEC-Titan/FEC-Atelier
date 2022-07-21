@@ -150,6 +150,21 @@ var RelatedProducts = ({ id, setId }) => {
   }
 
 
+  // var gatherData = (relatedProdFeatures) => {
+  //   var mainProdFeatures = mainProdData.features;
+  //   var combinedFeaturesData = mainProdFeatures.slice();
+
+  //   relatedProdFeatures.forEach(prodFeature => {
+  //     if (combinedFeaturesData.find(element => element['feature'] === prodFeature.feature)) {
+  //       combinedFeaturesData[combinedFeaturesData.findIndex(element => element['feature'] === prodFeature.feature)]['relatedProdvalue'] = prodFeature.value;
+  //     } else {
+  //       combinedFeaturesData.push({ 'feature': prodFeature.feature, 'relatedProdvalue': prodFeature.value })
+  //     }
+  //   })
+  //   setTableData(old => combinedFeaturesData);
+  // }
+
+
   var gatherData = (relatedProdFeatures) => {
     var mainProdFeatures = mainProdData.features;
     var combinedFeaturesData = mainProdFeatures.slice();
@@ -168,20 +183,20 @@ var RelatedProducts = ({ id, setId }) => {
   return (
     <div className="relatedProducts" >
       <h3>Related Products</h3>
-      <div style={{ width: "970px", height: "420px" }} >
+      <div  >
 
         <RelatedProdsCarousel show={4} currentIndex={currentIndex} length={length} setCurrentIndex={setCurrentIndex} setLength={setLength} >
 
           {Object.values(relatedProdsData).map((prodData) =>
             <div key={ 'relatedProd-' + prodData.id } style={{ height: '100%' }}>
-              <Card style={{ width: "225px", height: "420px" }} >
+              <Card style={{ margin: "0 5px", height: "100%" }} >
 
                 <i className="bi bi-star-fill" id={ prodData.id } style={{ color: "orange", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => {openComparisonModal(event.target.id)}} />
 
-                <Card.Img id={ prodData.id } style={{ width: "225px", height: "210px", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url ? prodData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" } alt="..." onClick={() => {setId(event.target.id)}} />
+                <Card.Img id={ prodData.id } style={{ width: "100%", height: "50%", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url ? prodData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" } alt="..." onClick={() => {setId(event.target.id)}} />
                 {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
 
-                <Card.Body style={{ width: "225px", height: "210px", "objectFit": "cover" }} >
+                <Card.Body style={{ width: "100%", height: "50%", "objectFit": "cover" }} >
                   <Card.Title style={{ fontSize: "15px" }}>{ prodData.category }</Card.Title>
                   <Card.Title>{ prodData.name }</Card.Title>
                   <Card.Text style={{ position: "absolute", bottom: 50 }} >{ defaultStylePrice(prodData.styles) }</Card.Text>
