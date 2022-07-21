@@ -108,7 +108,7 @@ class Rating extends React.Component {
   render() {
     return (
       <div>
-        <div className="reviewNumber"> Total Reviews: {this.total()} </div>
+        <div className="reviewNumber">{this.total()} Total Reviews</div>
         <div className="reviewStars">
           <div className="starNum"> {this.state.avg} </div>
           <input
@@ -119,6 +119,7 @@ class Rating extends React.Component {
               "--value": this.state.avg,
               "--starsize": "1.2rem",
               "display": "inline-block",
+              "paddingLeft": "5px"
             }}
     //         type="range" /></div>
     // <div>Total Reviews: {this.total()}</div>
@@ -134,12 +135,16 @@ class Rating extends React.Component {
             type="range" />
         </div>
 
+        <div className="reviewRec" >
+          {Math.floor(this.state.recs)}% of reviews recommend this product
+        </div>
+
         {/* <div className="reviewRec" >
           {Math.floor(this.state.recs)}% of reviews recommend this product
         </div> */}
 
         {/* *****************   REMOVE ******************/}
-        <div className="reviewNumber">Rating Breakdown:</div>
+        <div className="reviewNumber" style={{ marginBottom: "8px" }}>Rating Breakdown</div>
         {this.state.filter.length ? <div className="reviewNumber">Current Filters: {this.state.filter} stars <p onClick={() => { this.setState({ filter: [] }) }}> Remove all Filters</p> </div> : <></>}
 
 
@@ -172,9 +177,6 @@ class Rating extends React.Component {
           <div> 1 stars </div>
           <ProgressBar completed={this.state.one / this.total() * 100} />
           <div> {this.state.one} </div>
-        </div>
-        <div className="reviewRec" >
-          {Math.floor(this.state.recs)}% of reviews recommend this product
         </div>
 
         {Object.keys(this.state.characteristics).length && Object.keys(this.state.characteristics).map((feature, index) => {

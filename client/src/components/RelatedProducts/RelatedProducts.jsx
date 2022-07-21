@@ -193,7 +193,7 @@ var RelatedProducts = ({ id, setId }) => {
 
                 <i className="bi bi-star" id={ prodData.id } style={{ color: "#F8F9FA", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px", cursor : "pointer" }} onClick={() => {openComparisonModal(event.target.id)}} />
 
-                <Card.Img id={ prodData.id } style={{ width: "100%", height: "60%", "objectFit": "cover" }} src={ prodData.styles[0].photos[0].url ? prodData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" } alt="..." onClick={() => {setId(event.target.id)}} />
+                <Card.Img id={ prodData.id } style={{ width: "100%", height: "60%", "objectFit": "cover", cursor: "pointer" }} src={ prodData.styles[0].photos[0].url ? prodData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" } alt="..." onClick={() => {setId(event.target.id)}} />
                 {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
 
                 <Card.Body style={{ width: "100%", height: "40%", "objectFit": "cover" }} >

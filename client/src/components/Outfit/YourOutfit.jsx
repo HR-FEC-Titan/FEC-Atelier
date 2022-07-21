@@ -103,7 +103,7 @@ var YourOutfit = ({ mainProdData }) => {
 
         <YourOutfitCarousel show={4} currentOutfitIndex={currentOutfitIndex} outfitListLength={outfitListLength} setCurrentOutfitIndex={setCurrentOutfitIndex} setOutfitListLength={setOutfitListLength} >
 
-        <div key={'outfitAdd'} style={{ height: '100%' }} >
+        <div key={'outfitAdd'} style={{ height: '100%', cursor: "pointer" }} >
             <Card onClick={() => { addOutfit(mainProdData) }}
               style={{ margin: "0 5px", height: "100%", backgroundColor : "#F8F9FA" }} >
               <div style={{
@@ -125,8 +125,9 @@ var YourOutfit = ({ mainProdData }) => {
 
                 <Card style={{ margin: "0 5px", height: "100%", backgroundColor : "#F8F9FA" }} >
 
-                  <button type="button" class="btn-close" id={outfitData.id} style={{ opacity: "0.8" }} onClick={() => { removeOutfit(event.target.id) }}></button>
-                  {/* <i className="bi bi-x-square" id={outfitData.id} style={{ color: "black", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px" }} onClick={() => { removeOutfit(event.target.id) }} /> */}
+                  {/* <button type="button" class="btn-close" id={outfitData.id} style={{ opacity: "0.8" }} onClick={() => { removeOutfit(event.target.id) }}></button> */}
+
+                  <i className="bi bi-x-square" id={outfitData.id} style={{ color: "white", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px", cursor: "pointer" }} onClick={() => { removeOutfit(event.target.id) }} />
 
                   <Card.Img id={outfitData.id} style={{ width: "100%", height: "60%", "objectFit": "cover" }} src={outfitData.styles[0].photos[0].url ? outfitData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"} alt="..." />
 
@@ -136,7 +137,7 @@ var YourOutfit = ({ mainProdData }) => {
                     <Card.Title style={{ fontSize: "16px", fontWeight: "700" }}>{outfitData.name}</Card.Title>
                     <Card.Text style={{ position: "absolute", bottom: "7%" }} >{defaultStylePrice(outfitData.styles)}</Card.Text>
                     <label className="rating-label" style={{ position: "absolute", bottom: 0 }}>
-                      <input className="rating" max="5" readOnly step="0.25" style={{ "--fill": "black", "--starsize": "1.2rem", "--value": reviewAvg(outfitData.reviews) }} type="range" value={reviewAvg(outfitData.reviews)} />
+                      <input className="rating" max="5" readOnly step="0.25" style={{ "--fill": "black", "--starsize": "1.2rem", "--value": reviewAvg(outfitData.reviews), backgroundColor : "#F8F9FA" }} type="range" value={reviewAvg(outfitData.reviews)} />
                     </label>
                   </Card.Body>
                 </Card>

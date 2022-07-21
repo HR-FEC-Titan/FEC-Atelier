@@ -7,7 +7,8 @@ const DefaultImage = () => {
 
   const { styles, styleIndex, currentIndex, setCurrentIndex, changeView } = useContext(StyleContext);
 
-  const images = styles[styleIndex].photos;
+  const currentStyle = styles[styleIndex];
+  const images = currentStyle.photos;
   const url = images.reduce((memo, image) => {
     if (image.url) {
       memo.push(image.url)

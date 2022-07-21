@@ -93,12 +93,12 @@ body {
   /* height: 500px; */
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 'a a b '
-                        'a a c '
-                        'a a d'
-                        'a a g'
-                        'a a e'
-                        'a a e'
-                        'f f h'
+    'a a c '
+    'a a d'
+    'a a g'
+    'a a e'
+    'a a e'
+    'f f h'
 }
 
 .expandedView {
@@ -202,9 +202,7 @@ body {
   width: 50px;
   height: 50px;
   object-fit: cover;
-  cursor: pointer;
   z-index: -1;
-  /* border: solid  1px; */
 }
 
 input[type="radio"]:checked+label {
@@ -371,6 +369,7 @@ input[type="radio"]:checked+label {
   align-items: center;
   padding: 5px 0px;
 }
+
 .starNum {
   font-size: 50px;
   font-weight: 800;
@@ -378,7 +377,7 @@ input[type="radio"]:checked+label {
 
 .reviewRec {
   font-size: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .reviewLabel {
@@ -433,14 +432,16 @@ input[type="radio"]:checked+label {
   flex-direction: column;
   /* border: 1px solid black; */
 }
+
 .sortedBy {
   padding: 5px 0px;
   margin-left: 25px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
   /* border-bottom: 2px solid grey; */
 
 }
+
 .sortedByDropdown {
   border: none;
   text-decoration: underline;
@@ -459,7 +460,7 @@ input[type="radio"]:checked+label {
   margin-bottom: 5px;
 }
 
-.starReviewerDate{
+.starReviewerDate {
   display: flex;
   justify-content: space-between;
 }
@@ -503,7 +504,8 @@ input[type="radio"]:checked+label {
   margin-left: 25px;
 }
 
-.moreReview, .addReview {
+.moreReview,
+.addReview {
   background: white;
   border: 1px solid black;
   padding: 15px 15px;
@@ -521,5 +523,5 @@ input[type="radio"]:checked+label {
 }
 
 .inputBox {
- width: 100%;
+  width: 100%;
 }
