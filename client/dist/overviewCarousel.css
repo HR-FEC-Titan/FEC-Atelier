@@ -58,7 +58,7 @@
 }
 
 
-.carousel-control-prev-icon .carousel-control-next-icon{
+.carousel-control-prev-icon, .carousel-control-next-icon{
   width: 30px;
   height: 30px;
 }

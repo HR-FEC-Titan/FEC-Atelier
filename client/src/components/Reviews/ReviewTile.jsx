@@ -54,7 +54,7 @@ let ReviewTile = ({ review }) => {
         <div className="reviewBody">{review.body}</div>
 
         <div className="recResHelpful">
-          {review.recommend && <div className="others">I recommend this product</div>}
+          {review.recommend && <div className="others">✔ I recommend this product</div>}
           {review.response && <div className="others">Responce from seller: {review.response}</div>}
           <div className="others">
             Was this review helpful?
@@ -92,7 +92,7 @@ let ReviewTile = ({ review }) => {
 
 
         <div className="recResHelpful">
-          {review.recommend && <div className="others">I recommend this product</div>}
+          {review.recommend && <div className="others">✔ "I recommend this product</div>}
           {review.response && <div className="others">Responce from seller: {review.response}</div>}
           <div className="others">
             Was this review helful?

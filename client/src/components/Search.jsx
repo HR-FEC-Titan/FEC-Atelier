@@ -13,7 +13,7 @@ const Search = ({ setId }) => {
 
   return (
     <div className='searchBar'>
-      <nav className="navbar navbar-light bg-light">
+      <nav className="navbar navbar-light bg-light" >
         <a className="navbar-brand"> WALL·E </a>
         <form
           className="form-inline"

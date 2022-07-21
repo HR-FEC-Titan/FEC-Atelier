@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { createRoot } from "react-dom/client";
+import axios from 'axios';
 
 import Search from './components/Search.jsx';
 import Overview from './components/Overview/Overview.jsx';
@@ -13,16 +14,29 @@ const root = createRoot(document.getElementById("root"));
 const App = (props) => {
   const [id, setId] = useState(props.id);
 
-  return <>
+  const postClickingEvent = (e, widgetName) => {
+    const interaction = {
+      element: e.target.outerHTML,
+      widget: widgetName,
+      time: Date.now().toString()
+    }
+    console.log(interaction);
+    axios.post('/interactions', interaction)
+      .then(() => console.log('interaction posted'))
+      .catch(e => console.log('posting failure'))
+  }
+
+  return (
+    <>
     <Search setId={setId} />
-    <Overview id={id} />
+    <Overview id={id} postClickingEvent={postClickingEvent}/>
     <RelatedProducts id={id} setId={setId} />
     {/* <YourOutfit id={id} /> */}
-    <Reviews id={id} />
+    <Reviews id={id} postClickingEvent={postClickingEvent} />
   </>
-
+  )
 }
 
-root.render(<App id={66645} />);
+root.render(<App id={66642} />);
 
 export default App;

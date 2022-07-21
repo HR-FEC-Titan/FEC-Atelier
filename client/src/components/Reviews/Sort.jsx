@@ -7,7 +7,12 @@ class Sort extends React.Component {
     super(props)
     this.state = {
       filter: [],
-      value: "relevant",
+      five: [],
+      four: [],
+      three: [],
+      two: [],
+      one: [],
+      value: "relevant"
     }
   }
 
@@ -16,6 +21,13 @@ class Sort extends React.Component {
     .then(res => {
       let filter = res.data.results
       console.log(filter)
+      filter.forEach(review => {
+        if(review.rating === 1) this.state.one.push(review)
+        if(review.rating === 2) this.state.two.push(review)
+        if(review.rating === 3) this.state.three.push(review)
+        if(review.rating === 4) this.state.four.push(review)
+        if(review.rating === 5) this.state.five.push(review)
+      })
       this.setState({filter})
     })
     .catch(err => console.log(err))
@@ -81,7 +93,7 @@ class Sort extends React.Component {
 
           <div className="reviewList">
             <ReviewList id={this.props.id} reviews={this.state.filter.filter(review =>{
-              return this.props.number.includes(review.rating.toString())})} />
+              return this.props.number.includes(review.rating)})} />
           </div>
         </>
       )
