@@ -128,14 +128,29 @@ var YourOutfit = ({ mainProdData }) => {
             )
           })}
 
-          <div key={'outfitAdd'} style={{ height: '100%' }} >
+          {/* <div key={'outfitAdd'} style={{ height: '100%' }} >
             <Card onClick={() => { addOutfit(mainProdData) }} style={{ position: "relative", margin: "0 5px", width: "100%", height: "100%" }} >
               <div style={{ justifyContent: "center", alignItems: "center" }} >
                 <Card.Title style={{ textAlign: "center", marginTop: "115px" }} >Add to Outfit</Card.Title>
                 <i className="bi bi-plus-circle" style={{ fontSize: "50px", position: "absolute", right: "50%", top: "50%" }} />
               </div>
             </Card>
-          </div>
+          </div> */}
+
+            <Card onClick={() => { addOutfit(mainProdData) }}
+              style={{ margin: "0 5px", height: "100%" }} >
+              <div style={{
+                height: "100%",
+                display: "flex",
+                "flex-direction": "column",
+                "justify-content": "center",
+                "align-items": "center"
+                }}
+              >
+                <Card.Title style={{ textAlign: "center" }} >Add to Outfit</Card.Title>
+                <i className="bi bi-plus-circle" style={{ fontSize: "50px" }} />
+              </div>
+            </Card>
 
 
         </YourOutfitCarousel>
