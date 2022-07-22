@@ -88,8 +88,8 @@ const DefaultImage = () => {
 
         {/* ================  main prev buttons =================*/}
         {currentIndex > 0 &&
-          <a class="carousel-control-prev defaultImage-left-arrow" onClick={prev}>
-            <span class="carousel-control-prev-icon"></span>
+          <a className="carousel-control-prev defaultImage-left-arrow" onClick={prev}>
+            <span className="carousel-control-prev-icon"></span>
           </a>
         }
 
@@ -116,8 +116,8 @@ const DefaultImage = () => {
 
         {/* ================  main next buttons =================*/}
         {currentIndex < (length - 1) &&
-          <a class="carousel-control-next" onClick={next} >
-            <span class="carousel-control-next-icon"></span>
+          <a className="carousel-control-next" onClick={next} >
+            <span className="carousel-control-next-icon"></span>
           </a>
         }
 

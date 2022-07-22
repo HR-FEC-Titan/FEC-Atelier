@@ -125,8 +125,6 @@ var YourOutfit = ({ mainProdData }) => {
 
                 <Card style={{ margin: "0 5px", height: "100%", backgroundColor : "#F8F9FA" }} >
 
-                  {/* <button type="button" class="btn-close" id={outfitData.id} style={{ opacity: "0.8" }} onClick={() => { removeOutfit(event.target.id) }}></button> */}
-
                   <i className="bi bi-x-square" id={outfitData.id} style={{ color: "white", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px", cursor: "pointer" }} onClick={() => { removeOutfit(event.target.id) }} />
 
                   <Card.Img id={outfitData.id} style={{ width: "100%", height: "60%", "objectFit": "cover" }} src={outfitData.styles[0].photos[0].url ? outfitData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"} alt="..." />
