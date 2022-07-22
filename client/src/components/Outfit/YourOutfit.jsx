@@ -146,8 +146,6 @@ var YourOutfit = ({ mainProdData }) => {
             )
           })}
 
-
-
           {/* <div key={'outfitAdd'} style={{ height: '100%' }} >
             <Card onClick={() => { addOutfit(mainProdData) }} style={{ position: "relative", margin: "0 5px", width: "100%", height: "100%" }} >
               <div style={{ justifyContent: "center", alignItems: "center" }} >
@@ -156,7 +154,6 @@ var YourOutfit = ({ mainProdData }) => {
               </div>
             </Card>
           </div> */}
-
 
         </YourOutfitCarousel>
       </div>
