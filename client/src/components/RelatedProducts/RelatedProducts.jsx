@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
-// import Popup from 'reactjs-popup';
 
 import RelatedProdsCarousel from './RelatedProdsCarousel.jsx';
 import ComparisonTable from './ComparisonTable.jsx';
@@ -152,21 +151,6 @@ var RelatedProducts = ({ id, setId, postClickingEvent }) => {
   }
 
 
-  // var gatherData = (relatedProdFeatures) => {
-  //   var mainProdFeatures = mainProdData.features;
-  //   var combinedFeaturesData = mainProdFeatures.slice();
-
-  //   relatedProdFeatures.forEach(prodFeature => {
-  //     if (combinedFeaturesData.find(element => element['feature'] === prodFeature.feature)) {
-  //       combinedFeaturesData[combinedFeaturesData.findIndex(element => element['feature'] === prodFeature.feature)]['relatedProdvalue'] = prodFeature.value;
-  //     } else {
-  //       combinedFeaturesData.push({ 'feature': prodFeature.feature, 'relatedProdvalue': prodFeature.value })
-  //     }
-  //   })
-  //   setTableData(old => combinedFeaturesData);
-  // }
-
-
   var gatherData = (relatedProdFeatures) => {
     var combinedFeaturesData = [];
     mainProdData.features.forEach(feature => {
@@ -183,13 +167,11 @@ var RelatedProducts = ({ id, setId, postClickingEvent }) => {
       if (prodFeature['value'] !== null) {
         if (combinedFeaturesData.find(element => element['value'] === prodFeature.value)) {
           combinedFeaturesData[combinedFeaturesData.findIndex(element => element['value'] === prodFeature.value)]['relatedProdvalue'] = <div>&#x2713;</div>;
-          console.log('values matched', prodFeature.value);
         } else {
           combinedFeaturesData.push({ 'value': prodFeature.value, 'relatedProdvalue': <div>&#x2713;</div> })
         }
       }
     })
-    console.log('combinedFeaturesData', combinedFeaturesData);
     setTableData(old => combinedFeaturesData);
   }
 
@@ -208,7 +190,6 @@ var RelatedProducts = ({ id, setId, postClickingEvent }) => {
                 <i className="bi bi-star" id={ prodData.id } style={{ color: "white", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px", cursor : "pointer" }} onClick={() => {openComparisonModal(event.target.id)}} />
 
                 <Card.Img id={ prodData.id } style={{ width: "100%", height: "60%", "objectFit": "cover", cursor: "pointer" }} src={ prodData.styles[0].photos[0].url ? prodData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" } alt="..." onClick={() => {setId(event.target.id)}} />
-                {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
 
                 <Card.Body style={{ width: "100%", height: "40%", "objectFit": "cover" }} >
                   <Card.Title style={{ fontSize: "15px" }}>{ prodData.category }</Card.Title>
@@ -231,11 +212,6 @@ var RelatedProducts = ({ id, setId, postClickingEvent }) => {
         <ComparisonTable tableData={tableData} mainProdData={mainProdData} comparedProdName={comparedProdName} />
 
       </div>
-
-      {/* <Popup className="popup" id="popup" trigger={<button> Trigger</button>} position="right center" >
-        <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >Comparing</h3>
-      </Popup> */}
-
       <br/>
       <br/>
       <YourOutfit mainProdData={mainProdData} />

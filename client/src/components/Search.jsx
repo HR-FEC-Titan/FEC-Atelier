@@ -26,8 +26,8 @@ const Search = ({ setId }) => {
           <button className="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
         </form>
         <div>
-          <i class="bi bi-heart"style={{ fontSize: "23px" }}></i>
-          <i class="bi bi-cart" style={{ fontSize: "25px", marginLeft: "15px" }}></i>
+          <i className="bi bi-heart"style={{ fontSize: "23px" }}></i>
+          <i className="bi bi-cart" style={{ fontSize: "25px", marginLeft: "15px" }}></i>
         </div>
       </nav>
     </div>
