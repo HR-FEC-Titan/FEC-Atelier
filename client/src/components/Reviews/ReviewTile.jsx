@@ -95,7 +95,7 @@ let ReviewTile = ({ review }) => {
           {review.recommend && <div className="others">✔ "I recommend this product</div>}
           {review.response && <div className="others">Responce from seller: {review.response}</div>}
           <div className="others">
-            Was this review helful?
+            Was this review helpful?
             <a href=""> Yes</a> {review.helpfulness}   |   <a className='report' href="">Report</a>
           </div>
         </div>

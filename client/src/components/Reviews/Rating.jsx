@@ -108,7 +108,6 @@ class Rating extends React.Component {
   render() {
     return (
       <div>
-        <div className="reviewNumber"> Total Reviews: {this.total()} </div>
         <div className="reviewStars">
           <div className="starNum"> {this.state.avg} </div>
           <input
@@ -134,13 +133,15 @@ class Rating extends React.Component {
             type="range" />
         </div>
 
+        <div className="reviewNumber"> Total Reviews: {this.total()} </div>
+
         {/* <div className="reviewRec" >
           {Math.floor(this.state.recs)}% of reviews recommend this product
         </div> */}
 
         {/* *****************   REMOVE ******************/}
         <div className="reviewNumber">Rating Breakdown:</div>
-        {this.state.filter.length ? <div className="reviewNumber">Current Filters: {this.state.filter} stars <p onClick={() => { this.setState({ filter: [] }) }}> Remove all Filters</p> </div> : <></>}
+        {this.state.filter.length ? <div className="reviewNumber">Current Filters: {this.state.filter.map(el=>{return  <p>{el} stars</p>})}<p onClick={() => { this.setState({ filter: [] }) }}> Remove all Filters</p> </div> : <></>}
 
 
 

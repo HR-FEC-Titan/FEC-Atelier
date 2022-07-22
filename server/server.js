@@ -34,6 +34,21 @@ app.post('/reviews', (req, res) => {
     })
 })
 
+// PUT
+
+app.put(`/reviews:review_id/helpful`, (req, res) => {
+  const data = req.body;
+  reviewUpdate(data)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.log('Posting error***********');
+    })
+})
+
+
+
 app.post('/interactions', (req, res) => {
   const data = req.body;
   postInteraction(data)
