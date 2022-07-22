@@ -3,8 +3,11 @@ const express = require("express"); // npm installed
 const axios = require('axios');
 const morgan = require('morgan');
 const { getProductInfo, postProductInfo, postInteraction } = require('./helper');
+const compression = require('compression');
 
 const app = express();
+
+app.use(compression());
 
 app.use(morgan('tiny'));
 app.use(express.json());
