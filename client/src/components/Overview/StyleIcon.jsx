@@ -25,7 +25,6 @@ const StyleIcon = () => {
           <img
             className="styleIcon"
             src={s.photos[0].thumbnail_url}
-            style={i === styleIndex ? { border: "solid 3px gold" } : null}
           />
         </label>
 

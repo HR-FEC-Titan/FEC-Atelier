@@ -44,7 +44,7 @@ const DefaultImage = () => {
   }
 
   // vertical carousel up and down arrow function ENABLE by changing the 'veriticalDisplay' value
-  const verticalDisplay = 7;
+  const verticalDisplay = 6;
   const [topIndex, setTopIndex] = useState(0);
   const [bottomIndex, setBottomIndex] = useState(verticalDisplay - 1);
 
@@ -121,55 +121,62 @@ const DefaultImage = () => {
           </a>
         }
 
-      </div>
 
+        {/* ==========================thumbnail carousel ==================*/}
+        <div className="t-carousel-container">
+          <div className="t-carousel-wrapper">
+            {/* ================  thumbnail prev buttons =================*/}
+            {topIndex > 0 &&
+              // <button onClick={up} className="t-image-up-arrow">
+              //   &#8963;
+              // </button>
+              <i className="bi bi-chevron-compact-up t-image-up-arrow" onClick={up}></i>
+            }
 
+            {/* ================  thumbnail images =================*/}
+            <div className="t-carousel-content-wrapper">
+              <div
+                className={`t-carousel-content`}
+                style={{
+                  transform: `t-translateY(-${currentIndex * (100 / 1)}%)`
+                }}
+              >
 
-      {/* ==========================thumbnail carousel ==================*/}
-      <div className="t-carousel-container">
-        <div className="t-carousel-wrapper">
-          {/* ================  thumbnail prev buttons =================*/}
-          {topIndex > 0 &&
-            <button onClick={up} className="t-image-up-arrow">
-              &#8963;
-            </button>}
+                {thumbnailUrl.map((thumbnail, idx) => {
+                  if (idx <= bottomIndex && idx >= topIndex) {
+                    return (
+                      <StyledImage
+                        // max-height={`${100/thumbnailUrl.length}%`}
+                        src={thumbnail}
+                        alt="placeholder"
+                        key={idx}
+                        id={idx}
+                        onClick={() => {
+                          setCurrentIndex(idx);
+                        }}
+                        currentIndex={currentIndex}
+                      />
+                    )
+                  }
+                })}
 
-          {/* ================  thumbnail images =================*/}
-          <div className="t-carousel-content-wrapper">
-            <div
-              className={`t-carousel-content`}
-              style={{
-                transform: `t-translateY(-${currentIndex * (100 / 1)}%)`
-              }}
-            >
-
-              {thumbnailUrl.map((thumbnail, idx) => {
-                if (idx <= bottomIndex && idx >= topIndex) {
-                  return (
-                    <StyledImage
-                      src={thumbnail}
-                      alt="placeholder"
-                      key={idx}
-                      id={idx}
-                      onClick={() => {
-                        setCurrentIndex(idx);
-                      }}
-                      currentIndex={currentIndex}
-                    />
-                  )
-                }
-              })}
-
+              </div>
             </div>
-          </div>
 
-          {/* ================  thumbnail next buttons =================*/}
-          {bottomIndex < (length - 1) &&
-            <button onClick={down} className="t-image-down-arrow">
-              &#8964;
-            </button>}
+            {/* ================  thumbnail next buttons =================*/}
+            {bottomIndex < (length - 1) &&
+              // <button onClick={down} className="t-image-down-arrow">
+              //   &#8964;
+              // </button>
+              <i className="bi bi-chevron-compact-down t-image-down-arrow"
+                // style={{"font-size": "34px", "color": "white", opacity:"0.5"}}
+               onClick={down}></i>
+              }
+          </div>
         </div>
+
       </div>
+
     </div>
   )
 }
@@ -186,7 +193,7 @@ const Img = styled.img`
 
 const StyledImage = styled.img`
  z-index: 50;
- max-height: 16%;
+ max-height: 14%;
  padding: 3px;
  object-fit: cover;
  cursor: pointer;

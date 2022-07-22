@@ -25,6 +25,10 @@ const Search = ({ setId }) => {
           <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={handleChange} value={term} />
           <button className="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
         </form>
+        <div>
+          <i class="bi bi-heart"style={{ fontSize: "23px" }}></i>
+          <i class="bi bi-cart" style={{ fontSize: "25px", marginLeft: "15px" }}></i>
+        </div>
       </nav>
     </div>
   )
