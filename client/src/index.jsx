@@ -30,7 +30,7 @@ const App = (props) => {
     <>
     <Search setId={setId} />
     <Overview id={id} postClickingEvent={postClickingEvent}/>
-    <RelatedProducts id={id} setId={setId} />
+    <RelatedProducts id={id} setId={setId} postClickingEvent={postClickingEvent} />
     <Reviews id={id} postClickingEvent={postClickingEvent} />
   </>
   )

@@ -8,12 +8,13 @@ import RelatedProdsCarousel from './RelatedProdsCarousel.jsx';
 import ComparisonTable from './ComparisonTable.jsx';
 import YourOutfit from '../Outfit/YourOutfit.jsx';
 
-var RelatedProducts = ({ id, setId }) => {
+var RelatedProducts = ({ id, setId, postClickingEvent }) => {
   const [relatedProdsData, setRelatedProdsData] = useState({});
   const [mainProdData, setMainProdData] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [tableData, setTableData] = useState([]);
   const [length, setLength] = useState(Object.values(relatedProdsData).length);
+  const [comparedProdName, setComparedProdName] = useState('');
 
   useEffect(() => {
     setRelatedProdsData({});
@@ -140,7 +141,8 @@ var RelatedProducts = ({ id, setId }) => {
   var openComparisonModal = (clickedID) => {
     var popup = document.getElementById("popup");
     popup.classList.add("open-popup");
-    gatherData(relatedProdsData[clickedID].features)
+    setComparedProdName(old => relatedProdsData[clickedID].name);
+    gatherData(relatedProdsData[clickedID].features);
   }
 
 
@@ -166,22 +168,34 @@ var RelatedProducts = ({ id, setId }) => {
 
 
   var gatherData = (relatedProdFeatures) => {
-    var mainProdFeatures = mainProdData.features;
-    var combinedFeaturesData = mainProdFeatures.slice();
+    var combinedFeaturesData = [];
+    mainProdData.features.forEach(feature => {
+      combinedFeaturesData.push({...feature});
+    });
 
-    relatedProdFeatures.forEach(prodFeature => {
-      if (combinedFeaturesData.find(element => element['value'] === prodFeature.value)) {
-        combinedFeaturesData[combinedFeaturesData.findIndex(element => element['value'] === prodFeature.value)]['relatedProdvalue'] = prodFeature.value;
-      } else {
-        combinedFeaturesData.push({ 'value': prodFeature.value, 'relatedProdvalue': prodFeature.value })
+    combinedFeaturesData.forEach(mainProdFeat => {
+      if (mainProdFeat['value'] !== null) {
+        mainProdFeat['mainProdValue'] = <div>&#x2713;</div>;
       }
     })
+
+    relatedProdFeatures.forEach(prodFeature => {
+      if (prodFeature['value'] !== null) {
+        if (combinedFeaturesData.find(element => element['value'] === prodFeature.value)) {
+          combinedFeaturesData[combinedFeaturesData.findIndex(element => element['value'] === prodFeature.value)]['relatedProdvalue'] = <div>&#x2713;</div>;
+          console.log('values matched', prodFeature.value);
+        } else {
+          combinedFeaturesData.push({ 'value': prodFeature.value, 'relatedProdvalue': <div>&#x2713;</div> })
+        }
+      }
+    })
+    console.log('combinedFeaturesData', combinedFeaturesData);
     setTableData(old => combinedFeaturesData);
   }
 
 
   return (
-    <div className="relatedProducts" >
+    <div className="relatedProducts" onClick={e => postClickingEvent(e, 'Related Products')}>
       <h5 style={{ marginBottom: "20px" }}>RELATED PRODUCTS</h5>
       <div  >
 
@@ -191,7 +205,7 @@ var RelatedProducts = ({ id, setId }) => {
             <div key={ 'relatedProd-' + prodData.id } style={{ height: '100%' }}>
               <Card style={{ margin: "0 5px", height: "100%", backgroundColor : "#F8F9FA" }} >
 
-                <i className="bi bi-star" id={ prodData.id } style={{ color: "#F8F9FA", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px", cursor : "pointer" }} onClick={() => {openComparisonModal(event.target.id)}} />
+                <i className="bi bi-star" id={ prodData.id } style={{ color: "white", fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "12.5px", cursor : "pointer" }} onClick={() => {openComparisonModal(event.target.id)}} />
 
                 <Card.Img id={ prodData.id } style={{ width: "100%", height: "60%", "objectFit": "cover", cursor: "pointer" }} src={ prodData.styles[0].photos[0].url ? prodData.styles[0].photos[0].url : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" } alt="..." onClick={() => {setId(event.target.id)}} />
                 {/* <img src={defaultStylePic(prodData)} className="card-img-top" alt="..." /> */}
@@ -211,10 +225,10 @@ var RelatedProducts = ({ id, setId }) => {
       </div>
 
       <div className="popup" id="popup" >
-        <i className="bi bi-x-square" style={{ fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "10px" }} onClick={ () => { hideComparisonModal() }} ></i>
+        <i className="bi bi-x-square" style={{ fontSize: "25px", position: "absolute", top: 0, right: 0, paddingRight: "10px", cursor : "pointer" }} onClick={ () => { hideComparisonModal() }} ></i>
         <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >Comparing</h3>
 
-        <ComparisonTable tableData={tableData} mainProdData={mainProdData} />
+        <ComparisonTable tableData={tableData} mainProdData={mainProdData} comparedProdName={comparedProdName} />
 
       </div>
 

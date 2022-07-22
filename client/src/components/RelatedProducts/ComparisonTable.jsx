@@ -5,12 +5,12 @@ import '../../../dist/comparisonTable.css'
 
 const ComparisonTable = (props) => {
   var mainProdName = props.mainProdData.name;
-  var relatedProdName = '';
+  var relatedProdName = props.comparedProdName;
 
   const tableColumns = [
     {
       Header: 'Current Product Value',
-      accessor: 'feature'
+      accessor: 'mainProdValue'
     },
     {
       Header: 'Characteristic',
@@ -41,15 +41,9 @@ const ComparisonTable = (props) => {
   return (
     <table { ...getTableProps() } >
       <thead>
-        {headerGroups.map(headerGroup => (
-          <tr { ...headerGroup.getHeaderGroupProps() } >
-            {headerGroup.headers.map(column => (
-              <th { ...column.getHeaderProps() } >
-                { column.render('Header') }
-              </th>
-            ))}
-          </tr>
-        ))}
+        <th>{mainProdName}</th>
+        <th>Characteristic</th>
+        <th>{relatedProdName}</th>
       </thead>
       <tbody { ...getTableBodyProps() } >
         {rows.map(row => {
@@ -58,7 +52,7 @@ const ComparisonTable = (props) => {
             <tr { ...row.getRowProps() } >
               {row.cells.map((cell) => {
                 return (
-                  <td { ...cell.getCellProps() } >
+                  <td { ...cell.getCellProps() } style={{ textAlign: "center" }}>
                     { cell.render('Cell') }
                   </td>
                 )
