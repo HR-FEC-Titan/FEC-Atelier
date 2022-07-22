@@ -371,13 +371,13 @@ input[type="radio"]:checked+label {
 }
 
 .starNum {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 800;
 }
 
 .reviewRec {
   font-size: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .reviewLabel {
@@ -436,7 +436,7 @@ input[type="radio"]:checked+label {
 .sortedBy {
   padding: 5px 0px;
   margin-left: 25px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
   /* border-bottom: 2px solid grey; */
 

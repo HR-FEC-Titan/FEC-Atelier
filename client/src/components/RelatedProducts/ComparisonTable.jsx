@@ -10,11 +10,11 @@ const ComparisonTable = (props) => {
   const tableColumns = [
     {
       Header: 'Current Product Value',
-      accessor: 'value'
+      accessor: 'feature'
     },
     {
       Header: 'Characteristic',
-      accessor: 'feature'
+      accessor: 'value'
     },
     {
       Header: 'Compared Product Value',
