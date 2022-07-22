@@ -29,6 +29,19 @@ const postProductInfo = (data) => {
   return axios(config);
 }
 
+const reviewUpdate = (data) => {
+  var config = {
+    method: 'put',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/:review_id/helpful`,
+    data: data,
+    headers: {
+      'Authorization': process.env.API_KEY
+    }
+  };
+  return axios(config);
+}
+
+
 const postInteraction = (data) => {
   var config = {
     method: 'post',
