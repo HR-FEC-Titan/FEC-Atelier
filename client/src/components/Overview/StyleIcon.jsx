@@ -20,7 +20,8 @@ const StyleIcon = () => {
           hidden
         />
 
-        <label className="" htmlFor={`Style${i}`}>
+        <label className="" htmlFor={`Style${i}`} style={{ cursor: "pointer" }}
+        >
           <img
             className="styleIcon"
             src={s.photos[0].thumbnail_url}
