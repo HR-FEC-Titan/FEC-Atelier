@@ -18,36 +18,45 @@ A user can
 1) You must have [nodeJs](https://nodejs.org/en/docs/) and [npm](https://docs.npmjs.com/) installed.
 
 2) Clone repo locally
-```
-git clone https://github.com/HR-FEC-Titan/FEC-Atelier.git
-```
+  ```
+  git clone https://github.com/HR-FEC-Titan/FEC-Atelier.git
+  ```
 
 3) Go to the proejct's root directory
-```cd /my/path/to/FEC-Atelier```
+  ```
+  cd /my/path/to/FEC-Atelier
+  ```
 
 4) Install packages
-  ```npm install```
+  ```
+  npm install
+  ```
 
 5) Get webpack
-  ```npm run build```
+  ```
+  npm run build
+  ```
 
 6) Create a .env file and add github access token to a variable "API_KEY"
   `API_KEY = "YOUR GITHUB API KEY"`
 
 7) Start the server
-  ```node server/server.js```
+  ```
+  node server/server.js
+  ```
 
 8) Verify the app is running by visiting http://localhost:3000.
 
 
 ## Tech Stack
   ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+  ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+  ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
   ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
   ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-  ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-  ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
   ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+
 
 
 ## Contributors
