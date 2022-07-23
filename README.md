@@ -1,8 +1,7 @@
 # Titan-Atelier
 A simple express app that simulates a user shopping experience on an ecommerce website. Displays product overview information, related products, and ratings & reviews of the selected product.
 
-![alt text][preview]
-[preview]: https://github.com/HR-FEC-Titan/FEC-Atelier/blob/master/Screen%20Shot%202022-07-23%20at%203.15.59%20PM.png
+![alt text](https://github.com/HR-FEC-Titan/FEC-Atelier/blob/master/Screen%20Shot%202022-07-23%20at%203.15.59%20PM.png)
 
 ## Description
 A user can
