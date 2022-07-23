@@ -1,5 +1,5 @@
 # FEC-Atelier
-A simple express app that simulates an ecommerse website displaying overview information, related products, and ratings&reviews of the current product.
+A simple express app that simulates an ecommerce website displaying overview information, related products, and ratings&reviews of the current product.
 
 
 ## Description
@@ -18,7 +18,9 @@ A user can
 1) You must have [nodeJs](https://nodejs.org/en/docs/) and [npm](https://docs.npmjs.com/) installed.
 
 2) Clone repo locally
-```git clone https://github.com/HR-FEC-Titan/FEC-Atelier.git```
+```
+git clone https://github.com/HR-FEC-Titan/FEC-Atelier.git
+```
 
 3) Go to the proejct's root directory
 ```cd /my/path/to/FEC-Atelier```
