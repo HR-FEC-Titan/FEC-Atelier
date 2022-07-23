@@ -1,4 +1,4 @@
-# FEC-Atelier
+# Titan-Atelier
 A simple express app that simulates an ecommerce website displaying overview information, related products, and ratings&reviews of the current product.
 
 
