@@ -22,7 +22,7 @@ A user can
     git clone https://github.com/HR-FEC-Titan/FEC-Atelier.git
     ```
 
-3) Go to the proejct's root directory
+3) Go to the project's root directory
     ```
     cd /my/path/to/FEC-Atelier
     ```
@@ -32,7 +32,7 @@ A user can
     npm install
     ```
 
-5) Get webpack
+5) Build webpack
     ```
     npm run build
     ```
@@ -41,6 +41,7 @@ A user can
     `
     API_KEY = "YOUR GITHUB API KEY"
     `
+
 
 7) Start the server
     ```
