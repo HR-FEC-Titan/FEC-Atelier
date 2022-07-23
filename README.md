@@ -1,16 +1,15 @@
 # Titan-Atelier
 A simple express app that simulates a user shopping experience on an ecommerce website. Displays product overview information, related products, and ratings & reviews of the selected product.
 
+![alt text][preview]
+[preview]: https://github.com/HR-FEC-Titan/FEC-Atelier/blob/master/Screen%20Shot%202022-07-23%20at%203.15.59%20PM.png
 
 ## Description
 A user can
 * Query another product by searching `ex. 66645` in search bar;
-<!---Overview------------>
 * Choose styles, switch style images, get an expanded view of the image, select size and quantity, and add to cart;
-<!---Related Products---->
 * View and compare characteristics against the current product.
 * Save the current product as one of your outfits.
-<!---Ratings & Reviews---->
 * Read all reviews for a given product, see the aggregated review metrics for a product, sort the reviews based on "helpfulness", "relevance", or "newest", filter the reviews based on the number of stars, and add a review for the given product.
 
 
